@@ -1,0 +1,33 @@
+import * as React from 'react'
+
+import { cn } from '../../lib/cn'
+
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  leftIcon?: React.ReactNode
+}
+
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
+  { className, leftIcon, ...props },
+  ref,
+) {
+  return (
+    <div
+      className={cn(
+        'flex items-center gap-2 rounded-xl border border-(--border) bg-(--background) px-3',
+        'focus-within:ring-2 focus-within:ring-(--brand) focus-within:ring-offset-2 focus-within:ring-offset-(--background)',
+        className,
+      )}
+    >
+      {leftIcon ? <span className="text-(--muted)">{leftIcon}</span> : null}
+      <input
+        ref={ref}
+        className={cn(
+          'h-9 w-full bg-transparent text-sm text-(--black) placeholder:text-(--muted)',
+          'outline-none',
+        )}
+        {...props}
+      />
+    </div>
+  )
+})
+

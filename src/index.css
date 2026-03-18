@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  /* Use ONLY app.css variables in components. These are derived aliases. */
+  --primary: var(--brand);
+  --bg: var(--background);
+  --surface: var(--background);
+  --sidebar-bg: var(--background);
+  --sidebar-active: var(--background);
+  --text: var(--black);
+  --text-muted: var(--muted);
+
+  --radius: 14px;
+  --shadow: none;
+  --font-main: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --surface: #111a2e;
+    --sidebar-bg: #0b1220;
+    --text: #e6eefc;
+    --text-muted: #a9b7d0;
+    --border: rgba(217, 217, 217, 0.18);
+  }
+}
+
+
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  color: var(--text);
+  background: var(--bg);
+}
+
+p {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
