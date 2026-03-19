@@ -6,7 +6,7 @@ export function AgentCard({ name, editedAt, className }: AgentCardProps) {
   return (
     <Card className={cn('overflow-hidden rounded-[20px] border border-(--border) bg-(--white)', className)}>
       <div className="relative h-[142px] bg-linear-to-b from-(--primaryColor) to-(--brand)">
-        <div className="absolute left-1/2 top-1/2 w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-(--white) p-3">
+        <div className="absolute left-1/2 top-1/2 w-[83%] -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-(--white) p-3">
           <div className="mb-3 flex items-center gap-2">
             <span className="h-6 w-6 rounded-full bg-(--black)" />
             <span className="h-[9px] w-10 rounded-full bg-(--black) opacity-80" />

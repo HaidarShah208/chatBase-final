@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
-
+import { ChevronDown, LogOut, Settings } from 'lucide-react'
+import leaf from '../../assets/dashboard/leaf.png'
+import user from '../../assets/dashboard/user.png'
+import arrowUp from '../../assets/dashboard/arrowUp.png'
 import brandName from '../../assets/sidebar/brandName.png'
 import { Button } from '../ui/Button'
 import { cn } from '../../lib/cn'
@@ -89,14 +91,15 @@ export function Sidebar() {
       <div className="mt-auto flex shrink-0 flex-col">
         <div className="px-3 pb-3">
           <div className="rounded-lg border border-(--border) bg-(--white) p-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-(--border) px-2 py-1 text-[11px] font-semibold text-(--black)">
-              <span className="h-2 w-2 rounded-full bg-(--brand)" />
+            <div className="inline-flex items-center gap-2 rounded-sm bg-(--secondaryGray) px-3 py-1 text-sm font-medium text-(--darkGray)">
+            <img src={leaf} alt="leaf" />
               Free Trial
             </div>
-            <div className="mt-2 text-xs text-(--muted)">Remaining: $9.87</div>
-            <div className="mt-1 text-xs text-(--muted)">Concurrency Used: 0/20</div>
+            <div className="mt-4 text-sm font-medium text-(--black)">Remaining: $9.87</div>
+            <div className="mt-2 text-sm font-medium text-(--black)">Concurrency Used: 0/20</div>
             <div className="mt-3">
-              <Button size="sm" className="w-full" variant="primary">
+              <Button size="sm" className="w-[140px] justify-center gap-2 bg-(--black) rounded-lg" variant="primary">
+                <img src={arrowUp} alt="" className="h-3 w-3" />
                 Add Payment
               </Button>
             </div>
@@ -105,7 +108,7 @@ export function Sidebar() {
 
         <div className="border-t border-(--border) px-3 py-3">
           <div className="flex items-center gap-2 rounded-xl px-2 py-2">
-            <div className="h-8 w-8 rounded-full border border-(--border) bg-(--background)" />
+          <img src={user} alt="user" />
             <div className="min-w-0">
               <div className="truncate text-base font-medium text-(--black)">
                 Stackup Solutions
@@ -113,12 +116,16 @@ export function Sidebar() {
             </div>
           </div>
           <div className="mt-2 grid gap-1">
-            {['Settings', 'Logout'].map((label) => (
+            {[
+              { label: 'Settings', icon: Settings },
+              { label: 'Logout', icon: LogOut },
+            ].map(({ label, icon: Icon }) => (
               <button
                 key={label}
                 type="button"
-                className="rounded-xl px-3 py-2 text-left text-base font-medium text-(--black) hover:border hover:border-(--border)"
+                className="flex items-center gap-2 rounded-xl px-3 py-2 text-left text-base font-medium text-(--black) hover:border hover:border-(--border)"
               >
+                <Icon className="h-[18px] w-[18px] text-(--black)" />
                 {label}
               </button>
             ))}
