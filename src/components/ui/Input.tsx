@@ -12,7 +12,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(function Inp
   return (
     <div
       className={cn(
-        'flex items-center gap-2 rounded-xl border border-(--border) bg-(--background) px-3',
+        'flex items-center gap-2 rounded-[6px] border border-(--border) bg-(--background) px-3',
         'focus-within:ring-2 focus-within:ring-(--brand) focus-within:ring-offset-2 focus-within:ring-offset-(--background)',
         className,
       )}

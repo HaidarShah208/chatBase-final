@@ -45,7 +45,7 @@ export function Sidebar() {
                   )}
                 >
                   <img
-                    src={item.iconSrc}
+                    src={isActive && item.activeIconSrc ? item.activeIconSrc : item.iconSrc}
                     alt=""
                     aria-hidden="true"
                     className="h-5 w-5 shrink-0"
@@ -125,7 +125,7 @@ export function Sidebar() {
                 type="button"
                 className="flex items-center gap-2 rounded-xl px-3 py-2 text-left text-base font-medium text-(--black) hover:border hover:border-(--border)"
               >
-                <Icon className="h-[18px] w-[18px] text-(--black)" />
+                <Icon className={cn('h-[18px] w-[18px] text-(--black)', label === 'Logout' && 'rotate-180')} />
                 {label}
               </button>
             ))}

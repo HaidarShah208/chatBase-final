@@ -45,7 +45,7 @@ export function AgentsPage() {
           onChange={(e) => setState((p) => ({ ...p, query: e.target.value }))}
           placeholder="Search"
           aria-label="Search agents"
-          className="mb-4 bg-transparent"
+          className="mb-4 h-12 bg-transparent"
           leftIcon={
           <Search className='w-3 h-3'/>  
           }
@@ -53,7 +53,7 @@ export function AgentsPage() {
 
         <div
           className={cn(
-            'grid gap-4',
+            'grid gap-3',
             'grid-cols-1   sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
           )}
         >

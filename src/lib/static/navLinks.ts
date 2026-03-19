@@ -4,19 +4,51 @@ import agents from '../../assets/sidebar/agents.svg'
 import chatHistory from '../../assets/sidebar/chatHistory.svg'
 import notification from '../../assets/sidebar/notification.svg'
 import analysis from '../../assets/sidebar/analysis.svg'
+import activeActivity from '../../assets/sidebar/activeActivity.png'
+import activeAgents from '../../assets/sidebar/activeAgents.png'
+import activeAnalysis from '../../assets/sidebar/activeAnalysis.png'
+import activeKnowledge from '../../assets/sidebar/activeKnowledge.png'
+import activeNotification from '../../assets/sidebar/activeNotification.png'
+import activeHistory from '../../assets/sidebar/activeHistory.png'
 
 import type { SidebarNavItem } from '../../types/types'
 
 export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
-  { key: 'agents', label: 'Agent', iconSrc: agents },
-  { key: 'knowledge', label: 'Knowledge base', iconSrc: knowledge },
-  { key: 'chat', label: 'Chat History', iconSrc: chatHistory },
+  {
+    key: 'agents',
+    label: 'Agent',
+    iconSrc: agents,
+    activeIconSrc: activeAgents,
+  },
+  {
+    key: 'knowledge',
+    label: 'Knowledge base',
+    iconSrc: knowledge,
+    activeIconSrc: activeKnowledge,
+  },
+  {
+    key: 'chat',
+    label: 'Chat History',
+    iconSrc: chatHistory,
+    activeIconSrc: activeHistory,
+  },
   {
     key: 'activity',
     label: 'Activity',
     iconSrc: activity,
+    activeIconSrc: activeActivity,
     children: [{ key: 'activity-child', label: 'Activity' }],
   },
-  { key: 'analytics', label: 'Analytics', iconSrc: analysis },
-  { key: 'notifications', label: 'Notifications', iconSrc: notification },
+  {
+    key: 'analytics',
+    label: 'Analytics',
+    iconSrc: analysis,
+    activeIconSrc: activeAnalysis,
+  },
+  {
+    key: 'notifications',
+    label: 'Notifications',
+    iconSrc: notification,
+    activeIconSrc: activeNotification,
+  },
 ]

@@ -27,6 +27,7 @@ export type SidebarNavItem = {
   key: SidebarNavKey
   label: string
   iconSrc: string
+  activeIconSrc?: string
   children?: SidebarNavChild[]
 }
 
