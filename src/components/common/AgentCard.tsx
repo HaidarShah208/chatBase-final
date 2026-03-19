@@ -4,20 +4,24 @@ import type { AgentCardProps } from '../../types/types'
 
 export function AgentCard({ name, editedAt, className }: AgentCardProps) {
   return (
-    <Card className={cn('overflow-hidden rounded-[20px] border border-(--border) bg-(--white)', className)}>
-      <div className="relative h-[142px] bg-linear-to-b from-(--primaryColor) to-(--brand)">
-        <div className="absolute left-1/2 top-1/2 w-[83%] -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-(--white) p-3">
-          <div className="mb-3 flex items-center gap-2">
-            <span className="h-6 w-6 rounded-full bg-(--black)" />
-            <span className="h-[9px] w-10 rounded-full bg-(--black) opacity-80" />
-          </div>
-          <div className="flex items-center justify-between gap-3">
-            <span className="h-6 w-[96px] rounded-full bg-(--background)" />
-            <span className="h-6 w-[96px] rounded-full bg-(--black)" />
+    <Card className={cn('overflow-hidden h-[244px]  w-[254px] rounded-[20px] border border-(--border) bg-(--white)', className)}>
+      <div className="relative h-[144px] m-1 rounded-[14px] bg-linear-to-b from-(--primaryColor) to-(--brand)">
+        <div className="absolute  inset-x-3 w-[82%] top-7 bottom-0 rounded-t-[12px]  bg-(--white) mx-auto">
+        <div className="mb-1 rounded-t-[12px] bg-(--background)">
+  <div className="flex items-center gap-1 p-2">
+    <span className="h-6 w-6 rounded-full bg-(--black)" />
+    <p className='text-[10px] text-(--black)'>Dribble</p>
+  </div>
+</div>
+          <div className="flex p-2 flex-col gap-2">
+            <span className="h-6 w-[88px] rounded-full bg-(--background)" />
+            <div className="flex justify-end">
+              <span className="h-6 w-[88px] rounded-full bg-(--black)" />
+            </div>
           </div>
         </div>
       </div>
-      <div className="p-4">
+      <div className="px-4 pt-8">
         <div className="flex items-start justify-between gap-2">
           <div>
             <div className="mb-1 text-base font-semibold leading-[1.05] text-(--black)">{name}</div>

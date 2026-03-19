@@ -106,7 +106,7 @@ export function Sidebar() {
           </div>
         </div>
 
-        <div className="border-t border-(--border) px-3 py-3">
+        <div className="border-t border-(--border) mt-6 mx-3 py-6">
           <div className="flex items-center gap-2 rounded-xl px-2 py-2">
           <img src={user} alt="user" />
             <div className="min-w-0">

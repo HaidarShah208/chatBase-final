@@ -9,7 +9,7 @@ import agent from '../../assets/dashboard/agent.png'
 import type { Agent } from '../../types/types'
 
 
-const AGENTS: Agent[] = Array.from({ length: 2 }).map((_, idx) => ({
+const AGENTS: Agent[] = Array.from({ length: 12 }).map((_, idx) => ({
   id: String(idx + 1),
   name: 'Real State Agent',
   editedAt: '03/02/2026, 10:52',
@@ -54,7 +54,7 @@ export function AgentsPage() {
         <div
           className={cn(
             'grid gap-4',
-            'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+            'grid-cols-1   sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
           )}
         >
           {agents.map((a) => (
