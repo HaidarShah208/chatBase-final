@@ -1,29 +1,32 @@
 import { Card } from '../ui/Card'
 import { cn } from '../../lib/cn'
-
-export type AgentCardProps = {
-  name: string
-  editedAt: string
-  className?: string
-}
+import type { AgentCardProps } from '../../types/types'
 
 export function AgentCard({ name, editedAt, className }: AgentCardProps) {
   return (
-    <Card className={cn('overflow-hidden', className)}>
-      <div className="h-16 border-b border-(--border) bg-(--background)" />
-      <div className="p-3">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-(--black)" />
-          <span className="h-2 w-20 rounded-full border border-(--border) bg-(--background)" />
+    <Card className={cn('overflow-hidden rounded-[20px] border border-(--border) bg-(--white)', className)}>
+      <div className="relative h-[142px] bg-linear-to-b from-(--primaryColor) to-(--brand)">
+        <div className="absolute left-1/2 top-1/2 w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-[12px] bg-(--white) p-3">
+          <div className="mb-3 flex items-center gap-2">
+            <span className="h-6 w-6 rounded-full bg-(--black)" />
+            <span className="h-[9px] w-10 rounded-full bg-(--black) opacity-80" />
+          </div>
+          <div className="flex items-center justify-between gap-3">
+            <span className="h-6 w-[96px] rounded-full bg-(--background)" />
+            <span className="h-6 w-[96px] rounded-full bg-(--black)" />
+          </div>
         </div>
-
-        <div className="mb-3 flex items-center gap-2">
-          <span className="h-3 w-24 rounded-full border border-(--border) bg-(--background)" />
-          <span className="h-3 w-14 rounded-full border border-(--border) bg-(--background)" />
+      </div>
+      <div className="p-4">
+        <div className="flex items-start justify-between gap-2">
+          <div>
+            <div className="mb-1 text-base font-semibold leading-[1.05] text-(--black)">{name}</div>
+            <div className="text-xs text-(--muted)">Edit By: {editedAt}</div>
+          </div>
+          <button type="button" className="px-1 text-[20px] leading-none text-(--black)">
+            &#8942;
+          </button>
         </div>
-
-        <div className="mb-1 text-sm font-semibold text-(--black)">{name}</div>
-        <div className="text-[11px] text-(--muted)">Edit by: {editedAt}</div>
       </div>
     </Card>
   )

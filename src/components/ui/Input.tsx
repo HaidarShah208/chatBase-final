@@ -1,10 +1,9 @@
 import * as React from 'react'
 
 import { cn } from '../../lib/cn'
+import type { InputProps } from '../../types/types'
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  leftIcon?: React.ReactNode
-}
+
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
   { className, leftIcon, ...props },

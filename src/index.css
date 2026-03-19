@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   /* Use ONLY app.css variables in components. These are derived aliases. */
@@ -12,7 +13,7 @@
 
   --radius: 14px;
   --shadow: none;
-  --font-main: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans",
+  --font-main: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans",
     "Apple Color Emoji", "Segoe UI Emoji";
 }
 

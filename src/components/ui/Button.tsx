@@ -27,7 +27,7 @@ export function Button({
         'inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--brand) focus-visible:ring-offset-2 focus-visible:ring-offset-(--background)',
         'disabled:opacity-60 disabled:pointer-events-none',
-        size === 'sm' ? 'h-8 px-3 text-sm' : 'h-9 px-4 text-sm',
+        size === 'sm' ? 'h-8 px-3 text-sm' : 'h-13 w-[181px] font-medium  px-4 text-sm',
         variant === 'primary' &&
           'bg-(--brand) text-(--background) border border-(--brand) hover:brightness-[0.97] active:brightness-[0.94]',
         variant === 'ghost' &&
