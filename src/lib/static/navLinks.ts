@@ -52,3 +52,8 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     activeIconSrc: activeNotification,
   },
 ]
+
+export const SIDEBAR_FOOTER_LINKS = [
+  { key: 'settings', label: 'Settings' },
+  { key: 'logout', label: 'Logout' },
+] as const

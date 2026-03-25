@@ -34,6 +34,7 @@ export type SidebarNavItem = {
 export type SidebarState = {
   activeKey: SidebarNavKey
   activityOpen: boolean
+  isCollapsed: boolean
 }
 
 
