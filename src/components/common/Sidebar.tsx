@@ -10,7 +10,12 @@ import brandName from '../../assets/sidebar/brandName.png'
 import { Button } from '../ui/Button'
 import { cn } from '../../lib/cn'
 import type { SidebarState } from '../../types/types'
-import { initialCollapsed, SIDEBAR_FOOTER_LINKS, SIDEBAR_NAV_LINKS } from '../../lib/static/navLinks'
+import {
+  getActiveSidebarKey,
+  initialCollapsed,
+  SIDEBAR_FOOTER_LINKS,
+  SIDEBAR_NAV_LINKS,
+} from '../../lib/static/navLinks'
 
 export function Sidebar() {
   
@@ -25,11 +30,7 @@ export function Sidebar() {
   const location = useLocation()
 
   useEffect(() => {
-    if (location.pathname.startsWith('/knowledge')) {
-      setState((p) => ({ ...p, activeKey: 'knowledge' }))
-    } else {
-      setState((p) => ({ ...p, activeKey: 'agents' }))
-    }
+    setState((p) => ({ ...p, activeKey: getActiveSidebarKey(location.pathname) }))
   }, [location.pathname])
 
   return (
@@ -87,9 +88,7 @@ export function Sidebar() {
                       activeKey: item.key,
                       activityOpen: isActivity ? !p.activityOpen : p.activityOpen,
                     }))
-
-                    if (item.key === 'knowledge') navigate('/knowledge')
-                    if (item.key === 'agents') navigate('/')
+                    if (item.path) navigate(item.path)
                   }}
                   className={cn(
                     'flex w-full items-center cursor-pointer gap-3 rounded-lg px-3 py-2 text-left text-[13px] transition',

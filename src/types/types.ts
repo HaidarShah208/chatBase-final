@@ -28,6 +28,7 @@ export type SidebarNavItem = {
   label: string
   iconSrc: string
   activeIconSrc?: string
+  path?: string
   children?: SidebarNavChild[]
 }
 

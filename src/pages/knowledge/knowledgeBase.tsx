@@ -3,10 +3,13 @@ import {
   Calendar,
   Dot,
   Download,
+  File,
   FileText,
   Filter,
+  Globe,
   Pencil,
   Plus,
+  Text,
   Trash2,
 } from 'lucide-react'
 import defaultImg from '../../assets/knowledgeBase/default.png'
@@ -14,6 +17,7 @@ import book from '../../assets/knowledgeBase/book.png'
 import database from '../../assets/knowledgeBase/database.png'
 
 import { Button } from '../../components/ui/Button'
+import { Dropdown } from '../../components/ui/Dropdown'
 import { cn } from '../../lib/cn'
 import { DOCS } from '../../lib/static/navLinks'
 
@@ -67,16 +71,27 @@ export function KnowledgeBasePage() {
             </div>
           </div>
 
-          <Button
-            size="sm"
-            variant="ghost"
-            className="h-10 border border-(--border) bg-(--white) px-4"
-          >
-            <Filter className="h-4 w-4" />
-            <span className="ml-2 hidden sm:inline">Filter</span>
-          </Button>
+          <Dropdown
+            trigger={
+              <Button
+                size="sm"
+                variant="ghost"
+                className="h-10 border border-(--border) bg-(--white) px-4"
+              >
+                <Filter className="h-3 w-3" />
+                <span className=" hidden sm:inline">Filter</span>
+              </Button>
+            }
+            items={[
+              { key: 'web', label: 'Web Pages', icon: <Globe className="h-4 w-4" /> },
+              { key: 'files', label: 'Files', icon: <File className="h-4 w-4" /> },
+              { key: 'text', label: 'Text', icon: <Text className="h-4 w-4" /> },
+              { key: 'qa', label: 'Q&A', icon: <FileText className="h-4 w-4" /> },
+            ]}
+          />
         </div>
 
+        <div className="-mx-4 mt-4 border-t border-(--border)" />
 
         <div className="mt-4 space-y-3">
           {filteredAttachments.map((a, idx) => (

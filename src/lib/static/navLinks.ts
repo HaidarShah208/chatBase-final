@@ -19,24 +19,28 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     label: 'Agent',
     iconSrc: agents,
     activeIconSrc: activeAgents,
+    path: '/',
   },
   {
     key: 'knowledge',
     label: 'Knowledge base',
     iconSrc: knowledge,
     activeIconSrc: activeKnowledge,
+    path: '/knowledge',
   },
   {
     key: 'chat',
     label: 'Chat History',
     iconSrc: chatHistory,
     activeIconSrc: activeHistory,
+    path: '/',
   },
   {
     key: 'activity',
     label: 'Activity',
     iconSrc: activity,
     activeIconSrc: activeActivity,
+    path: '/',
     children: [{ key: 'activity-child', label: 'Activity' }],
   },
   {
@@ -44,12 +48,14 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     label: 'Analytics',
     iconSrc: analysis,
     activeIconSrc: activeAnalysis,
+    path: '/',
   },
   {
     key: 'notifications',
     label: 'Notifications',
     iconSrc: notification,
     activeIconSrc: activeNotification,
+    path: '/',
   },
 ]
 
@@ -61,6 +67,11 @@ export const SIDEBAR_FOOTER_LINKS = [
 
 export const initialCollapsed =
 typeof window !== 'undefined' ? window.innerWidth < 640 : false
+
+export function getActiveSidebarKey(pathname: string) {
+  const match = SIDEBAR_NAV_LINKS.find((l) => l.path && pathname.startsWith(l.path))
+  return match?.key ?? 'agents'
+}
 
 export const DOCS: KnowledgeDoc[] = [
   {
