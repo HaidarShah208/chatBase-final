@@ -3,7 +3,7 @@ import { Slot } from '@radix-ui/react-slot'
 
 import { cn } from '../../lib/cn'
 
-type ButtonVariant = 'primary' | 'ghost'
+type ButtonVariant = 'primary' | 'ghost' | 'outline'
 type ButtonSize = 'sm' | 'md'
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -32,6 +32,8 @@ export function Button({
           'bg-(--brand) text-(--background)  hover:brightness-[0.97] active:brightness-[0.94]',
         variant === 'ghost' &&
           'bg-transparent text-(--black) hover:border hover:border-(--border)',
+        variant === 'outline' &&
+          'bg-(--white) text-(--black) border border-(--border) hover:bg-(--background)',
         className,
       )}
       {...props}

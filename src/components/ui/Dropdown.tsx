@@ -6,6 +6,7 @@ import { cn } from '../../lib/cn'
 export type DropdownItem = {
   key: string
   label: string
+  description?: string
   icon?: React.ReactNode
   onSelect?: () => void
 }
@@ -34,7 +35,7 @@ export function Dropdown({ trigger, items, align = 'end' }: DropdownProps) {
               key={item.key}
               onSelect={() => item.onSelect?.()}
               className={cn(
-                'flex cursor-pointer select-none items-center gap-3 rounded-lg px-3 py-2 text-sm text-(--black)',
+                'flex cursor-pointer select-none items-center gap-3 rounded-lg px-3 py-3 text-sm text-(--black)',
                 'outline-none hover:bg-(--background) data-highlighted:bg-(--background)',
               )}
             >
@@ -43,7 +44,14 @@ export function Dropdown({ trigger, items, align = 'end' }: DropdownProps) {
                   {item.icon}
                 </span>
               ) : null}
-              <span>{item.label}</span>
+              <div className="min-w-0">
+                <div className="truncate text-sm font-semibold text-(--black)">{item.label}</div>
+                {item.description ? (
+                  <div className="mt-0.5 truncate text-xs font-medium text-(--muted)">
+                    {item.description}
+                  </div>
+                ) : null}
+              </div>
             </DropdownMenu.Item>
           ))}
         </DropdownMenu.Content>

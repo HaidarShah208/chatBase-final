@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import {
   Calendar,
   Dot,
@@ -13,17 +13,21 @@ import {
 import defaultImg from '../../assets/knowledgeBase/default.png'
 import book from '../../assets/knowledgeBase/book.png'
 import database from '../../assets/knowledgeBase/database.png'
-import qa from '../../assets/knowledgeBase/q&a.png'
 import webPages from '../../assets/knowledgeBase/webpages.png'
 import text from '../../assets/knowledgeBase/text.png'
+import qaIcon from '../../assets/knowledgeBase/q&a.png'
 
 import { Button } from '../../components/ui/Button'
 import { Dropdown } from '../../components/ui/Dropdown'
+import { CreateKnowledgeBaseModal } from '../../components/knowledge/CreateKnowledgeBaseModal'
 import { cn } from '../../lib/cn'
 import { DOCS } from '../../lib/static/navLinks'
 
 export function KnowledgeBasePage() {
   const doc = useMemo(() => DOCS[0], [])
+  const [ui, setUi] = useState({
+    createOpen: false,
+  })
 
   const filteredAttachments = useMemo(() => doc.attachments, [doc.attachments])
 
@@ -43,11 +47,17 @@ export function KnowledgeBasePage() {
           size="md"
           variant="primary"
           className="w-full sm:w-auto justify-center"
+          onClick={() => setUi((p) => ({ ...p, createOpen: true }))}
         >
           <Plus className="h-4 w-4" />
           New knowledge base
         </Button>
       </header>
+
+      <CreateKnowledgeBaseModal
+        open={ui.createOpen}
+        onOpenChange={(open) => setUi((p) => ({ ...p, createOpen: open }))}
+      />
 
       <div className="mt-6 rounded-xl border min-h-screen border-(--border) bg-(--white)">
         <div className="px-4 pt-4 sm:px-4">
@@ -92,7 +102,7 @@ export function KnowledgeBasePage() {
                 { key: 'web', label: 'Web Pages', icon: <img src={webPages} className="h-3.5 w-3.5" /> },
                 { key: 'files', label: 'Files', icon: <Upload className="h-3.5 w-3.5" /> },
                 { key: 'text', label: 'Text', icon: <img src={text} className="h-3.5 w-3.5" /> },
-                { key: 'qa', label: 'Q&A', icon: <img src={qa} className="h-3.5 w-3.5" /> },
+                { key: 'qa', label: 'Q&A', icon: <img src={qaIcon} className="h-3.5 w-3.5" /> },
               ]}
             />
           </div>
