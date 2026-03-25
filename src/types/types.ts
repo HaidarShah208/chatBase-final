@@ -44,3 +44,13 @@ export type AgentCardProps = {
   className?: string
 }
 
+export type KnowledgeDoc = {
+  id: string
+  title: string
+  uploadedBy: string
+  uploadedAt: string
+  attachments: Array<{
+    fileName: string
+    fileSize: string
+  }>
+}

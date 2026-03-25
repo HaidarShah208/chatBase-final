@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ChevronDown, LogOut, Settings } from 'lucide-react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import leaf from '../../assets/dashboard/leaf.png'
 import user from '../../assets/dashboard/user.png'
 import arrowUp from '../../assets/dashboard/arrowUp.png'
@@ -19,6 +20,17 @@ export function Sidebar() {
     activityOpen: false,
     isCollapsed: initialCollapsed,
   })
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.pathname.startsWith('/knowledge')) {
+      setState((p) => ({ ...p, activeKey: 'knowledge' }))
+    } else {
+      setState((p) => ({ ...p, activeKey: 'agents' }))
+    }
+  }, [location.pathname])
 
   return (
     <aside
@@ -75,6 +87,9 @@ export function Sidebar() {
                       activeKey: item.key,
                       activityOpen: isActivity ? !p.activityOpen : p.activityOpen,
                     }))
+
+                    if (item.key === 'knowledge') navigate('/knowledge')
+                    if (item.key === 'agents') navigate('/')
                   }}
                   className={cn(
                     'flex w-full items-center cursor-pointer gap-3 rounded-lg px-3 py-2 text-left text-[13px] transition',
@@ -135,7 +150,7 @@ export function Sidebar() {
           })}
       </nav>
 
-      <div className="mt-auto flex shrink-0 flex-col">
+      <div className="mt-60 flex shrink-0 flex-col">
         {!state.isCollapsed ? (
         <div className="px-3 pb-3">
           <div className="rounded-lg border border-(--border) bg-(--white) p-3">

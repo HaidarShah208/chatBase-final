@@ -41,7 +41,7 @@ export function AgentsPage() {
         </Button>
       </header>
 
-      <div className="rounded-(--radius) min-h-screen border border-(--border) bg-(--white) p-3 sm:p-4">
+      <div className="rounded-xl min-h-screen border border-(--border) bg-(--white) p-3 sm:p-4">
         <Input
           value={state.query}
           onChange={(e) => setState((p) => ({ ...p, query: e.target.value }))}

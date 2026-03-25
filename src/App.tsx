@@ -1,13 +1,21 @@
  
 import { DashboardLayout } from './layouts/DashboardLayout'
 import './App.css'
-import { AgentsPage } from './pages/dashboard/AgentsPage'
+import { AgentsPage } from './pages/dashboard/dashboard'
+import { KnowledgeBasePage } from './pages/knowledge/knowledgeBase'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    <DashboardLayout>
-      <AgentsPage />
-    </DashboardLayout>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<DashboardLayout />}>
+          <Route index element={<AgentsPage />} />
+          <Route path="knowledge" element={<KnowledgeBasePage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

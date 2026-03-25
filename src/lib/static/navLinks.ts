@@ -11,7 +11,7 @@ import activeKnowledge from '../../assets/sidebar/activeKnowledge.png'
 import activeNotification from '../../assets/sidebar/activeNotification.png'
 import activeHistory from '../../assets/sidebar/activeHistory.png'
 
-import type { SidebarNavItem } from '../../types/types'
+import type { KnowledgeDoc, SidebarNavItem } from '../../types/types'
 
 export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
   {
@@ -61,3 +61,22 @@ export const SIDEBAR_FOOTER_LINKS = [
 
 export const initialCollapsed =
 typeof window !== 'undefined' ? window.innerWidth < 640 : false
+
+export const DOCS: KnowledgeDoc[] = [
+  {
+    id: 'know_d3of',
+    title: 'TEST 2',
+    uploadedBy: 'You',
+    uploadedAt: '03/13/2026 12:06',
+    attachments: [
+      {
+        fileName: 'Gemini_Generated_Image_by7t2mby7t2mby7t1 (1).png',
+        fileSize: '1.5 MB',
+      },
+      {
+        fileName: 'Gemini_Generated_Image_by7t2mby7t2mby7t1 (1).png',
+        fileSize: '1.5 MB',
+      },
+    ],
+  },
+]

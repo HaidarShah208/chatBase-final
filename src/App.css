@@ -1,11 +1,13 @@
 :root {
   --brand: #00acfd;
   --black: #000000;
-  --border: #d9d9d9;
+  --border: #E2E8F0;
   --muted: #90a1b9;
   --background: #f3f5f7;
   --white: #fff;
   --primaryColor: #dcf6fe;
   --darkGray: #9AA0AD;
   --secondaryGray: #F6F7FA;
+  --secondaryBlue: #E0F5FF;
+  --slate: #45556C;
 }
