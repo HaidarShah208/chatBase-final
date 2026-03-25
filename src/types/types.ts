@@ -33,7 +33,8 @@ export type SidebarNavItem = {
 }
 
 export type SidebarState = {
-  activeKey: SidebarNavKey
+  // Can be either a parent nav key (e.g. "agents") or a child key (e.g. "activity-child")
+  activeKey: string
   activityOpen: boolean
   isCollapsed: boolean
 }

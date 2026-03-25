@@ -24,7 +24,7 @@ export function Button({
   return (
     <Comp
       className={cn(
-        'inline-flex items-center cursor-pointer justify-center gap-2 rounded-xl font-semibold transition',
+        'inline-flex items-center cursor-pointer justify-center gap-2 rounded-md font-semibold transition',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--brand) focus-visible:ring-offset-2 focus-visible:ring-offset-(--background)',
         'disabled:opacity-60 disabled:pointer-events-none',
         size === 'sm' ? 'h-10 px-3 text-sm font-medium whitespace-nowrap' : 'h-13 w-[181px] font-medium px-4 text-sm',

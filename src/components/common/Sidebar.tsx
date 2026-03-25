@@ -116,7 +116,7 @@ export function Sidebar() {
                   {isActivity && !state.isCollapsed ? (
                     <ChevronDown
                       className={cn(
-                        'ml-auto h-4 w-4 text-(--muted) transition-transform',
+                        'ml-auto h-4 w-4 transition-transform',
                         state.activityOpen ? 'rotate-180' : 'rotate-0',
                       )}
                     />
@@ -130,16 +130,25 @@ export function Sidebar() {
                         key={child.key}
                         type="button"
                         onClick={() => {
-                          setState((p) => ({ ...p, activeKey: item.key }))
+                          setState((p) => ({ ...p, activeKey: child.key }))
                         }}
+                        aria-current={state.activeKey === child.key ? 'page' : undefined}
                         className={cn(
                           'flex w-full items-center rounded-lg px-3 py-2 text-left text-[13px] transition',
-                          isActive
-                            ? 'bg-(--primaryColor) text-(--brand)'
+                          state.activeKey === child.key
+                            ? 'text-(--brand)'
                             : 'text-(--black) hover:bg-(--background)',
                         )}
                       >
                         <span className="truncate">{child.label}</span>
+                        <span
+                          className={cn(
+                            'ms-auto h-2 w-2 rounded-full',
+                            state.activeKey === child.key
+                              ? 'bg-(--brand)  '
+                              : 'bg-(--border)',
+                          )}
+                        />
                       </button>
                     ))}
                   </div>
