@@ -57,3 +57,7 @@ export const SIDEBAR_FOOTER_LINKS = [
   { key: 'settings', label: 'Settings' },
   { key: 'logout', label: 'Logout' },
 ] as const
+
+
+export const initialCollapsed =
+typeof window !== 'undefined' ? window.innerWidth < 640 : false

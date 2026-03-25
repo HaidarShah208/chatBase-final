@@ -26,7 +26,7 @@ export function AgentCard({ name, editedAt, className }: AgentCardProps) {
         <div className="flex items-start justify-between gap-2">
           <div>
             <div className="mb-1 text-base font-semibold leading-[1.05] text-(--black)">{name}</div>
-            <div className="text-xs text-(--muted)">Edit By: {editedAt}</div>
+            <div className="md:text-xs text-[10px] text-(--muted)">Edit By: {editedAt}</div>
           </div>
           <div className="flex justify-center items-center">
 

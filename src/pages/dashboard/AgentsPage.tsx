@@ -26,20 +26,22 @@ export function AgentsPage() {
 
   return (
     <div className="rounded-(--radius) bg-transparent">
-      <header className="mb-7 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="flex h-14 w-15 items-center justify-center rounded-2xl bg-(--black) text-(--background)">
-            <span className="text-sm font-black"><img src={agent} className='w-[28px] h-[34px]' /></span>
+      <header className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex ms-2 sm:ms-0 items-center gap-3">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-(--black) text-(--background)">
+            <img src={agent} alt="" className="h-[34px] w-[28px]" />
           </div>
-          <h1 className="text-[38px] font-bold tracking-tight text-(--black)">Agents</h1>
+          <h1 className="text-[28px] font-bold tracking-tight leading-tight text-(--black) sm:text-[38px]">
+            Agents
+          </h1>
         </div>
 
-        <Button size="md" variant="primary">
+        <Button size="md" variant="primary" className="w-full sm:w-auto justify-center">
           + New AI agent
         </Button>
       </header>
 
-      <div className="rounded-(--radius) min-h-screen border border-(--border) bg-(--white) p-4">
+      <div className="rounded-(--radius) min-h-screen border border-(--border) bg-(--white) p-3 sm:p-4">
         <Input
           value={state.query}
           onChange={(e) => setState((p) => ({ ...p, query: e.target.value }))}
@@ -54,7 +56,7 @@ export function AgentsPage() {
         <div
           className={cn(
             'grid gap-3',
-            'grid-cols-1   sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+            'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
           )}
         >
           {agents.map((a) => (

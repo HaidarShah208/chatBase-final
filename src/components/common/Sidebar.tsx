@@ -9,13 +9,15 @@ import brandName from '../../assets/sidebar/brandName.png'
 import { Button } from '../ui/Button'
 import { cn } from '../../lib/cn'
 import type { SidebarState } from '../../types/types'
-import { SIDEBAR_FOOTER_LINKS, SIDEBAR_NAV_LINKS } from '../../lib/static/navLinks'
+import { initialCollapsed, SIDEBAR_FOOTER_LINKS, SIDEBAR_NAV_LINKS } from '../../lib/static/navLinks'
 
 export function Sidebar() {
+  
+
   const [state, setState] = useState<SidebarState>({
     activeKey: 'agents',
     activityOpen: false,
-    isCollapsed: false,
+    isCollapsed: initialCollapsed,
   })
 
   return (
