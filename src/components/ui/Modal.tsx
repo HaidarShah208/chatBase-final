@@ -1,17 +1,10 @@
-import * as React from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 
 import { cn } from '../../lib/cn'
+import type { ModalProps } from '../../types/types'
 
-type ModalProps = {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-  title: string
-  children: React.ReactNode
-  footer?: React.ReactNode
-  className?: string
-}
+
 
 export function Modal({ open, onOpenChange, title, children, footer, className }: ModalProps) {
   return (

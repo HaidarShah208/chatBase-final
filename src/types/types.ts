@@ -56,3 +56,33 @@ export type KnowledgeDoc = {
     fileSize: string
   }>
 }
+
+export type DocSource = 'web' | 'files' | 'text' | 'qa' | null
+
+export type CreateKnowledgeBaseModalProps = {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+}
+
+export type ModalProps = {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  title: string
+  children: React.ReactNode
+  footer?: React.ReactNode
+  className?: string
+}
+
+export type DropdownItem = {
+  key: string
+  label: string
+  description?: string
+  icon?: React.ReactNode
+  onSelect?: () => void
+}
+
+export type DropdownProps = {
+  trigger: React.ReactNode
+  items: DropdownItem[]
+  align?: 'start' | 'center' | 'end'
+}

@@ -1,21 +1,9 @@
-import * as React from 'react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
 import { cn } from '../../lib/cn'
+import type { DropdownProps } from '../../types/types'
 
-export type DropdownItem = {
-  key: string
-  label: string
-  description?: string
-  icon?: React.ReactNode
-  onSelect?: () => void
-}
 
-type DropdownProps = {
-  trigger: React.ReactNode
-  items: DropdownItem[]
-  align?: 'start' | 'center' | 'end'
-}
 
 export function Dropdown({ trigger, items, align = 'end' }: DropdownProps) {
   return (

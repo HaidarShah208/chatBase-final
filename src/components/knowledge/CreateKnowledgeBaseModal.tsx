@@ -8,13 +8,9 @@ import { Button } from '../ui/Button'
 import { Dropdown } from '../ui/Dropdown'
 import { Input } from '../ui/Input'
 import { Modal } from '../ui/Modal'
+import type { CreateKnowledgeBaseModalProps, DocSource } from '../../types/types'
 
-type DocSource = 'web' | 'files' | 'text' | 'qa' | null
 
-type CreateKnowledgeBaseModalProps = {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-}
 
 export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledgeBaseModalProps) {
   const [state, setState] = useState({
@@ -101,7 +97,27 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
       }
       footer={
         <>
-          <Button variant="outline" size="sm" onClick={() => onOpenChange(false)}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              if (state.source !== null) {
+                setState((p) => ({
+                  ...p,
+                  source: null,
+                  url: '',
+                  files: [],
+                  fileName: '',
+                  textContent: '',
+                  question: '',
+                  answer: '',
+                }))
+                return
+              }
+
+              onOpenChange(false)
+            }}
+          >
             Cancel
           </Button>
           <Button variant="primary" size="sm">
@@ -174,10 +190,6 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
           ) : null}
         </div>
 
-        <div>
-          <div className="text-sm font-semibold text-(--black)">Documents</div>
-        </div>
-
         <input
           ref={fileInputRef}
           type="file"
@@ -197,7 +209,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
                 value={state.textContent}
                 onChange={(e) => setState((p) => ({ ...p, textContent: e.target.value }))}
                 placeholder="Enter text content"
-                className="mt-2 h-[170px] w-full resize-none rounded-[6px] border border-(--border) bg-(--background) px-3 py-3 text-sm text-(--black) outline-none focus:ring-2 focus:ring-(--brand) focus:ring-offset-2 focus:ring-offset-(--background)"
+                className="mt-2 h-[170px] w-full resize-none rounded-[6px] border border-(--border) bg-(--background) px-3 py-3 text-sm text-(--black) outline-none focus:ring-0 focus:ring-offset-0"
               />
             </div>
           </div>
@@ -211,7 +223,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
                 value={state.answer}
                 onChange={(e) => setState((p) => ({ ...p, answer: e.target.value }))}
                 placeholder="Enter answer"
-                className="mt-2 h-[170px] w-full resize-none rounded-lg border border-(--border) bg-(--background) px-3 py-3 text-sm text-(--black) outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-(--background)"
+                className="mt-2 h-[170px] w-full resize-none rounded-lg border border-(--border) bg-(--background) px-3 py-3 text-sm text-(--black) outline-none focus:ring-0 focus:ring-offset-0 "
               />
             </div>
           </div>
@@ -219,6 +231,8 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
 
         {state.source === 'files' ? (
           <div className="space-y-3">
+            <div className="text-sm font-semibold text-(--black)">Documents</div>
+
             {state.files.map((file, idx) => (
               <div
                 key={`${file.name}-${idx}`}
@@ -256,21 +270,23 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
           </div>
         ) : null}
 
-        <div className=" flex justify-start">
-          <Dropdown
-            align="start"
-            trigger={
-              <Button
-                variant="outline"
-                size="sm"
-                className="h-10 w-[110px] justify-center"
-              >
-                + Add
-              </Button>
-            }
-            items={addItems}
-          />
-        </div>
+        {state.source === null ? (
+          <div className=" flex justify-start">
+            <Dropdown
+              align="start"
+              trigger={
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-10 w-[110px] justify-center"
+                >
+                  + Add
+                </Button>
+              }
+              items={addItems}
+            />
+          </div>
+        ) : null}
       </div>
     </Modal>
   )
