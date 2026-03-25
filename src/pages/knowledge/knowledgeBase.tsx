@@ -3,18 +3,19 @@ import {
   Calendar,
   Dot,
   Download,
-  File,
   FileText,
   Filter,
-  Globe,
   Pencil,
   Plus,
-  Text,
   Trash2,
+  Upload,
 } from 'lucide-react'
 import defaultImg from '../../assets/knowledgeBase/default.png'
 import book from '../../assets/knowledgeBase/book.png'
 import database from '../../assets/knowledgeBase/database.png'
+import qa from '../../assets/knowledgeBase/q&a.png'
+import webPages from '../../assets/knowledgeBase/webpages.png'
+import text from '../../assets/knowledgeBase/text.png'
 
 import { Button } from '../../components/ui/Button'
 import { Dropdown } from '../../components/ui/Dropdown'
@@ -81,17 +82,17 @@ export function KnowledgeBasePage() {
                 <Button
                   size="sm"
                   variant="ghost"
-                  className="h-10 border border-(--border) bg-(--white) px-4"
+                  className="h-10 border  border-(--border) bg-(--white) px-4"
                 >
                   <Filter className="h-3 w-3" />
                   <span className="ml-2">Filter</span>
                 </Button>
               }
               items={[
-                { key: 'web', label: 'Web Pages', icon: <Globe className="h-4 w-4" /> },
-                { key: 'files', label: 'Files', icon: <File className="h-4 w-4" /> },
-                { key: 'text', label: 'Text', icon: <Text className="h-4 w-4" /> },
-                { key: 'qa', label: 'Q&A', icon: <FileText className="h-4 w-4" /> },
+                { key: 'web', label: 'Web Pages', icon: <img src={webPages} className="h-3.5 w-3.5" /> },
+                { key: 'files', label: 'Files', icon: <Upload className="h-3.5 w-3.5" /> },
+                { key: 'text', label: 'Text', icon: <img src={text} className="h-3.5 w-3.5" /> },
+                { key: 'qa', label: 'Q&A', icon: <img src={qa} className="h-3.5 w-3.5" /> },
               ]}
             />
           </div>
