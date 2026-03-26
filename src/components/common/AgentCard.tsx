@@ -30,7 +30,7 @@ export function AgentCard({ name, editedAt, className }: AgentCardProps) {
           </div>
           <div className="flex justify-center items-center">
 
-          <button type="button" className="px-1 text-[20px]  leading-none text-(--black)">
+          <button type="button" className=" pt-2  leading-none text-(--black)">
             <MoreVertical className='w-3 h-3'/>
           </button>
           </div>

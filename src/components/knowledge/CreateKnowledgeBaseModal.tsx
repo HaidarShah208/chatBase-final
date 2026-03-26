@@ -235,9 +235,9 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
           <div className="space-y-3">
             <div className="text-sm font-semibold text-(--black)">Documents</div>
 
-            {state.files.map((file, idx) => (
+            {state.files.map((file, id) => (
               <div
-                key={`${file.name}-${idx}`}
+                key={`${file.name}-${id}`}
                 className="flex items-center justify-between gap-3 rounded-[6px] border border-(--border) bg-(--secondaryBlue) px-3 py-2"
               >
                 <div className="flex min-w-0 items-center gap-3">
@@ -260,7 +260,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
                   onClick={() => {
                     setState((p) => ({
                       ...p,
-                      files: p.files.filter((_, i) => i !== idx),
+                      files: p.files.filter((_, i) => i !== id),
                     }))
                   }}
                   aria-label="Remove file"

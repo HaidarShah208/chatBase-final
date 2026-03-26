@@ -21,7 +21,7 @@ import { Button } from '../../components/ui/Button'
 import { Dropdown } from '../../components/ui/Dropdown'
 import { CreateKnowledgeBaseModal } from '../../components/knowledge/CreateKnowledgeBaseModal'
 import { cn } from '../../lib/cn'
-import { DOCS } from '../../lib/static/navLinks'
+import { DOCS } from '../../lib/data'
 
 export function KnowledgeBasePage() {
   const doc = useMemo(() => DOCS[0], [])
@@ -35,10 +35,10 @@ export function KnowledgeBasePage() {
     <div className="rounded-(--radius)">
       <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center md:ml-0 ml-2 gap-3">
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-(--black) text-(--background)">
+        <div className="flex h-14 w-14   items-center justify-center rounded-2xl bg-(--black) text-(--background)">
             <img src={book} alt="" className="h-[25px] w-[25px]" />
           </div>
-          <h1 className="text-[28px] font-bold tracking-tight leading-tight text-(--black) lg:text-[38px]">
+          <h1 className=" text-2xl font-bold tracking-tight leading-tight text-(--black) lg:text-[38px]">
             Knowledge Base
           </h1>
         </div>
@@ -63,8 +63,8 @@ export function KnowledgeBasePage() {
         <div className="px-4 pt-4 sm:px-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-(--black)">
-                <img src={database} className="h-6 w-6 text-(--black)" />
+              <div className="flex md:h-12 h-9 w-12 h md:w-12 items-center justify-center rounded-xl bg-(--black)">
+                <img src={database} className="md:h-6 w-5 h-5 md:w-6 text-(--black)" />
               </div>
               <div>
                 <div className="md:text-2xl text-base font-bold text-(--black)">
@@ -120,11 +120,11 @@ export function KnowledgeBasePage() {
               )}
             >
               <div className="flex min-w-0 items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-(--secondaryBlue)">
+                <div className="flex md:h-10 h-7 w-10 items-center justify-center rounded-lg bg-(--secondaryBlue)">
                   <img
                     src={defaultImg}
                     alt=""
-                    className="h-5 w-5 opacity-70"
+                    className="md:h-5 w-4 h-4 md:w-5 opacity-70"
                     aria-hidden="true"
                   />
                 </div>
@@ -134,15 +134,15 @@ export function KnowledgeBasePage() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-4">
+              <div className="flex items-center justify-end gap-2 md:gap-4">
                 <button type="button" className="text-(--black) cursor-pointer">
-                  <Pencil className="h-5 w-5" />
+                  <Pencil className="md:h-5 h-4 w-4 md:w-5" />
                 </button>
                 <button type="button" className="text-red-500 cursor-pointer">
-                  <Trash2 className="h-5 w-5" />
+                  <Trash2 className="md:h-5 h-4 w-4 md:w-5" />
                 </button>
                 <button type="button" className="text-(--slate) cursor-pointer">
-                  <Download className="h-5 w-5" />
+                  <Download className="md:h-5 h-4 w-4 md:w-5" />
                 </button>
               </div>
             </div>
