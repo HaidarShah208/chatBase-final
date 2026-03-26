@@ -34,12 +34,14 @@ export function Sidebar() {
   }, [location.pathname])
 
   return (
+    
     <aside
-      className={cn(
-        'relative flex min-h-screen shrink-0 flex-col bg-(--white) transition-all duration-300 ease-in-out',
-        state.isCollapsed ? 'w-[81px]' : 'w-[272px]',
-      )}
-    >
+    className={cn(
+      'flex min-h-screen shrink-0 flex-col bg-(--white) transition-all duration-300 ease-in-out',
+      !state.isCollapsed ? 'fixed top-0 left-0 z-40 md:relative md:z-auto' : 'relative',
+      state.isCollapsed ? 'w-[81px]' : 'w-[272px]',
+    )}
+  >
       <button
         type="button"
         onClick={() => setState((p) => ({ ...p, isCollapsed: !p.isCollapsed, activityOpen: p.isCollapsed ? p.activityOpen : false }))}
