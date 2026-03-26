@@ -33,7 +33,7 @@ export function KnowledgeBasePage() {
   })
   const [attachments, setAttachments] = useState(doc.attachments)
 
-  const filteredAttachments = useMemo(() => attachments, [attachments])
+  const filteredAttachments = attachments
 
   return (
     <div className="rounded-(--radius)">
