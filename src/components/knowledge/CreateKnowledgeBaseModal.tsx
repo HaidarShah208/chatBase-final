@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react'
-import { Trash2, Upload } from 'lucide-react'
+import { FileText, Trash2 } from 'lucide-react'
 
 import webPagesIcon from '../../assets/knowledgeBase/webpages.svg'
 import qaIcon from '../../assets/knowledgeBase/q&a.svg'
@@ -127,7 +127,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
           </Button>
         </>
       }
-      className="max-w-[900px]"
+      className="max-w-[701px]"
     >
       <div className="space-y-5">
         <div>
@@ -238,14 +238,14 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
             {state.files.map((file, idx) => (
               <div
                 key={`${file.name}-${idx}`}
-                className="flex items-center justify-between gap-3 rounded-[6px] border border-(--border) bg-(--background) px-3 py-2"
+                className="flex items-center justify-between gap-3 rounded-[6px] border border-(--border) bg-(--secondaryBlue) px-3 py-2"
               >
                 <div className="flex min-w-0 items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-(--secondaryBlue)">
-                    <Upload className="h-4 w-4 text-(--muted)" />
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white">
+                    <FileText className="h-4 w-4 text-(--muted)" />
                   </div>
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-semibold text-(--black)">
+                    <div className="truncate text-sm font-medium text-(--black)">
                       {file.name}
                     </div>
                     <div className="text-xs text-(--slate)">
@@ -256,7 +256,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
 
                 <button
                   type="button"
-                  className="rounded-md p-1 text-(--muted) hover:bg-(--white)"
+                  className="rounded-md p-1 text-(--muted) cursor-pointer hover:bg-(--white)"
                   onClick={() => {
                     setState((p) => ({
                       ...p,
@@ -265,7 +265,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
                   }}
                   aria-label="Remove file"
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Trash2 className="h-4 w-4 text-(--tertiary) " />
                 </button>
               </div>
             ))}

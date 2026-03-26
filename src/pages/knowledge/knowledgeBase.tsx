@@ -76,7 +76,7 @@ export function KnowledgeBasePage() {
                     <span>ID:</span> {doc.id}
                   </span>
                   <span className="inline-flex items-center gap-1">
-                    <Dot className="h-4 w-4 sm:block hidden" />
+                    <Dot className="h-4 w-4 lg:block hidden" />
                     <Calendar className="h-4 w-4" />
                     Uploaded by: {doc.uploadedBy}
                   </span>
