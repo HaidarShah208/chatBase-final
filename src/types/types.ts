@@ -120,6 +120,17 @@ export type DataTableProps = {
   bodyClassName?: string
 }
 
+export type AnalyticsGraphsData = {
+  usageHistory: Array<{ label: string; value: number }>
+  circularTopRight: Array<{
+    icon: ReactNode
+    percent: number // 0..100
+    fraction: string // e.g. "1 / 2"
+    label: string // e.g. "Credits used"
+  }>
+  creditsUsedPerAgent: Array<{ name: string; value: number }>
+}
+
 export   type Lead = {
   id: string
   company: string
@@ -162,15 +173,4 @@ export type StatusFilterDropdownProps = {
   leftIcon?: ReactNode
   className?: string
   triggerClassName?: string
-}
-
-export type AnalyticsGraphsData = {
-  usageHistory: UsagePoint[]
-  circularTopRight: {
-    icon: ReactNode
-    label: string
-    percent: number 
-    subLabel: string
-  }[]
-  creditsUsedPerAgent: DonutDatum[]
 }

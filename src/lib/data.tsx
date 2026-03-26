@@ -82,15 +82,15 @@ export function makeAnalyticsData(dateFrom: string, dateTo: string, seed: number
   const circularTopRight = [
     {
       icon: <Zap className="h-4 w-4 text-(--brand)" />,
-      label: 'Credits used',
       percent: 75,
-      subLabel: `${Math.max(7, Math.round(rand() * 20))}m`,
+      fraction: '1 / 2',
+      label: 'Credits used',
     },
     {
       icon: <Zap className="h-4 w-4 text-(--brand)" />,
-      label: 'Credits used',
       percent: 50,
-      subLabel: `${Math.max(7, Math.round(rand() * 20))}m`,
+      fraction: '1 / 2',
+      label: 'Credits used',
     },
   ]
 

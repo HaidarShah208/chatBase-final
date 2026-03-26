@@ -2,7 +2,7 @@ import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 import type { AnalyticsGraphsData } from '../../types/types'
 import { TrendingUp } from 'lucide-react'
-
+import curve from '../../assets/analytics/curve.svg'
 
 const BLUE = '#0EA5FF'
 const BLUE_DEEP = '#0284C7'
@@ -57,12 +57,17 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
             </div>
           </div>
 
-          <div className="mt-4 h-56 lg:h-80 w-full">
+          <div className="mt-6 h-56 lg:h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data.usageHistory}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={MUTED} />
+                <CartesianGrid strokeDasharray="3 3" vertical stroke={MUTED} />
                 <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#8B8D8D' }} />
-                <YAxis hide />
+                <YAxis
+                  tick={{ fontSize: 11, fill: '#8B8D8D' }}
+                  axisLine={false}
+                  tickLine={false}
+                  width={32}
+                />
                 <Bar dataKey="value" fill={BLUE} radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -72,18 +77,24 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
         <div className="grid gap-4 lg:col-span-1">
           {data.circularTopRight.map((c, idx) => (
             <div key={idx} className="rounded-xl border border-(--border) bg-(--white) p-4">
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex flex-col gap-1">
-                  <div className="text-xs font-medium text-(--darkGray)">{c.label}</div>
-                  <div className="text-xs text-(--grayish)">{c.subLabel}</div>
+              <div className="flex items-start justify-between">
+                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-(--brand) text-(--brand)">
+                <img src={curve} className='w-4 h-4'/>
                 </div>
-                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#E0F2FE] text-(--brand)">
-                  {c.icon}
-                </div>
+                <span className="rounded-md bg-(--primarySoft) px-2 py-1 text-xs border border-(--brand) font-semibold text-(--brand)">
+                  {c.percent}%
+                </span>
               </div>
 
-              <div className="mt-4 flex items-center justify-center">
-                <CircularPercent percent={c.percent} />
+              <div className="mt-3 flex items-center justify-between gap-4">
+                <div>
+                  <div className="text-3xl font-bold text-(--black)">{c.fraction}</div>
+                  <div className="mt-1 text-xs text-(--darkGray)">
+                    {c.label}
+                  </div>
+                </div>
+
+                <CircularPercent percent={c.percent} size={118} />
               </div>
             </div>
           ))}
