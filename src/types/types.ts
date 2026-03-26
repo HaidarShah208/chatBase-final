@@ -127,3 +127,50 @@ export   type Lead = {
   lastContacted: string  
   assigned: string
 }
+
+export type UsagePoint = {
+  label: string
+  value: number
+}
+
+export type DonutDatum = {
+  name: string
+  value: number
+}
+
+export type DateRange = {
+  from: string // YYYY-MM-DD
+  to: string // YYYY-MM-DD
+}
+
+export type DateRangePickerProps = {
+  value: DateRange
+  onChange: (next: DateRange) => void
+  className?: string
+  triggerClassName?: string
+}
+
+export type StatusOption = {
+  value: string
+  label: string
+}
+
+export type StatusFilterDropdownProps = {
+  value: string
+  options: StatusOption[]
+  onChange: (next: string) => void
+  leftIcon?: ReactNode
+  className?: string
+  triggerClassName?: string
+}
+
+export type AnalyticsGraphsData = {
+  usageHistory: UsagePoint[]
+  circularTopRight: {
+    icon: ReactNode
+    label: string
+    percent: number 
+    subLabel: string
+  }[]
+  creditsUsedPerAgent: DonutDatum[]
+}

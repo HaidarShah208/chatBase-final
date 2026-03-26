@@ -3,29 +3,8 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { useEffect, useMemo, useState } from 'react'
 
 import { cn } from '../../lib/cn'
-
-type DateRange = {
-  from: string // YYYY-MM-DD
-  to: string // YYYY-MM-DD
-}
-
-type DateRangePickerProps = {
-  value: DateRange
-  onChange: (next: DateRange) => void
-  className?: string
-  triggerClassName?: string
-}
-
-function formatHumanDate(iso: string) {
-  if (!iso) return ''
-  const d = new Date(iso + 'T00:00:00')
-  if (Number.isNaN(d.getTime())) return ''
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(d)
-}
+import type { DateRange, DateRangePickerProps } from '../../types/types'
+import { formatHumanDate } from '../../lib/formatDate/formatDate'
 
 export function DateRangePicker({
   value,
@@ -55,7 +34,7 @@ export function DateRangePicker({
           <button
             type="button"
             className={cn(
-              'inline-flex items-center gap-1.5 rounded-md border border-(--border) bg-(--white) px-3 py-2.5 text-xs font-medium text-(--black)',
+              'inline-flex items-center gap-1.5 rounded-md border border-(--border) bg-(--white) px-3 py-2.5 h-12 text-xs font-medium text-(--black)',
               triggerClassName,
             )}
           >

@@ -50,6 +50,7 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     label: 'Analytics',
     iconSrc: analysis,
     activeIconSrc: activeAnalysis,
+    path: '/analytics',
   },
   {
     key: 'notifications',

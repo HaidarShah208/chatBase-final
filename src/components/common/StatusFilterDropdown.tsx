@@ -1,23 +1,9 @@
 import { ChevronDown } from 'lucide-react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { useMemo } from 'react'
-import type { ReactNode } from 'react'
-
 import { cn } from '../../lib/cn'
+import type { StatusFilterDropdownProps } from '../../types/types'
 
-export type StatusOption = {
-  value: string
-  label: string
-}
-
-type StatusFilterDropdownProps = {
-  value: string
-  options: StatusOption[]
-  onChange: (next: string) => void
-  leftIcon?: ReactNode
-  className?: string
-  triggerClassName?: string
-}
 
 export function StatusFilterDropdown({
   value,
