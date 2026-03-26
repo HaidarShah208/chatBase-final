@@ -20,6 +20,7 @@ import upload from '../../assets/knowledgeBase/upload.svg'
 import { Button } from '../../components/ui/Button'
 import { Dropdown } from '../../components/ui/Dropdown'
 import { CreateKnowledgeBaseModal } from '../../components/knowledge/CreateKnowledgeBaseModal'
+import { DeleteKnowledgeModal } from '../../components/knowledge/DeleteKnowledgeModal'
 import { cn } from '../../lib/cn'
 import { DOCS } from '../../lib/data'
 
@@ -27,9 +28,12 @@ export function KnowledgeBasePage() {
   const doc = useMemo(() => DOCS[0], [])
   const [ui, setUi] = useState({
     createOpen: false,
+    deleteOpen: false,
+    deleteIndex: -1,
   })
+  const [attachments, setAttachments] = useState(doc.attachments)
 
-  const filteredAttachments = useMemo(() => doc.attachments, [doc.attachments])
+  const filteredAttachments = useMemo(() => attachments, [attachments])
 
   return (
     <div className="rounded-(--radius)">
@@ -57,6 +61,21 @@ export function KnowledgeBasePage() {
       <CreateKnowledgeBaseModal
         open={ui.createOpen}
         onOpenChange={(open) => setUi((p) => ({ ...p, createOpen: open }))}
+      />
+      <DeleteKnowledgeModal
+        open={ui.deleteOpen}
+        onOpenChange={(open) =>
+          setUi((p) => ({
+            ...p,
+            deleteOpen: open,
+            deleteIndex: open ? p.deleteIndex : -1,
+          }))
+        }
+        onConfirm={() => {
+          if (ui.deleteIndex < 0) return
+          setAttachments((prev) => prev.filter((_, idx) => idx !== ui.deleteIndex))
+          setUi((p) => ({ ...p, deleteOpen: false, deleteIndex: -1 }))
+        }}
       />
 
       <div className="mt-6 rounded-xl border min-h-screen border-(--border) bg-(--white)">
@@ -138,7 +157,17 @@ export function KnowledgeBasePage() {
                 <button type="button" className="text-(--black) cursor-pointer">
                   <Pencil className="md:h-5 h-4 w-4 md:w-5" />
                 </button>
-                <button type="button" className="text-red-500 cursor-pointer">
+                <button
+                  type="button"
+                  className="text-red-500 cursor-pointer"
+                  onClick={() =>
+                    setUi((p) => ({
+                      ...p,
+                      deleteOpen: true,
+                      deleteIndex: idx,
+                    }))
+                  }
+                >
                   <Trash2 className="md:h-5 h-4 w-4 md:w-5" />
                 </button>
                 <button type="button" className="text-(--slate) cursor-pointer">

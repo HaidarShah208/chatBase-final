@@ -150,7 +150,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
                 value={state.fileName}
                 onChange={(e) => setState((p) => ({ ...p, fileName: e.target.value }))}
                 placeholder="Enter File Name"
-                className="mt-2 h-11 bg-(--background)"
+                className="mt-2 h-10 "
               />
             </>
           ) : null}
@@ -211,7 +211,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
                 value={state.textContent}
                 onChange={(e) => setState((p) => ({ ...p, textContent: e.target.value }))}
                 placeholder="Enter text content"
-                className="mt-2 h-[170px] w-full resize-none rounded-[6px] border border-(--border) bg-(--background) px-3 py-3 text-sm text-(--black) outline-none focus:ring-0 focus:ring-offset-0"
+                className="mt-2 h-[170px] w-full resize-none rounded-[6px] border border-(--border)  px-3 py-3 text-sm text-(--black) outline-none focus:ring-0 focus:ring-offset-0"
               />
             </div>
           </div>
