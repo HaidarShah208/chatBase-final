@@ -1,9 +1,10 @@
 import { useMemo, useRef, useState } from 'react'
 import { Trash2, Upload } from 'lucide-react'
 
-import webPagesIcon from '../../assets/knowledgeBase/webpages.png'
-import qaIcon from '../../assets/knowledgeBase/q&a.png'
-import textIcon from '../../assets/knowledgeBase/text.png'
+import webPagesIcon from '../../assets/knowledgeBase/webpages.svg'
+import qaIcon from '../../assets/knowledgeBase/q&a.svg'
+import textIcon from '../../assets/knowledgeBase/text.svg'
+import upload from '../../assets/knowledgeBase/upload.svg'
 import { Button } from '../ui/Button'
 import { Dropdown } from '../ui/Dropdown'
 import { Input } from '../ui/Input'
@@ -44,7 +45,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
         key: 'files',
         label: 'Upload Files',
         description: 'File size should be less than 100MB',
-        icon: <Upload className="h-4 w-4" />,
+        icon: <img src={upload} className="h-4 w-4" />,
         onSelect: () => {
           setState((p) => ({ ...p, source: 'files', files: [] }))
           setTimeout(() => fileInputRef.current?.click(), 0)
@@ -100,6 +101,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
           <Button
             variant="outline"
             size="sm"
+            className='h-9 md:w-24 w-auto lg:w-[105px]'
             onClick={() => {
               if (state.source !== null) {
                 setState((p) => ({
@@ -120,7 +122,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
           >
             Cancel
           </Button>
-          <Button variant="primary" size="sm">
+          <Button variant="primary" size="sm" className='h-9 md:w-24 w-auto lg:w-[105px]'>
             Create
           </Button>
         </>
@@ -278,7 +280,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-10 w-[110px] justify-center"
+                  className="h-9 w-[110px] justify-center"
                 >
                   + Add
                 </Button>

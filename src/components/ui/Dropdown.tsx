@@ -33,9 +33,9 @@ export function Dropdown({ trigger, items, align = 'end' }: DropdownProps) {
                 </span>
               ) : null}
               <div className="min-w-0">
-                <div className="truncate text-sm font-semibold text-(--black)">{item.label}</div>
+                <div className="truncate text-sm text-(--black)">{item.label}</div>
                 {item.description ? (
-                  <div className="mt-0.5 truncate text-xs font-medium text-(--muted)">
+                  <div className="mt-0.5 truncate text-xs font-medium text-(--tertiary)">
                     {item.description}
                   </div>
                 ) : null}

@@ -36,7 +36,7 @@ export function Modal({ open, onOpenChange, title, children, footer, className }
           <div className="px-6 py-5">{children}</div>
 
           {footer ? (
-            <div className="flex items-center justify-end gap-3 border-t border-(--border) px-6 py-4">
+            <div className="flex items-center justify-end gap-3 px-6 py-4">
               {footer}
             </div>
           ) : null}
