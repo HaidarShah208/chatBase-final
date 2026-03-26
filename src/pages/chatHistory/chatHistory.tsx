@@ -37,7 +37,7 @@ export function ChatHistoryPage() {
         <div className="flex h-14 w-14 items-center justify-center rounded-[18px] bg-(--black)">
           <img src={chatHistoryIcon} alt="" className="h-5 w-5 brightness-0 invert" />
         </div>
-        <h1 className="text-2xl font-bold leading-tight text-(--black) sm:text-[38px]">
+        <h1 className="text-xl font-bold leading-tight text-(--black) sm:text-3xl">
           Chat History
         </h1>
       </header>

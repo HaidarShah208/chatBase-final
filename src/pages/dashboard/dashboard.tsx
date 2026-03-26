@@ -31,7 +31,7 @@ export function AgentsPage() {
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-(--black) text-(--background)">
             <img src={agent} alt="" className="h-[34px] w-[28px]" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight leading-tight text-(--black) sm:text-[38px]">
+          <h1 className="text-xl font-bold tracking-tight leading-tight text-(--black) sm:text-3xl">
             Agents
           </h1>
         </div>

@@ -5,12 +5,29 @@ export const initialCollapsed =
 typeof window !== 'undefined' ? window.innerWidth < 640 : false
 
 export function getActiveSidebarKey(pathname: string) {
-  const match = SIDEBAR_NAV_LINKS.find((l) => {
-    if (!l.path) return false
-    if (l.path === '/') return pathname === '/'
-    return pathname.startsWith(l.path)
-  })
-  return match?.key ?? 'agents'
+  // Match parent route first, then match child routes (e.g. "leads" under "activity")
+  for (const item of SIDEBAR_NAV_LINKS) {
+    if (item.path) {
+      if (item.path === '/') {
+        if (pathname === '/') return item.key
+      } else if (pathname.startsWith(item.path)) {
+        return item.key
+      }
+    }
+
+    if (item.children?.length) {
+      for (const child of item.children) {
+        if (!child.path) continue
+        if (child.path === '/') {
+          if (pathname === '/') return child.key
+        } else if (pathname.startsWith(child.path)) {
+          return child.key
+        }
+      }
+    }
+  }
+
+  return 'agents'
 }
 
 export const DOCS: KnowledgeDoc[] = [

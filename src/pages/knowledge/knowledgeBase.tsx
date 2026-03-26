@@ -42,7 +42,7 @@ export function KnowledgeBasePage() {
         <div className="flex h-14 w-14   items-center justify-center rounded-2xl bg-(--black) text-(--background)">
             <img src={book} alt="" className="h-[25px] w-[25px]" />
           </div>
-          <h1 className=" text-2xl font-bold tracking-tight leading-tight text-(--black) lg:text-[38px]">
+          <h1 className=" text-xl font-bold tracking-tight leading-tight text-(--black) lg:text-3xl">
             Knowledge Base
           </h1>
         </div>

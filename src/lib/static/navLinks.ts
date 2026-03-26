@@ -40,9 +40,9 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     label: 'Activity',
     iconSrc: activity,
     activeIconSrc: activeActivity,
-    path: '#',
-    children: [{ key: 'chat-logs', label: 'Chat Logs' },
-      {key:'leads', label:"Leads"}
+    children: [
+      { key: 'chat-logs', label: 'Chat Logs' },
+      { key: 'leads', label: 'Leads', path: '/leads' },
     ],
   },
   {
@@ -50,14 +50,12 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     label: 'Analytics',
     iconSrc: analysis,
     activeIconSrc: activeAnalysis,
-    path: '#',
   },
   {
     key: 'notifications',
     label: 'Notifications',
     iconSrc: notification,
     activeIconSrc: activeNotification,
-    path: '#',
   },
 ]
 

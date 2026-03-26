@@ -30,7 +30,16 @@ export function Sidebar() {
   const location = useLocation()
 
   useEffect(() => {
-    setState((p) => ({ ...p, activeKey: getActiveSidebarKey(location.pathname) }))
+    const nextActiveKey = getActiveSidebarKey(location.pathname)
+    const activityItem = SIDEBAR_NAV_LINKS.find((i) => i.key === 'activity')
+    const shouldOpenActivity =
+      activityItem?.children?.some((c) => c.key === nextActiveKey) ?? false
+
+    setState((p) => ({
+      ...p,
+      activeKey: nextActiveKey,
+      activityOpen: shouldOpenActivity,
+    }))
   }, [location.pathname])
 
   return (
@@ -133,6 +142,7 @@ export function Sidebar() {
                         type="button"
                         onClick={() => {
                           setState((p) => ({ ...p, activeKey: child.key }))
+                          if (child.path) navigate(child.path)
                         }}
                         aria-current={state.activeKey === child.key ? 'page' : undefined}
                         className={cn(

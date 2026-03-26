@@ -23,6 +23,7 @@ export type SidebarNavKey =
 export type SidebarNavChild = {
   key: string
   label: string
+  path?: string
 }
 
 export type SidebarNavItem = {

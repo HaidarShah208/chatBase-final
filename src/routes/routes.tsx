@@ -4,6 +4,7 @@ import { DashboardLayout } from '../layouts/DashboardLayout'
 import { AgentsPage } from '../pages/dashboard/dashboard'
 import { ChatHistoryPage } from '../pages/chatHistory/chatHistory'
 import { KnowledgeBasePage } from '../pages/knowledge/knowledgeBase'
+import { LeadsPage } from '../pages/leads/leads'
 import NotFound from '../pages/notFound/notFound'
 
 export function AppRoutes() {
@@ -14,6 +15,7 @@ export function AppRoutes() {
           <Route index element={<AgentsPage />} />
           <Route path="knowledge" element={<KnowledgeBasePage />} />
           <Route path="chat-history" element={<ChatHistoryPage />} />
+          <Route path="leads" element={<LeadsPage />} />
         </Route>
           <Route path="*" element={<NotFound />} />
       </Routes>
