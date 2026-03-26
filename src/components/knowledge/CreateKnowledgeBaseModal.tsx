@@ -6,7 +6,7 @@ import qaIcon from '../../assets/knowledgeBase/q&a.svg'
 import textIcon from '../../assets/knowledgeBase/text.svg'
 import upload from '../../assets/knowledgeBase/upload.svg'
 import { Button } from '../ui/Button'
-import { Dropdown } from '../ui/Dropdown'
+import { KnowledgeDropdown } from './KnowledgeDropdown'
 import { Input } from '../ui/Input'
 import { Modal } from '../ui/Modal'
 import type { CreateKnowledgeBaseModalProps, DocSource } from '../../types/types'
@@ -274,7 +274,7 @@ export function CreateKnowledgeBaseModal({ open, onOpenChange }: CreateKnowledge
 
         {state.source === null ? (
           <div className=" flex justify-start">
-            <Dropdown
+            <KnowledgeDropdown
               align="start"
               trigger={
                 <Button

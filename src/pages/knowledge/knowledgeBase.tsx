@@ -8,14 +8,14 @@ import {
   Pencil,
   Plus,
   Trash2,
-  Upload,
 } from 'lucide-react'
 import defaultImg from '../../assets/knowledgeBase/default.png'
 import book from '../../assets/knowledgeBase/book.png'
 import database from '../../assets/knowledgeBase/database.png'
-import webPages from '../../assets/knowledgeBase/webpages.png'
-import text from '../../assets/knowledgeBase/text.png'
-import qaIcon from '../../assets/knowledgeBase/q&a.png'
+import webPages from '../../assets/knowledgeBase/webpages.svg'
+import text from '../../assets/knowledgeBase/text.svg'
+import qaIcon from '../../assets/knowledgeBase/q&a.svg'
+import upload from '../../assets/knowledgeBase/upload.svg'
 
 import { Button } from '../../components/ui/Button'
 import { Dropdown } from '../../components/ui/Dropdown'
@@ -100,7 +100,7 @@ export function KnowledgeBasePage() {
               }
               items={[
                 { key: 'web', label: 'Web Pages', icon: <img src={webPages} className="h-3.5 w-3.5" /> },
-                { key: 'files', label: 'Files', icon: <Upload className="h-3.5 w-3.5" /> },
+                { key: 'files', label: 'Files', icon: <img src={upload} className="h-3.5 w-3.5" /> },
                 { key: 'text', label: 'Text', icon: <img src={text} className="h-3.5 w-3.5" /> },
                 { key: 'qa', label: 'Q&A', icon: <img src={qaIcon} className="h-3.5 w-3.5" /> },
               ]}
