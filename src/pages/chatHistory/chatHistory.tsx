@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { CalendarDays, RotateCcw, Settings } from 'lucide-react'
 
 import { DataTable } from '../../components/common/DataTable'
@@ -16,7 +17,19 @@ export function ChatHistoryPage() {
     { key: 'to', label: 'To' },
   ]
 
-  const rows: Array<Record<string, string>> = []
+  const rows: Array<Record<string, ReactNode>> = [
+    {
+      time: '2:32 AM',
+      cost: '$58',
+      sessionId: '009235',
+      status: (
+        <span className="font-semibold text-[#22C55E]">Active</span>
+      ),
+      sentiment: 'Loremipsum',
+      from: '18-12-2025',
+      to: '18-03-2026',
+    },
+  ]
 
   return (
     <div className="rounded-(--radius)">
@@ -55,12 +68,22 @@ export function ChatHistoryPage() {
             </button>
           </div>
 
-          <button
-            type="button"
-            className="inline-flex h-7 items-center justify-center gap-1.5 self-start rounded-md border border-(--border) bg-(--white) px-3 text-xs font-medium text-(--black) sm:self-auto"
-          >
-            Export
-          </button>
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            <button
+              type="button"
+              className="inline-flex h-7 items-center justify-center gap-1.5 self-start rounded-md border border-(--border) bg-(--white) px-3 text-xs font-medium text-(--black)"
+            >
+              Export
+            </button>
+
+            <button
+              type="button"
+              className="flex h-7 w-7 items-center justify-center rounded-md border border-(--border) bg-(--white) text-(--black)"
+              aria-label="Refresh"
+            >
+              <RotateCcw className="h-3.5 w-3.5" />
+            </button>
+          </div>
         </div>
 
         <div className="flex-1">
@@ -71,7 +94,7 @@ export function ChatHistoryPage() {
               <div className="flex min-h-[90vh] items-center justify-center px-4">
                 <div className="flex flex-col items-center justify-center text-center">
                   <span className="flex h-13 w-13 items-center justify-center rounded-full border border-(--border) bg-(--background) text-(--darkGray)">
-                    <img src={message} className="h-7 w-7" />
+                    <img src={message} className="h-7 w-7" alt="" />
                   </span>
                   <div className="mt-4 text-sm text-(--black)">No chat sessions yet</div>
                   <div className="mt-1 text-xs text-(--grayish)">
@@ -86,7 +109,7 @@ export function ChatHistoryPage() {
         <Pagination
           page={1}
           totalPages={1}
-          totalItems={0}
+          totalItems={rows.length}
           pageSize={50}
           onPageChange={() => undefined}
           onPageSizeChange={() => undefined}

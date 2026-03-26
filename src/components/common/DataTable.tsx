@@ -1,26 +1,7 @@
-import type { ReactNode } from 'react'
-
 import { cn } from '../../lib/cn'
+import type { DataTableProps } from '../../types/types'
 
-type DataTableHeader = {
-  key: string
-  label: string
-  className?: string
-}
 
-type DataTableRow = Record<string, ReactNode>
-
-type DataTableProps = {
-  headers: DataTableHeader[]
-  rows: DataTableRow[]
-  rowKey?: (row: DataTableRow, index: number) => string
-  emptyState?: ReactNode
-  emptyColSpan?: number
-  className?: string
-  tableClassName?: string
-  headerClassName?: string
-  bodyClassName?: string
-}
 
 export function DataTable({
   headers,
@@ -36,10 +17,10 @@ export function DataTable({
   return (
     <div className={cn('h-full overflow-x-auto', className)}>
       <table className={cn('w-full min-w-[760px] text-left text-sm', tableClassName)}>
-        <thead className={cn('bg-(--lightGray) text-(--black)', headerClassName)}>
+        <thead className={cn('bg-(--lightGray) text-(--black) border-b border-(--border)', headerClassName)}>
           <tr>
             {headers.map((header) => (
-              <th key={header.key} className={cn('px-3 py-3 font-semibold', header.className)}>
+              <th key={header.key} className={cn('px-3 py-3 text-center font-semibold', header.className)}>
                 {header.label}
               </th>
             ))}
@@ -49,7 +30,7 @@ export function DataTable({
         <tbody className={cn(bodyClassName)}>
           {rows.length ? (
             rows.map((row, rowIndex) => (
-              <tr key={rowKey ? rowKey(row, rowIndex) : String(rowIndex)} className="border-t border-(--border)">
+              <tr key={rowKey ? rowKey(row, rowIndex) : String(rowIndex)} className="border rounded-2xl text-center  border-(--border)">
                 {headers.map((header) => (
                   <td key={header.key} className="px-3 py-3 text-(--black)">
                     {row[header.key]}

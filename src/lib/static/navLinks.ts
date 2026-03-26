@@ -40,22 +40,24 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     label: 'Activity',
     iconSrc: activity,
     activeIconSrc: activeActivity,
-    path: '/',
-    children: [{ key: 'activity-child', label: 'Activity' }],
+    path: '#',
+    children: [{ key: 'chat-logs', label: 'Chat Logs' },
+      {key:'leads', label:"Leads"}
+    ],
   },
   {
     key: 'analytics',
     label: 'Analytics',
     iconSrc: analysis,
     activeIconSrc: activeAnalysis,
-    path: '/',
+    path: '#',
   },
   {
     key: 'notifications',
     label: 'Notifications',
     iconSrc: notification,
     activeIconSrc: activeNotification,
-    path: '/',
+    path: '#',
   },
 ]
 

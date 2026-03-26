@@ -1,3 +1,5 @@
+import type { ReactNode } from "react"
+
 export type Agent = {
     id: string
     name: string
@@ -95,4 +97,24 @@ export type PaginationProps = {
   onPageChange: (page: number) => void
   onPageSizeChange: (size: number) => void
   className?: string
+}
+
+type DataTableHeader = {
+  key: string
+  label: string
+  className?: string
+}
+
+type DataTableRow = Record<string, ReactNode>
+
+export type DataTableProps = {
+  headers: DataTableHeader[]
+  rows: DataTableRow[]
+  rowKey?: (row: DataTableRow, index: number) => string
+  emptyState?: ReactNode
+  emptyColSpan?: number
+  className?: string
+  tableClassName?: string
+  headerClassName?: string
+  bodyClassName?: string
 }
