@@ -119,3 +119,11 @@ export type DataTableProps = {
   headerClassName?: string
   bodyClassName?: string
 }
+
+export   type Lead = {
+  id: string
+  company: string
+  status: string
+  lastContacted: string  
+  assigned: string
+}
