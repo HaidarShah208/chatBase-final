@@ -11,11 +11,11 @@ import { Button } from '../ui/Button'
 import { cn } from '../../lib/cn'
 import type { SidebarState } from '../../types/types'
 import {
-  getActiveSidebarKey,
-  initialCollapsed,
+ 
   SIDEBAR_FOOTER_LINKS,
   SIDEBAR_NAV_LINKS,
 } from '../../lib/static/navLinks'
+import { getActiveSidebarKey, initialCollapsed } from '../../lib/data'
 
 export function Sidebar() {
   
@@ -37,7 +37,7 @@ export function Sidebar() {
     <aside
       className={cn(
         'relative flex min-h-screen shrink-0 flex-col bg-(--white) transition-all duration-300 ease-in-out',
-        state.isCollapsed ? 'w-[74px]' : 'w-[272px]',
+        state.isCollapsed ? 'w-[81px]' : 'w-[272px]',
       )}
     >
       <button
