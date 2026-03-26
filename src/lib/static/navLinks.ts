@@ -11,7 +11,7 @@ import activeKnowledge from '../../assets/sidebar/activeKnowledge.png'
 import activeNotification from '../../assets/sidebar/activeNotification.png'
 import activeHistory from '../../assets/sidebar/activeHistory.png'
 
-import type { KnowledgeDoc, SidebarNavItem } from '../../types/types'
+import type { SidebarNavItem } from '../../types/types'
 
 export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
   {
@@ -33,7 +33,7 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     label: 'Chat History',
     iconSrc: chatHistory,
     activeIconSrc: activeHistory,
-    path: '/',
+    path: '/chat-history',
   },
   {
     key: 'activity',

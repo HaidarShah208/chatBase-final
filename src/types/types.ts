@@ -86,3 +86,13 @@ export type DropdownProps = {
   items: DropdownItem[]
   align?: 'start' | 'center' | 'end'
 }
+
+export type PaginationProps = {
+  page: number
+  totalPages: number
+  totalItems: number
+  pageSize: number
+  onPageChange: (page: number) => void
+  onPageSizeChange: (size: number) => void
+  className?: string
+}

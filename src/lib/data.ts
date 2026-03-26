@@ -5,7 +5,11 @@ export const initialCollapsed =
 typeof window !== 'undefined' ? window.innerWidth < 640 : false
 
 export function getActiveSidebarKey(pathname: string) {
-  const match = SIDEBAR_NAV_LINKS.find((l) => l.path && pathname.startsWith(l.path))
+  const match = SIDEBAR_NAV_LINKS.find((l) => {
+    if (!l.path) return false
+    if (l.path === '/') return pathname === '/'
+    return pathname.startsWith(l.path)
+  })
   return match?.key ?? 'agents'
 }
 
