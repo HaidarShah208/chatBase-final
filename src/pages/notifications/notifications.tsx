@@ -1,6 +1,8 @@
 import {
   Bell,
   Check,
+  Settings,
+  Settings2,
   Trash2,
 } from 'lucide-react'
 import { NOTIFICATIONS } from '../../lib/data'
@@ -18,7 +20,7 @@ export function NotificationsPage() {
         </h1>
       </header>
 
-      <section className="rounded-xl min-h-screen border border-(--border) bg-(--white) p-3 sm:p-4">
+      <section className="rounded-xl min-h-[120vh] border border-(--border) bg-(--white) p-3 sm:p-4 flex flex-col">
       <div className="border border-(--border) overflow-hidden rounded-xl">
       <div className="flex flex-col p-3 gap-3 border-b border-(--border) pb-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
@@ -78,6 +80,20 @@ export function NotificationsPage() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="mt-auto pt-4">
+        <div className="flex items-center gap-3 rounded-xl border border-(--border) bg-(--primarySoft) px-4 py-4 text-sm text-(--slate)">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-(--white) text-(--brand)">
+            <Settings className="h-4.5 w-4.5" />
+          </span>
+          <span className='text-sm'>
+            Manage your notification preferences in{' '}
+            <button type="button" className="font-semibold text-base text-(--brand)">
+              Settings
+            </button>
+          </span>
         </div>
       </div>
       </section>
