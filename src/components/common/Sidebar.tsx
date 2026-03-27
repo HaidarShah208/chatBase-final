@@ -94,11 +94,17 @@ export function Sidebar() {
                 <button
                   type="button"
                   onClick={() => {
+                    const defaultActivityChild = isActivity ? item.children?.[0] : undefined
+
                     setState((p) => ({
                       ...p,
-                      activeKey: item.key,
+                      activeKey: defaultActivityChild?.key ?? item.key,
                       activityOpen: isActivity ? !p.activityOpen : p.activityOpen,
                     }))
+                    if (isActivity && defaultActivityChild?.path) {
+                      navigate(defaultActivityChild.path)
+                      return
+                    }
                     if (item.path) navigate(item.path)
                   }}
                   className={cn(

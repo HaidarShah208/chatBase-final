@@ -57,6 +57,7 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     label: 'Notifications',
     iconSrc: notification,
     activeIconSrc: activeNotification,
+    path: '/notifications',
   },
 ]
 

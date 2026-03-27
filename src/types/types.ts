@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"
+import type { JSX, ReactNode } from "react"
 
 export type Agent = {
     id: string
@@ -173,4 +173,12 @@ export type StatusFilterDropdownProps = {
   leftIcon?: ReactNode
   className?: string
   triggerClassName?: string
+}
+
+export type NotificationItem = {
+  id: string
+  title: string
+  ago: string
+  unread?: boolean
+  icon: JSX.Element
 }

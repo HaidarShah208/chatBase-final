@@ -1,8 +1,8 @@
-import { Zap } from "lucide-react"
-import type { AnalyticsGraphsData, KnowledgeDoc } from "../types/types"
+import { Mail, Plug, Shield, TriangleAlert, Zap } from "lucide-react"
+import type { AnalyticsGraphsData, KnowledgeDoc, NotificationItem } from "../types/types"
 import { SIDEBAR_NAV_LINKS } from "./static"
-import { useMemo } from "react"
-
+import bot from '../assets/bot.svg'
+import message from '../assets/message.svg'
 export const initialCollapsed =
 typeof window !== 'undefined' ? window.innerWidth < 640 : false
 
@@ -133,3 +133,44 @@ export   const threadDetails = {
       assistantAgo: '13 days ago',
     },
   }
+
+export const NOTIFICATIONS: NotificationItem[] = [
+  {
+    id: 'n1',
+    title: 'You received daily leads report by email',
+    ago: '56m ago',
+    unread: true,
+    icon: <Mail className="h-5 w-5 text-(--white)" />,
+  },
+  {
+    id: 'n2',
+    title: 'You received daily conversations report by email',
+    ago: '1h ago',
+    unread: true,
+    icon: <img src={message} className="h-4.5 w-4.5 text-(--white)" />,
+  },
+  {
+    id: 'n3',
+    title: 'Your AI agent is currently offline',
+    ago: '1h ago',
+    icon: <img src={bot} className="h-5 w-5 text-(--white)" />,
+  },
+  {
+    id: 'n4',
+    title: 'CRM sync failed. Please check your integration',
+    ago: '3h ago',
+    icon: <Plug className="h-5 w-5 text-(--white)" />,
+  },
+  {
+    id: 'n5',
+    title: 'Your usage has reached 80% of the monthly limit',
+    ago: '16h ago',
+    icon: <TriangleAlert className="h-5 w-5 text-(--white)" />,
+  },
+  {
+    id: 'n6',
+    title: 'New device login detected on your account',
+    ago: '20h ago',
+    icon: <Shield className="h-5 w-5 text-(--white)" />,
+  },
+]
