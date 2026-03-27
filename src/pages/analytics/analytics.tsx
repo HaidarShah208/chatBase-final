@@ -19,7 +19,7 @@ export function AnalyticsPage() {
 
   return (
     <div className="rounded-(--radius) bg-transparent">
-      <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <header className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
      <div className="flex items-center justify-center gap-3">
      <div className="flex h-14 w-14 items-center justify-center rounded-[18px] bg-(--black)">
           <img src={chatHistory} alt="" className="h-5 w-5 brightness-0 invert" />

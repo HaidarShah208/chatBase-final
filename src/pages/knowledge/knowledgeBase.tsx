@@ -78,7 +78,7 @@ export function KnowledgeBasePage() {
         }}
       />
 
-      <div className="mt-6 rounded-xl border min-h-screen border-(--border) bg-(--white)">
+      <div className="mt-7 rounded-xl border min-h-screen border-(--border) bg-(--white)">
         <div className="px-4 pt-4 sm:px-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">

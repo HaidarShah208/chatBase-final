@@ -42,7 +42,7 @@ export function ChatHistoryPage() {
         </h1>
       </header>
 
-      <section className="mt-6 flex min-h-[90vh]  flex-col overflow-hidden rounded-xl border border-(--border) bg-(--white)">
+      <section className="mt-7 flex min-h-[90vh]  flex-col overflow-hidden rounded-xl border border-(--border) bg-(--white)">
         <div className="flex flex-col gap-3 px-3 py-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-2">
             <button

@@ -41,7 +41,7 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
     iconSrc: activity,
     activeIconSrc: activeActivity,
     children: [
-      { key: 'chat-logs', label: 'Chat Logs' },
+      { key: 'chat-logs', label: 'Chat Logs', path: '/chat-logs' },
       { key: 'leads', label: 'Leads', path: '/leads' },
     ],
   },

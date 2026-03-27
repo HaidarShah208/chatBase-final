@@ -1,6 +1,7 @@
 import { Zap } from "lucide-react"
 import type { AnalyticsGraphsData, KnowledgeDoc } from "../types/types"
 import { SIDEBAR_NAV_LINKS } from "./static"
+import { useMemo } from "react"
 
 export const initialCollapsed =
 typeof window !== 'undefined' ? window.innerWidth < 640 : false
@@ -106,3 +107,29 @@ export function makeAnalyticsData(dateFrom: string, _dateTo: string, seed: numbe
 
   return { usageHistory, circularTopRight, creditsUsedPerAgent }
 }
+
+export const CHAT_THREADS = [
+  { id: 't1', title: 'test', ago: '1 day ago', messages: 2, active: true },
+  { id: 't2', title: 'what is the font family to use?', ago: '13 days ago', messages: 8, active: false },
+]
+
+export   const threadDetails = {
+    t1: {
+      source: 'Playground',
+      userMessage: 'test',
+      userAgo: '1 day ago',
+      assistantText:
+        "It seems like you're testing the system! If you have any specific questions or need assistance, feel free to ask. I'm here to help!",
+      assistantTag: '# agent',
+      assistantAgo: '1 day ago',
+    },
+    t2: {
+      source: 'Playground',
+      userMessage: 'what is the font family to use?',
+      userAgo: '13 days ago',
+      assistantText:
+        "Use a clear, modern sans-serif stack for readability and consistency. A good default is Inter with fallbacks like 'Segoe UI', Roboto, and Arial.",
+      assistantTag: '# design',
+      assistantAgo: '13 days ago',
+    },
+  }

@@ -7,6 +7,7 @@ import { KnowledgeBasePage } from '../pages/knowledge/knowledgeBase'
 import { LeadsPage } from '../pages/leads/leads'
 import NotFound from '../pages/notFound/notFound'
 import { AnalyticsPage } from '../pages/analytics/analytics'
+import { ChatLogsPage } from '../pages/chatLogs/chatLogs'
 
 export function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ export function AppRoutes() {
           <Route index element={<AgentsPage />} />
           <Route path="knowledge" element={<KnowledgeBasePage />} />
           <Route path="chat-history" element={<ChatHistoryPage />} />
+          <Route path="chat-logs" element={<ChatLogsPage />} />
           <Route path="leads" element={<LeadsPage />} />
           <Route path="analytics" element={<AnalyticsPage />} />
         </Route>

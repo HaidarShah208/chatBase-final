@@ -79,7 +79,7 @@ export function LeadsPage() {
         </div>
       </header>
 
-      <section className="mt-6 overflow-hidden rounded-xl border border-(--border) bg-(--white)">
+      <section className="mt-7 overflow-hidden rounded-xl border border-(--border) bg-(--white)">
 
         <div className=" px-4 pt-2.5">
           <span className="text-sm font-medium text-(--darkGray)">Filters</span>
