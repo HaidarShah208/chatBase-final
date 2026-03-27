@@ -31,23 +31,27 @@ export function PlansTab() {
       <h2 className="pt-6 text-lg font-bold text-(--black) md:text-xl lg:text-3xl">Plans</h2>
       <p className="mt-1 text-xs text-(--black) md:text-sm">Choose the perfect plan for your needs</p>
 
-      <div className="mt-8 grid grid-cols-1 lg:grid-cols-3">
+      <div className="mt-4 grid grid-cols-1 gap-0 lg:grid-cols-3">
         {PLAN_CARDS.map((plan) => (
           <div
             key={plan.key}
             className={`relative rounded-xl border ${
               plan.featured
-                ? 'border-(--brand) bg-(--black) text-(--white) shadow-[0_0_0_2px_var(--brand)]'
+                ? 'z-10 lg:-mt-3 border-(--brand) border-4 bg-(--black) text-(--white)'
                 : 'border-(--border) bg-(--white) text-(--black)'
             }`}
           >
             {plan.featured ? (
-              <span className="absolute -top-8 left-1/2 -translate-x-1/2 rounded-md bg-(--black) px-4.5 py-1 text-base font-semibold tracking-[0.32em] text-(--white)">
+              <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-(--black) px-4.5 py-1.5 text-base font-semibold leading-none tracking-[0.32em] text-(--white)">
                 POPULAR
               </span>
             ) : null}
 
-            <div className="border-b border-(--border) px-5 py-7">
+            <div
+              className={`px-5 py-7 ${
+                plan.featured ? '' : 'border-b border-(--border)'
+              }`}
+            >
               <div className="text-2xl font-medium">{plan.title}</div>
               <div className="mt-4 text-5xl font-semibold">{plan.price}</div>
               <div className={`mt-1 text-base ${plan.featured ? 'text-[#D4D4D4]' : 'text-(--black)'}`}>

@@ -44,8 +44,8 @@ export function GeneralTab() {
         </span>
       </div>
 
-      <div className="relative overflow-hidden rounded-xl border border-[#FFC9C9] px-8 py-9">
-        <span className="pointer-events-none absolute -right-11 -top-11 h-28 w-28 rounded-full bg-[#FFEAEA]" />
+      <div className="relative overflow-hidden rounded-xl border border-[#FFC9C9] px-4 md:px-8 py-9">
+        <span className="pointer-events-none absolute -right-13 -top-13 h-28 w-28 rounded-full bg-[#FFEAEA]" />
 
         <div className="flex items-start gap-3">
           <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#FFE2E2]">
@@ -53,10 +53,10 @@ export function GeneralTab() {
           </span>
           <div className="min-w-0">
             <div className="text-2xl font-semibold text-(--primaryRed)">Delete account</div>
-            <p className="py-2 text-sm text-(--darkGray)">
+            <p className="py-2 text-xs md:text-sm text-(--darkGray)">
               Once you delete your team account, there is no going back. Please be certain.
             </p>
-            <p className="text-sm font-medium text-(--black)">
+            <p className="text-xs md:text-sm font-medium text-(--black)">
               All your uploaded data and trained agents will be deleted.{' '}
               <span className="text-(--primaryRed)">This action is not reversible</span>
             </p>
