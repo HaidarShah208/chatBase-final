@@ -1,4 +1,4 @@
-import { AlertTriangle, BadgeCheck, CircleDollarSign, Cog, CreditCard, SaveAll, Settings, ShieldAlert, Trash, Trash2, UserRound } from 'lucide-react'
+import { AlertTriangle, CircleDollarSign, Cog, CreditCard, SaveAll, Settings, Trash2, UserRound } from 'lucide-react'
 import { useState } from 'react'
 
 import { Button } from '../../components/ui/Button'
@@ -27,8 +27,8 @@ export function SettingsPage() {
         </h1>
       </header>
 
-      <section className="rounded-xl border border-(--border) bg-(--white)">
-        <div className="border-b border-(--border) px-2 sm:px-4">
+      <section className="rounded-xl border pb-7 border-(--border) bg-(--white)">
+        <div className="border-b border-(--border) px-2 sm:px-4 ">
           <div className="flex flex-wrap items-center gap-2">
             {SETTINGS_TABS.map((tab) => {
               const isActive = activeTab === tab.key
@@ -51,7 +51,7 @@ export function SettingsPage() {
         </div>
 
         <div className="p-3 sm:p-4">
-          {activeTab === 'general' ? (
+          {activeTab === 'general' && (
             <div>
               <h2 className="lg:text-3xl md:text-xl pt-6 text-lg font-bold text-(--black)">General</h2>
               <p className="mt-1 md:text-sm text-xs text-(--black)">
@@ -84,20 +84,26 @@ export function SettingsPage() {
                 </span>
               </div>
 
-              <div className=" rounded-xl border border-[#FFC9C9]  py-9 px-8">
-                <div className="flex items-center gap-3 text-2xl font-semibold text-(--primaryRed)">
-                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-[#FFE2E2]">
+              <div className="relative overflow-hidden rounded-xl border border-[#FFC9C9] py-9 px-8">
+                <span className="pointer-events-none absolute -top-13 -right-13 h-28 w-28 rounded-full  bg-[#FFEAEA]" />
+
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#FFE2E2]">
                     <Trash2 className="h-4 w-4 text-(--primaryRed)" />
                   </span>
-                  Delete account
+                  <div className="min-w-0">
+                    <div className="text-2xl font-semibold text-(--primaryRed)">
+                      Delete account
+                    </div>
+                    <p className="py-2 text-sm text-(--darkGray)">
+                      Once you delete your team account, there is no going back. Please be certain.
+                    </p>
+                    <p className="text-sm font-medium text-(--black)">
+                      All your uploaded data and trained agents will be deleted.{' '}
+                      <span className="text-(--primaryRed)">This action is not reversible</span>
+                    </p>
+                  </div>
                 </div>
-                <p className="py-2 text-sm text-(--darkGray)">
-                  Once you delete your team account, there is no going back. Please be certain.
-                </p>
-                <p className=" text-sm font-medium text-(--black)">
-                  All your uploaded data and trained agents will be deleted.{' '}
-                  <span className="text-(--primaryRed)">This action is not reversible</span>
-                </p>
 
                 <div className="mt-4 flex justify-end">
                   <button
@@ -110,9 +116,9 @@ export function SettingsPage() {
                 </div>
               </div>
             </div>
-          ) : null}
+          ) }
 
-          {activeTab === 'plans' ? (
+          {activeTab === 'plans' && (
             <div className="rounded-xl border border-(--border) p-5">
               <div className="flex items-center gap-2 text-lg font-semibold text-(--black)">
                 <CircleDollarSign className="h-5 w-5" />
@@ -122,9 +128,9 @@ export function SettingsPage() {
                 Plan details will appear here.
               </p>
             </div>
-          ) : null}
+          ) }
 
-          {activeTab === 'billing' ? (
+          {activeTab === 'billing' && (
             <div className="rounded-xl border border-(--border) p-5">
               <div className="flex items-center gap-2 text-lg font-semibold text-(--black)">
                 <CreditCard className="h-5 w-5" />
@@ -134,9 +140,9 @@ export function SettingsPage() {
                 Billing details will appear here.
               </p>
             </div>
-          ) : null}
+          ) }
 
-          {activeTab === 'notifications' ? (
+          {activeTab === 'notifications' && (
             <div className="rounded-xl border border-(--border) p-5">
               <div className="flex items-center gap-2 text-lg font-semibold text-(--black)">
                 <Cog className="h-5 w-5" />
@@ -146,7 +152,7 @@ export function SettingsPage() {
                 Notification preferences will appear here.
               </p>
             </div>
-          ) : null}
+          )  }
         </div>
       </section>
     </div>

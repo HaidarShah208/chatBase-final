@@ -10,6 +10,7 @@ import activeAnalysis from '../../assets/sidebar/activeAnalysis.png'
 import activeKnowledge from '../../assets/sidebar/activeKnowledge.png'
 import activeNotification from '../../assets/sidebar/activeNotification.png'
 import activeHistory from '../../assets/sidebar/activeHistory.png'
+import activeSetting from '../../assets/sidebar/activeSetting.svg'
 
 import type { SidebarNavItem } from '../../types/types'
 
@@ -62,7 +63,7 @@ export const SIDEBAR_NAV_LINKS: SidebarNavItem[] = [
 ]
 
 export const SIDEBAR_FOOTER_LINKS = [
-  { key: 'settings', label: 'Settings' },
+  { key: 'settings', label: 'Settings', path: '/settings', activeIconSrc: activeSetting },
   { key: 'logout', label: 'Logout' },
 ] as const
 

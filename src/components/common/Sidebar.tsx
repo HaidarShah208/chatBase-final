@@ -30,7 +30,9 @@ export function Sidebar() {
   const location = useLocation()
 
   useEffect(() => {
-    const nextActiveKey = getActiveSidebarKey(location.pathname)
+    const nextActiveKey = location.pathname.startsWith('/settings')
+      ? 'settings'
+      : getActiveSidebarKey(location.pathname)
     const activityItem = SIDEBAR_NAV_LINKS.find((i) => i.key === 'activity')
     const shouldOpenActivity =
       activityItem?.children?.some((c) => c.key === nextActiveKey) ?? false
@@ -206,30 +208,47 @@ export function Sidebar() {
             </div>
           </div>
           <div className="mt-2 grid gap-1">
-            {SIDEBAR_FOOTER_LINKS.map(({ key, label }) => (
-              <button
-                key={label}
-                type="button"
-                onClick={() => {
-                  if (key === 'settings') navigate('/settings')
-                }}
-                className={cn(
-                  'flex items-center rounded-xl py-2 text-left text-base font-medium text-(--black) hover:border hover:border-(--border)',
-                  state.isCollapsed ? 'justify-center px-2' : 'gap-2 px-3',
-                )}
-              >
-                {key === 'logout' ? (
-                  <LogOut
-                    className={cn('h-[18px] w-[18px] text-(--black)', 'rotate-180')}
-                  />
-                ) : (
-                  <Settings className={cn('h-[18px] w-[18px] text-(--black)')} />
-                )}
-                <span className={cn('transition-all duration-300', state.isCollapsed ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100')}>
-                  {label}
-                </span>
-              </button>
-            ))}
+            {SIDEBAR_FOOTER_LINKS.map((footerItem) => {
+              const { key, label } = footerItem
+              const path = 'path' in footerItem ? footerItem.path : undefined
+              const activeIconSrc =
+                'activeIconSrc' in footerItem ? footerItem.activeIconSrc : undefined
+              const isSettingsActive = key === 'settings' && !!path && location.pathname.startsWith(path)
+
+              return (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() => {
+                    if (path) navigate(path)
+                  }}
+                  className={cn(
+                    'flex cursor-pointer items-center rounded-xl py-2 text-left text-base font-medium ',
+                    state.isCollapsed ? 'justify-center px-2' : 'gap-2 px-3',
+                    isSettingsActive
+                      ? 'bg-(--primaryColor) text-(--brand)'
+                      : 'text-(--black)',
+                  )}
+                >
+                  {key === 'logout' ? (
+                    <LogOut
+                      className={cn(
+                        'h-[18px] w-[18px]',
+                        isSettingsActive ? 'text-(--brand)' : 'text-(--black)',
+                        'rotate-180',
+                      )}
+                    />
+                  ) : isSettingsActive && activeIconSrc ? (
+                    <img src={activeIconSrc} alt="" className="h-[18px] w-[18px]" />
+                  ) : (
+                    <Settings className={cn('h-[18px] w-[18px] text-(--black)')} />
+                  )}
+                  <span className={cn('transition-all duration-300', state.isCollapsed ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100')}>
+                    {label}
+                  </span>
+                </button>
+              )
+            })}
           </div>
         </div>
       </div>
