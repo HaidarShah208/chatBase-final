@@ -59,25 +59,30 @@ function mulberry32(seed: number) {
   }
 }
 
-export function makeAnalyticsData(dateFrom: string, dateTo: string, seed: number): AnalyticsGraphsData {
+export function makeAnalyticsData(dateFrom: string, _dateTo: string, seed: number): AnalyticsGraphsData {
   const rand = mulberry32(seed)
+  const anchor = dateFrom ? new Date(dateFrom + 'T00:00:00') : new Date()
+  const year = anchor.getFullYear()
+  const month = anchor.getMonth()
+  const monthShort = anchor.toLocaleString('en-US', { month: 'short' })
+  const daysInMonth = new Date(year, month + 1, 0).getDate()
 
-  const from = new Date(dateFrom + 'T00:00:00')
-  const to = new Date(dateTo + 'T00:00:00')
-  const diffDays = Math.max(0, Math.round((to.getTime() - from.getTime()) / (1000 * 60 * 60 * 24)))
+  // Keep full odd-date x-axis labels, but show one actual bar value.
+  const selectedDayRaw = Math.max(1, Math.min(daysInMonth, anchor.getDate()))
+  const oddDays = Array.from({ length: daysInMonth })
+    .map((_, idx) => idx + 1)
+    .filter((day) => day % 2 === 1)
+  const selectedDay =
+    selectedDayRaw % 2 === 1
+      ? selectedDayRaw
+      : selectedDayRaw === daysInMonth
+        ? selectedDayRaw - 1
+        : selectedDayRaw + 1
 
-  const labels = Array.from({ length: 7 }).map((_, i) => {
-    const d = new Date(from.getTime() + i * 24 * 60 * 60 * 1000)
-    const m = d.toLocaleString('en-US', { month: 'short' })
-    return `${m} ${d.getDate()}`
-  })
-
-  const usageHistory = labels.map((label, idx) => {
-    const base = 0.35 + Math.min(0.45, diffDays * 0.03)
-    const variance = (rand() - 0.5) * 0.35
-    const v = Math.max(0.05, Math.min(0.95, base + variance + idx * 0.02))
-    return { label, value: Math.round(v * 100) / 100 }
-  })
+  const usageHistory = oddDays.map((day) => ({
+    label: `${monthShort} ${day}`,
+    value: day === selectedDay ? Math.round((0.45 + rand() * 0.45) * 100) / 100 : 0,
+  }))
 
   const circularTopRight = [
     {
@@ -96,7 +101,7 @@ export function makeAnalyticsData(dateFrom: string, dateTo: string, seed: number
 
   const creditsUsedPerAgent = [
     { name: 'Testing agent', value: 80 + Math.round(rand() * 40) },
-    { name: 'Testing agent', value: 40 + Math.round(rand() * 40) },
+    // { name: 'Testing agent', value: 40 + Math.round(rand() * 40) },
   ]
 
   return { usageHistory, circularTopRight, creditsUsedPerAgent }

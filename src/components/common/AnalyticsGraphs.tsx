@@ -42,7 +42,11 @@ function CircularPercent({ percent, size = 114 }: { percent: number; size?: numb
 }
 
 export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
-  const pieColors = [BLUE_DEEP, BLUE, MUTED]
+  const pieColors = ['var(--brand)', 'var(--white)']
+  const creditsRingData = [
+    { name: 'used', value: 98 },
+    { name: 'rest', value: 2 },
+  ]
 
   return (
     <div className="space-y-4">
@@ -67,16 +71,23 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
                   vertical
                   horizontal
                   stroke="var(--darkGray)"
-                  strokeOpacity={0.35}
+                  strokeOpacity={0.25}
                 />
-                <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#8B8D8D' }} />
+                <XAxis
+                  dataKey="label"
+                  interval={0}
+                  minTickGap={8}
+                  tick={{ fontSize: 10, fill: '#8B8D8D' }}
+                />
                 <YAxis
                   tick={{ fontSize: 11, fill: '#8B8D8D' }}
                   axisLine={{ stroke: 'var(--darkGray)', strokeWidth: 1.5 }}
-                  tickLine={false}
+                  tickLine={{ stroke: 'var(--darkGray)', strokeWidth: 1.5 }}
+                  ticks={[0, 0.25, 0.5, 0.75, 1]}
+                  domain={[0, 1]}
                   width={42}
                 />
-                <Bar dataKey="value" fill={BLUE} radius={[8, 8, 0, 0]} />
+                <Bar dataKey="value" fill={BLUE} radius={[8, 8, 0, 0]} barSize={32} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -124,22 +135,20 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
           <div className="lg:text-2xl md:text-lg text-base font-semibold text-(--black)">Credits used per agent</div>
         </div>
 
-        <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">
           <div className="flex items-center justify-center">
-            <div className="relative h-[200px] w-[200px]">
+            <div className="relative h-50 w-50">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
-                    data={data.creditsUsedPerAgent}
+                    data={creditsRingData}
                     dataKey="value"
                     nameKey="name"
                     innerRadius={60}
                     outerRadius={95}
-                    startAngle={90}
-                    endAngle={-270}
-                    paddingAngle={1}
+                    endAngle={-360}
                     >
-                      {data.creditsUsedPerAgent.map((d, i) => (
+                      {creditsRingData.map((d, i) => (
                         <Cell key={`${d.name}-${i}`} fill={pieColors[i % pieColors.length]} />
                       ))}
                     </Pie>
