@@ -5,9 +5,9 @@ import { TrendingUp } from 'lucide-react'
 import curve from '../../assets/analytics/curve.svg'
 import pieChart from '../../assets/analytics/pieChart.svg'
 
-const BLUE = '#0EA5FF'
-const BLUE_DEEP = '#0284C7'
-const MUTED = '#E2E8F0'
+const BLUE = 'var(--brand)'
+const BLUE_DEEP = 'var(--brand)'
+const MUTED = 'var(--border)'
 
 function CircularPercent({ percent, size = 114 }: { percent: number; size?: number }) {
   const safe = Math.max(0, Math.min(100, percent))
@@ -24,9 +24,10 @@ function CircularPercent({ percent, size = 114 }: { percent: number; size?: numb
           ]}
           dataKey="value"
           startAngle={90}
-          endAngle={-270}
+          endAngle={550}
           outerRadius={size / 2 - 10}
           innerRadius={size / 2 - 22}
+          cornerRadius={1}
           stroke="none"
         >
           <Cell fill={BLUE_DEEP} />
@@ -34,14 +35,14 @@ function CircularPercent({ percent, size = 114 }: { percent: number; size?: numb
         </Pie>
       </PieChart>
       <div className="absolute flex flex-col items-center justify-center">
-        <div className="text-base font-bold text-(--brand)">{safe}%</div>
+        <div className="lg:text-2xl text-lg font-semibold leading-none text-(--brand)">{safe}%</div>
       </div>
     </div>
   )
 }
 
 export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
-  const pieColors = ['#0284C7', '#0EA5FF', MUTED]
+  const pieColors = [BLUE_DEEP, BLUE, MUTED]
 
   return (
     <div className="space-y-4">
@@ -61,13 +62,19 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
           <div className="mt-6 h-56 lg:h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data.usageHistory}>
-                <CartesianGrid strokeDasharray="3 3" vertical stroke={MUTED} />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  vertical
+                  horizontal
+                  stroke="var(--darkGray)"
+                  strokeOpacity={0.35}
+                />
                 <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#8B8D8D' }} />
                 <YAxis
                   tick={{ fontSize: 11, fill: '#8B8D8D' }}
-                  axisLine={false}
+                  axisLine={{ stroke: 'var(--darkGray)', strokeWidth: 1.5 }}
                   tickLine={false}
-                  width={32}
+                  width={42}
                 />
                 <Bar dataKey="value" fill={BLUE} radius={[8, 8, 0, 0]} />
               </BarChart>
@@ -89,13 +96,20 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
 
               <div className="mt-3 flex items-center justify-between gap-4">
                 <div>
-                  <div className="text-3xl font-bold text-(--black)">{c.fraction}</div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="lg:text-2xl text-lg font-bold leading-none text-(--black)">
+                      {c.fraction.split('/')[0]?.trim()}
+                    </span>
+                    <span className="text-lg leading-none text-(--muted)">
+                      / {c.fraction.split('/')[1]?.trim()}
+                    </span>
+                  </div>
                   <div className="mt-1 text-xs text-(--darkGray)">
                     {c.label}
                   </div>
                 </div>
 
-                <CircularPercent percent={c.percent} size={118} />
+                <CircularPercent percent={c.percent} size={125} />
               </div>
             </div>
           ))}
