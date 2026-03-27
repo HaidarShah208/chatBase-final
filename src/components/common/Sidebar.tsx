@@ -210,6 +210,9 @@ export function Sidebar() {
               <button
                 key={label}
                 type="button"
+                onClick={() => {
+                  if (key === 'settings') navigate('/settings')
+                }}
                 className={cn(
                   'flex items-center rounded-xl py-2 text-left text-base font-medium text-(--black) hover:border hover:border-(--border)',
                   state.isCollapsed ? 'justify-center px-2' : 'gap-2 px-3',

@@ -9,6 +9,7 @@ import NotFound from '../pages/notFound/notFound'
 import { AnalyticsPage } from '../pages/analytics/analytics'
 import { ChatLogsPage } from '../pages/chatLogs/chatLogs'
 import { NotificationsPage } from '../pages/notifications/notifications'
+import { SettingsPage } from '../pages/settings/settings'
 
 export function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ export function AppRoutes() {
           <Route path="leads" element={<LeadsPage />} />
           <Route path="analytics" element={<AnalyticsPage />} />
           <Route path="notifications" element={<NotificationsPage />} />
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
           <Route path="*" element={<NotFound />} />
       </Routes>
