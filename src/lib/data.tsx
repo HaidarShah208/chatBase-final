@@ -1,8 +1,13 @@
 import { Mail, Plug, Shield, TriangleAlert, Zap } from "lucide-react"
-import type { AnalyticsGraphsData, KnowledgeDoc, NotificationItem } from "../types/types"
+import type { AnalyticsGraphsData, KnowledgeDoc, NotificationItem, NotificationPreference } from "../types/types"
 import { SIDEBAR_NAV_LINKS } from "./static"
 import bot from '../assets/bot.svg'
 import message from '../assets/message.svg'
+import agent from '../assets/bot.svg'
+import envalop from '../assets/envalop.svg'
+import wallet from '../assets/wallet.svg'
+
+
 export const initialCollapsed =
 typeof window !== 'undefined' ? window.innerWidth < 640 : false
 
@@ -172,5 +177,64 @@ export const NOTIFICATIONS: NotificationItem[] = [
     title: 'New device login detected on your account',
     ago: '20h ago',
     icon: <Shield className="h-5 w-5 text-(--white)" />,
+  },
+]
+
+
+export const SETTINGS_TABS = [
+  { key: 'general', label: 'General' },
+  { key: 'plans', label: 'Plans' },
+  { key: 'billing', label: 'Billing' },
+  { key: 'notifications', label: 'Notifications' },
+] as const
+
+export const NOTIFICATION_ITEMS: NotificationPreference[] = [
+  {
+    key: 'leads',
+    title: 'Leads',
+    description: 'Receive email with daily leads',
+    icon: <img src={envalop} alt="" />,
+    iconBg: 'bg-[#2B7FFF]',
+    enabled: true,
+  },
+  {
+    key: 'conversations',
+    title: 'Conversations',
+    description: 'Receive email with daily conversations',
+    icon: <img src={message} className="w-7 h-7"  alt="" />,
+    iconBg: 'bg-[#00C950]',
+    enabled: false,
+  },
+  {
+    key: 'agent',
+    title: 'Agent',
+    description: 'Notify when agent goes offline',
+    icon: <img src={agent} className="w-7 h-7" alt="" />,
+    iconBg: 'bg-[#AD46FF]',
+    enabled: true,
+  },
+  {
+    key: 'integration',
+    title: 'Integration',
+    description: 'Notify when CRM sync fails',
+    icon: <Plug className="h-7 w-7 text-(--white)" />,
+    iconBg: 'bg-[#FF6900]',
+    enabled: false,
+  },
+  {
+    key: 'usage',
+    title: 'Usage & Billing',
+    description: 'Notify when usage reaches 80%',
+    icon: <img src={wallet} alt="" />,
+    iconBg: 'bg-[#F6339A]',
+    enabled: true,
+  },
+  {
+    key: 'system',
+    title: 'System',
+    description: 'Notify when login from a new device occurs',
+    icon: <Shield className="h-5 w-5 text-(--white)" />,
+    iconBg: 'bg-[#615FFF]',
+    enabled: true,
   },
 ]

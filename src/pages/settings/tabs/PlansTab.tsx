@@ -38,7 +38,7 @@ export function PlansTab() {
       <h2 className="pt-6 text-lg font-bold text-(--black) md:text-xl lg:text-3xl">Plans</h2>
       <p className="mt-1 text-xs text-(--black) md:text-sm">Choose the perfect plan for your needs</p>
 
-      <div className="mt-4 grid grid-cols-1 lg:grid-cols-3 lg:gap-0 gap-6">
+      <div className="mt-7 grid grid-cols-1 lg:grid-cols-3 lg:gap-0 gap-6">
         {PLAN_CARDS.map((plan) => (
           <div
             key={plan.key}
@@ -48,11 +48,11 @@ export function PlansTab() {
                 : 'border-(--border) bg-(--white) text-(--black)'
             }`}
           >
-            {plan.featured ? (
+            {plan.featured && (
               <span className="absolute -top-10.5 left-1/2 -translate-x-1/2 rounded-md bg-(--black) px-4.5 py-1.5 text-base font-semibold leading-none tracking-[0.32em] text-(--white)">
                 POPULAR
               </span>
-            ) : null}
+            )}
 
             <div
               className={`px-5 py-7 ${

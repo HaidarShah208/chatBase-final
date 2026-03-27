@@ -1,4 +1,5 @@
 import type { JSX, ReactNode } from "react"
+import type { SETTINGS_TABS } from "../lib/data"
 
 export type Agent = {
     id: string
@@ -181,4 +182,15 @@ export type NotificationItem = {
   ago: string
   unread?: boolean
   icon: JSX.Element
+}
+
+export type SettingsTabKey = (typeof SETTINGS_TABS)[number]['key']
+
+export type NotificationPreference = {
+  key: string
+  title: string
+  description: string
+  icon: ReactNode
+  iconBg: string
+  enabled: boolean
 }

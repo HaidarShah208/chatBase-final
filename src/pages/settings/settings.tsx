@@ -5,15 +5,8 @@ import { BillingTab } from './tabs/BillingTab'
 import { GeneralTab } from './tabs/GeneralTab'
 import { NotificationsTab } from './tabs/NotificationsTab'
 import { PlansTab } from './tabs/PlansTab'
-
-const SETTINGS_TABS = [
-  { key: 'general', label: 'General' },
-  { key: 'plans', label: 'Plans' },
-  { key: 'billing', label: 'Billing' },
-  { key: 'notifications', label: 'Notifications' },
-] as const
-
-type SettingsTabKey = (typeof SETTINGS_TABS)[number]['key']
+import type { SettingsTabKey } from '../../types/types'
+import { SETTINGS_TABS } from '../../lib/data'
 
 export function SettingsPage() {
   const [activeTab, setActiveTab] = useState<SettingsTabKey>('general')
