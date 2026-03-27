@@ -3,6 +3,7 @@ import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 import type { AnalyticsGraphsData } from '../../types/types'
 import { TrendingUp } from 'lucide-react'
 import curve from '../../assets/analytics/curve.svg'
+import pieChart from '../../assets/analytics/pieChart.svg'
 
 const BLUE = '#0EA5FF'
 const BLUE_DEEP = '#0284C7'
@@ -48,7 +49,7 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
         <div className="rounded-xl border border-(--border) bg-(--white) p-4 lg:col-span-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-(--black)">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-(--black)">
                 <span><TrendingUp className='w-5 h-5'/> </span>
               </div>
               <div>
@@ -81,7 +82,7 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
                 <div className="flex h-7 w-7 items-center justify-center rounded-md bg-(--brand) text-(--brand)">
                 <img src={curve} className='w-4 h-4'/>
                 </div>
-                <span className="rounded-md bg-(--primarySoft) px-2 py-1 text-xs border border-(--brand) font-semibold text-(--brand)">
+                <span className="rounded-md bg-(--primarySoft) px-2.5 py-0.5 text-xs border border-(--brandBorder) font-semibold text-(--brand)">
                   {c.percent}%
                 </span>
               </div>
@@ -102,8 +103,11 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
       </div>
 
       <div className="rounded-xl border border-(--border) bg-(--white) p-4">
-        <div className="flex items-center justify-between">
-          <div className="text-sm font-semibold text-(--black)">Credits used per agent</div>
+        <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-(--black)">
+                <span><img src={pieChart} className='w-5 h-5'/> </span>
+              </div>
+          <div className="lg:text-2xl md:text-lg text-base font-semibold text-(--black)">Credits used per agent</div>
         </div>
 
         <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -134,13 +138,13 @@ export function AnalyticsGraphs({ data }: { data: AnalyticsGraphsData }) {
             {data.creditsUsedPerAgent.map((d, i) => (
               <div
                 key={`${d.name}-${i}`}
-                className="flex items-center justify-between rounded-lg bg-(--background) px-3 py-2"
+                className="flex items-center justify-between rounded-lg bg-(--primarySoft) px-3 py-2"
               >
                 <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-(--brand)" />
-                  <span className="text-xs font-medium text-(--black)">{d.name}</span>
+                  <span className="h-3 w-3 rounded-full bg-(--brand)" />
+                  <span className="text-sm font-medium text-(--black)">{d.name}</span>
                 </div>
-                <span className="text-xs font-semibold text-(--darkGray)">{d.value}</span>
+                <span className="text-xs font-semibold border border-(--border) bg-white p-1.5 rounded-md text-(--black)">{d.value}</span>
               </div>
             ))}
           </div>
