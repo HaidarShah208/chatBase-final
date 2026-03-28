@@ -1,7 +1,6 @@
-import { Mail, Save, SaveAll } from 'lucide-react'
+import { CreditCard, Mail, Plus, SaveAll } from 'lucide-react'
 
 import { Input } from '../../../components/ui/Input'
-import { Button } from '../../../components/ui/Button'
 
 export function BillingTab() {
   return (
@@ -39,7 +38,7 @@ export function BillingTab() {
       </div>
 
       <div className="mt-4 rounded-xl border border-(--border) p-3 sm:px-4 sm:py-7" >
-        <div className="mb-5 flex items-center gap-2 text-2xl font-semibold text-(--black)">
+        <div className="mb-5 flex items-center gap-2 md:text-2xl text-lg font-semibold text-(--black)">
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-(--black)">
             <Mail className="h-4 w-4 text-(--white)" />
           </span>
@@ -59,6 +58,47 @@ export function BillingTab() {
             <SaveAll className="h-3.5 w-3.5" />
             save
           </button>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl border border-(--border) bg-(--white) p-3 sm:p-5">
+        <div className="flex flex-col gap-4 border-b border-(--border) pb-4 sm:flex-row sm:items-start sm:justify-between sm:pb-5">
+          <div className="flex items-start gap-3">
+            <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-(--black) sm:h-9 sm:w-9">
+              <CreditCard className="h-4 w-4 text-(--white)" />
+            </span>
+            <div>
+              <h3 className="text-lg font-semibold text-(--black) md:text-2xl">Billing method</h3>
+              <p className="mt-0.5 text-base text-(--black)">Manage your payment methods</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            className="inline-flex h-10 w-full shrink-0 items-center justify-center gap-2.5 rounded-md bg-(--brand) lg:px-12 md:px-8 px-4 text-sm font-medium text-(--white) sm:w-auto"
+          >
+            <Plus className="h-4 w-4" />
+            Add
+          </button>
+        </div>
+
+        <div className="mt-4 rounded-lg bg-(--background) px-3 py-2.5 sm:px-4">
+          <div className="grid grid-cols-3 gap-2 text-xs uppercase tracking-wide text-(--grayish) md:text-sm">
+            <span className="text-left">Brand</span>
+            <span className="text-center">Number (Last 4)</span>
+            <span className="text-right">Exp. Date</span>
+          </div>
+        </div>
+
+        <div className="flex min-h-[220px] flex-col items-center justify-center px-4 py-10 sm:min-h-[260px] sm:py-14">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-(--bg-primary) sm:h-20 sm:w-20">
+            <CreditCard className="h-7 w-7 text-(--black) sm:h-9 sm:w-9" strokeWidth={1.25} />
+          </span>
+          <p className="pt-4 text-center text-sm  text-(--black) sm:text-base">
+            No payment methods added yet
+          </p>
+          <p className="mt-1 text-center text-xs text-(--grayish) sm:text-sm">
+            Add a credit card to manage billing
+          </p>
         </div>
       </div>
     </div>
