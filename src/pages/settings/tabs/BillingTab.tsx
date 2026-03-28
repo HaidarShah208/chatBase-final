@@ -1,5 +1,6 @@
 import { CreditCard, Mail, Plus, SaveAll } from 'lucide-react'
-
+import billingRecipt from '../../../assets/settings/billingReceipt.svg'
+import recipt from '../../../assets/settings/Receipt.svg'
 import { Input } from '../../../components/ui/Input'
 
 export function BillingTab() {
@@ -62,14 +63,14 @@ export function BillingTab() {
       </div>
 
       <div className="mt-4 rounded-xl border border-(--border) bg-(--white) p-3 sm:p-5">
-        <div className="flex flex-col gap-4 border-b border-(--border) pb-4 sm:flex-row sm:items-start sm:justify-between sm:pb-5">
+        <div className="-mx-3 flex flex-col gap-4 border-b border-(--border) px-3 pb-4 sm:-mx-5 sm:px-5 sm:flex-row sm:items-start sm:justify-between sm:pb-5">
           <div className="flex items-start gap-3">
             <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-(--black) sm:h-9 sm:w-9">
               <CreditCard className="h-4 w-4 text-(--white)" />
             </span>
             <div>
               <h3 className="text-lg font-semibold text-(--black) md:text-2xl">Billing method</h3>
-              <p className="mt-0.5 text-base text-(--black)">Manage your payment methods</p>
+              <p className="mt-0.5 md:text-sm text-xs text-(--black)">Manage your payment methods</p>
             </div>
           </div>
           <button
@@ -98,6 +99,41 @@ export function BillingTab() {
           </p>
           <p className="mt-1 text-center text-xs text-(--grayish) sm:text-sm">
             Add a credit card to manage billing
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl border border-(--border) bg-(--white) p-3 sm:p-5">
+        <div className="-mx-3 border-b border-(--border) px-3 pb-4 sm:-mx-5 sm:px-5 sm:pb-5">
+          <div className="flex items-start gap-3">
+            <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-(--black) sm:h-9 sm:w-9">
+              <img src={billingRecipt} className="h-4 w-4  " />
+            </span>
+            <div>
+              <h3 className="text-lg font-semibold text-(--black) md:text-2xl">Billing history</h3>
+              <p className="mt-0.5 text-xs text-(--black) md:text-sm">View and download past invoices</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 overflow-x-auto rounded-lg bg-(--background) px-3 py-2.5 sm:px-4">
+          <div className="grid min-w-[280px] grid-cols-4 gap-2 text-xs uppercase tracking-wide text-(--grayish) sm:min-w-0 md:text-sm">
+            <span className="text-left">Invoice Number</span>
+            <span className="text-center">Created</span>
+            <span className="text-center">Amount</span>
+            <span className="text-right">Status</span>
+          </div>
+        </div>
+
+        <div className="flex min-h-[220px] flex-col items-center justify-center px-4 py-10 sm:min-h-[260px] sm:py-14">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-(--bg-primary) sm:h-20 sm:w-20">
+            <img src={recipt} className="h-7 w-7 text-(--black) sm:h-9 sm:w-9" />
+          </span>
+          <p className="pt-4 text-center text-sm font-medium text-(--black) sm:text-base">
+            No invoices yet
+          </p>
+          <p className="mt-1 text-center text-xs text-(--grayish) sm:text-sm">
+            Your billing history will appear here
           </p>
         </div>
       </div>
