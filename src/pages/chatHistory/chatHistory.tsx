@@ -8,26 +8,30 @@ import message from '../../assets/chatHistory/message.svg'
 
 export function ChatHistoryPage() {
   const headers = [
-    { key: 'time', label: 'Time' },
-    { key: 'cost', label: 'Cost' },
-    { key: 'sessionId', label: 'Session ID' },
-    { key: 'status', label: 'Session Status' },
-    { key: 'sentiment', label: 'User Sentiment' },
-    { key: 'from', label: 'From' },
-    { key: 'to', label: 'To' },
+    { key: 'time', label: 'Time', align: 'center' as const },
+    { key: 'amount', label: 'Amount', align: 'center' as const },
+    { key: 'sessionId', label: 'ID', align: 'center' as const },
+    { key: 'status', label: 'Status', align: 'center' as const },
+    {
+      key: 'description',
+      label: 'Description',
+      align: 'center' as const,
+      className: 'truncate',
+    },
+    { key: 'startDate', label: 'Start Date', align: 'center' as const },
+    { key: 'endDate', label: 'End Date', align: 'center' as const },
   ]
 
   const rows: Array<Record<string, ReactNode>> = [
     {
+      id: '1',
       time: '2:32 AM',
-      cost: '$58',
+      amount: '$58',
       sessionId: '009235',
-      status: (
-        <span className="font-semibold text-[#22C55E]">Active</span>
-      ),
-      sentiment: 'Loremipsum',
-      from: '18-12-2025',
-      to: '18-03-2026',
+      status: <span className="font-semibold text-emerald-500">Active</span>,
+      description: 'Loremipsum',
+      startDate: '18-12-2025',
+      endDate: '18-03-2026',
     },
   ]
 
@@ -42,8 +46,8 @@ export function ChatHistoryPage() {
         </h1>
       </header>
 
-      <section className="mt-7 flex min-h-[90vh]  flex-col overflow-hidden rounded-xl border border-(--border) bg-(--white)">
-        <div className="flex flex-col gap-3 px-3 py-3 sm:flex-row sm:items-center sm:justify-between">
+      <section className="mt-7 flex min-h-[90vh] flex-col overflow-hidden rounded-xl border border-(--border) bg-(--white)">
+        <div className="flex flex-col gap-3 border border-(--border) md:pb-4 pb-3 border-b px-3 py-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
@@ -86,20 +90,20 @@ export function ChatHistoryPage() {
           </div>
         </div>
 
-        <div className="flex-1">
+        <div className="flex md:mt-4 mt-3 min-h-0 flex-1 flex-col pb-4">
           <DataTable
+            variant="cards"
             headers={headers}
             rows={rows}
+            rowKey={(row) => String(row.id)}
             emptyState={
-              <div className="flex min-h-[90vh] items-center justify-center px-4">
-                <div className="flex flex-col items-center justify-center text-center">
-                  <span className="flex h-13 w-13 items-center justify-center rounded-full border border-(--border) bg-(--background) text-(--darkGray)">
-                    <img src={message} className="h-7 w-7" alt="" />
-                  </span>
-                  <div className="mt-4 text-sm text-(--black)">No chat sessions yet</div>
-                  <div className="mt-1 text-xs text-(--grayish)">
-                    Chat sessions will appear here once they are created
-                  </div>
+              <div className="flex flex-col items-center justify-center text-center">
+                <span className="flex h-13 w-13 items-center justify-center rounded-full border border-(--border) bg-(--background) text-(--darkGray)">
+                  <img src={message} className="h-7 w-7" alt="" />
+                </span>
+                <div className="mt-4 text-sm text-(--black)">No chat sessions yet</div>
+                <div className="mt-1 text-xs text-(--grayish)">
+                  Chat sessions will appear here once they are created
                 </div>
               </div>
             }

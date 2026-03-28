@@ -105,6 +105,8 @@ type DataTableHeader = {
   key: string
   label: string
   className?: string
+  /** Column alignment for `variant="cards"` desktop row and header strip */
+  align?: 'left' | 'center' | 'right'
 }
 
 type DataTableRow = Record<string, ReactNode>
@@ -115,10 +117,14 @@ export type DataTableProps = {
   rowKey?: (row: DataTableRow, index: number) => string
   emptyState?: ReactNode
   emptyColSpan?: number
+  /** `cards`: rounded row cards + responsive header strip (default: classic `<table>`) */
+  variant?: 'table' | 'cards'
   className?: string
   tableClassName?: string
   headerClassName?: string
   bodyClassName?: string
+  /** Extra classes on the scrollable list wrapper when `variant="cards"` */
+  cardsListClassName?: string
 }
 
 export type AnalyticsGraphsData = {
