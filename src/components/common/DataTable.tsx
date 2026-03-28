@@ -64,7 +64,7 @@ export function DataTable({
                   className="w-full rounded-lg border border-(--border) px-5 py-2 text-sm text-(--black) sm:px-2"
                 >
                   <div
-                    className="hidden min-w-0 items-center gap-3 text-sm md:grid md:gap-4"
+                    className="hidden min-w-0 items-center gap-3 text-sm text-(--black) md:grid md:gap-4"
                     style={{ gridTemplateColumns: gridTemplate }}
                   >
                     {headers.map((header) => {
@@ -73,9 +73,9 @@ export function DataTable({
                         <div
                           key={header.key}
                           className={cn(
-                            'min-w-0',
+                            'min-w-0 text-(--black)',
                             headerAlignClass(header.align),
-                            header.className,
+                            header.cellClassName,
                           )}
                           title={typeof cell === 'string' ? cell : undefined}
                         >

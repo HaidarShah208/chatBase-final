@@ -16,7 +16,7 @@ export function ChatHistoryPage() {
       key: 'description',
       label: 'Description',
       align: 'center' as const,
-      className: 'truncate',
+      cellClassName: 'truncate',
     },
     { key: 'startDate', label: 'Start Date', align: 'center' as const },
     { key: 'endDate', label: 'End Date', align: 'center' as const },

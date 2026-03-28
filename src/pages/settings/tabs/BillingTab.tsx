@@ -1,9 +1,33 @@
+import type { ReactNode } from 'react'
 import { CreditCard, Mail, Plus, SaveAll } from 'lucide-react'
 import billingRecipt from '../../../assets/settings/billingReceipt.svg'
 import recipt from '../../../assets/settings/Receipt.svg'
+import { DataTable } from '../../../components/common/DataTable'
 import { Input } from '../../../components/ui/Input'
+import { billingHistoryHeaders, billingMethodHeaders } from '../../../lib/data'
+
+
 
 export function BillingTab() {
+  const paymentMethodRows: Array<Record<string, ReactNode>> = [
+    {
+      id: '1',
+      brand: 'Lorem ipsum',
+      lastFour: '2345',
+      exp: '12/2026',
+    },
+  ]
+
+  const billingHistoryRows: Array<Record<string, ReactNode>> = [
+    {
+      id: '1',
+      invoiceNumber: '10017878',
+      created: '2345',
+      amount: '$500',
+      status: <span className="font-semibold text-emerald-500">Done</span>,
+    },
+  ]
+
   return (
     <div>
       <h2 className="pt-6 text-lg font-bold text-(--black) md:text-xl lg:text-3xl">Billing</h2>
@@ -82,25 +106,39 @@ export function BillingTab() {
           </button>
         </div>
 
-        <div className="mt-4 rounded-lg bg-(--background) px-3 py-2.5 sm:px-4">
-          <div className="grid grid-cols-3 gap-2 text-xs uppercase tracking-wide text-(--grayish) md:text-sm">
-            <span className="text-left">Brand</span>
-            <span className="text-center">Number (Last 4)</span>
-            <span className="text-right">Exp. Date</span>
-          </div>
-        </div>
+        {paymentMethodRows.length > 0 ? (
+          <DataTable
+            variant="cards"
+            className="mt-4 min-h-70"
+            headers={billingMethodHeaders}
+            rows={paymentMethodRows}
+            rowKey={(row) => String(row.id)}
+            headerClassName="rounded-lg"
+            cardsListClassName="!px-0"
+          />
+        ) : (
+          <>
+            <div className="mt-4 rounded-lg bg-(--background) px-3 py-2.5 sm:px-4">
+              <div className="grid grid-cols-3 gap-2 text-xs uppercase tracking-wide text-(--grayish) md:text-sm">
+                <span className="text-left">Brand</span>
+                <span className="text-center">Number (Last 4)</span>
+                <span className="text-right">Exp. Date</span>
+              </div>
+            </div>
 
-        <div className="flex min-h-[220px] flex-col items-center justify-center px-4 py-10 sm:min-h-[260px] sm:py-14">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-(--bg-primary) sm:h-20 sm:w-20">
-            <CreditCard className="h-7 w-7 text-(--black) sm:h-9 sm:w-9" strokeWidth={1.25} />
-          </span>
-          <p className="pt-4 text-center text-sm  text-(--black) sm:text-base">
-            No payment methods added yet
-          </p>
-          <p className="mt-1 text-center text-xs text-(--grayish) sm:text-sm">
-            Add a credit card to manage billing
-          </p>
-        </div>
+            <div className="flex min-h-[220px] flex-col items-center justify-center px-4 py-10 sm:min-h-[260px] sm:py-14">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-(--bg-primary) sm:h-20 sm:w-20">
+                <CreditCard className="h-7 w-7 text-(--black) sm:h-9 sm:w-9" strokeWidth={1.25} />
+              </span>
+              <p className="pt-4 text-center text-sm  text-(--black) sm:text-base">
+                No payment methods added yet
+              </p>
+              <p className="mt-1 text-center text-xs text-(--grayish) sm:text-sm">
+                Add a credit card to manage billing
+              </p>
+            </div>
+          </>
+        )}
       </div>
 
       <div className="mt-4 rounded-xl border border-(--border) bg-(--white) p-3 sm:p-5">
@@ -116,26 +154,40 @@ export function BillingTab() {
           </div>
         </div>
 
-        <div className="mt-4 overflow-x-auto rounded-lg bg-(--background) px-3 py-2.5 sm:px-4">
-          <div className="grid min-w-[280px] grid-cols-4 gap-2 text-xs uppercase tracking-wide text-(--grayish) sm:min-w-0 md:text-sm">
-            <span className="text-left">Invoice Number</span>
-            <span className="text-center">Created</span>
-            <span className="text-center">Amount</span>
-            <span className="text-right">Status</span>
-          </div>
-        </div>
+        {billingHistoryRows.length > 0 ? (
+          <DataTable
+            variant="cards"
+            className="mt-4 min-h-70"
+            headers={billingHistoryHeaders}
+            rows={billingHistoryRows}
+            rowKey={(row) => String(row.id)}
+            headerClassName="rounded-lg"
+            cardsListClassName="!px-0"
+          />
+        ) : (
+          <>
+            <div className="mt-4 overflow-x-auto rounded-lg bg-(--background) px-3 py-2.5 sm:px-4">
+              <div className="grid min-w-[280px] grid-cols-4 gap-2 text-xs uppercase tracking-wide text-(--grayish) sm:min-w-0 md:text-sm">
+                <span className="text-left">Invoice Number</span>
+                <span className="text-center">Created</span>
+                <span className="text-center">Amount</span>
+                <span className="text-right">Status</span>
+              </div>
+            </div>
 
-        <div className="flex min-h-[220px] flex-col items-center justify-center px-4 py-10 sm:min-h-[260px] sm:py-14">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-(--bg-primary) sm:h-20 sm:w-20">
-            <img src={recipt} className="h-7 w-7 text-(--black) sm:h-9 sm:w-9" />
-          </span>
-          <p className="pt-4 text-center text-sm font-medium text-(--black) sm:text-base">
-            No invoices yet
-          </p>
-          <p className="mt-1 text-center text-xs text-(--grayish) sm:text-sm">
-            Your billing history will appear here
-          </p>
-        </div>
+            <div className="flex min-h-[220px] flex-col items-center justify-center px-4 py-10 sm:min-h-[260px] sm:py-14">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-(--bg-primary) sm:h-20 sm:w-20">
+                <img src={recipt} className="h-7 w-7 text-(--black) sm:h-9 sm:w-9" alt="" />
+              </span>
+              <p className="pt-4 text-center text-sm font-medium text-(--black) sm:text-base">
+                No invoices yet
+              </p>
+              <p className="mt-1 text-center text-xs text-(--grayish) sm:text-sm">
+                Your billing history will appear here
+              </p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   )

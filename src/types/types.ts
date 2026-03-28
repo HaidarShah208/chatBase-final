@@ -104,7 +104,10 @@ export type PaginationProps = {
 type DataTableHeader = {
   key: string
   label: string
+  /** Classes for header label cells only (`variant="cards"` strip + table `<th>`) */
   className?: string
+  /** Classes for body cells only (`variant="cards"`); use for e.g. `truncate` */
+  cellClassName?: string
   /** Column alignment for `variant="cards"` desktop row and header strip */
   align?: 'left' | 'center' | 'right'
 }

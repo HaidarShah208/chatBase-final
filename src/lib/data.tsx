@@ -238,3 +238,51 @@ export const NOTIFICATION_ITEMS: NotificationPreference[] = [
     enabled: true,
   },
 ]
+
+export const billingHistoryHeaders = [
+  {
+    key: 'invoiceNumber',
+    label: 'Invoice Number',
+    align: 'left' as const,
+    className: 'text-(--grayish) font-medium normal-case !tracking-normal',
+  },
+  {
+    key: 'created',
+    label: 'Created',
+    align: 'center' as const,
+    className: 'text-(--grayish) font-medium normal-case !tracking-normal',
+  },
+  {
+    key: 'amount',
+    label: 'Amount',
+    align: 'center' as const,
+    className: 'text-(--grayish) font-medium normal-case !tracking-normal',
+  },
+  {
+    key: 'status',
+    label: 'Status',
+    align: 'right' as const,
+    className: 'text-(--grayish) font-medium normal-case !tracking-normal',
+  },
+]
+
+export const billingMethodHeaders = [
+  {
+    key: 'brand',
+    label: 'Brand',
+    align: 'left' as const,
+    className: 'text-(--grayish) font-medium normal-case !tracking-normal',
+  },
+  {
+    key: 'lastFour',
+    label: 'Number (Last 4)',
+    align: 'center' as const,
+    className: 'text-(--grayish) font-medium normal-case !tracking-normal',
+  },
+  {
+    key: 'exp',
+    label: 'Exp. Date',
+    align: 'right' as const,
+    className: 'text-(--grayish) font-medium normal-case !tracking-normal',
+  },
+]
