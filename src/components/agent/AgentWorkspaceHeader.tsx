@@ -1,52 +1,54 @@
-import type { ReactNode } from 'react'
-import { History, Info, Rocket } from 'lucide-react'
-import copy from '../../assets/agentWorkSpace/copy.svg'
+import { History, Rocket } from 'lucide-react'
+
 import agentImg from '../../assets/dashboard/agent.png'
+import copyIcon from '../../assets/agentWorkSpace/copy.svg'
+import infoIcon from '../../assets/agentWorkSpace/info.svg'
+import analysis from '../../assets/agentWorkSpace/analysis.svg'
 import { Button } from '../ui/Button'
 import { cn } from '../../lib/cn'
-import type { AgentWorkspaceHeaderProps } from '../../types/types'
-
-
+import type { AgentWorkspaceHeaderProps, AgentWorkspaceMetaEntry } from '../../types/types'
 
 const META = {
   agentId: 'agt_8f2c1b9e4d7a3m6k5p0q',
   retellLlmId: 'llm_rt_4n8x2v1w9j5h3k7c',
   pricing: '$0.015/msg',
   tokenRange: '65–295 tokens',
-}
+} as const
 
-function MetaCopy({ value, label }: { value: string; label: string }) {
-  return (
-    <span className="inline-flex max-w-full items-center gap-1 text-[11px] text-(--black) sm:text-xs">
-      <span className="shrink-0 font-medium text-(--black)">{label}</span>
-      <span className="truncate text-(--black) text-xs">{value}</span>
-      <button
-        type="button"
-        className="shrink-0 rounded p-0.5 text-(--black) hover:bg-(--background) hover:text-(--black)"
-        aria-label={`Copy ${label}`}
-        onClick={() => navigator.clipboard?.writeText(value)}
-      >
-        <img src={copy} className="h-3 w-3" />
-      </button>
-    </span>
-  )
-}
+const WORKSPACE_META_ENTRIES: AgentWorkspaceMetaEntry[] = [
+  {
+    id: 'agent-id',
+    label: 'Agent ID:',
+    value: META.agentId,
+    valueCompact: true,
+    action: { type: 'copy', ariaLabel: 'Copy Agent ID' },
+  },
+  {
+    id: 'retell-llm',
+    label: 'Retell LLM ID:',
+    value: META.retellLlmId,
+    valueCompact: true,
+    action: { type: 'copy', ariaLabel: 'Copy Retell LLM ID' },
+  },
+  {
+    id: 'pricing',
+    value: META.pricing,
+    action: { type: 'icon', src: analysis, ariaLabel: 'About pricing' },
+  },
+  {
+    id: 'token-range',
+    value: META.tokenRange,
+    action: { type: 'icon', src: infoIcon, ariaLabel: 'About token range' },
+  },
+]
 
-function MetaInfo({ children, label }: { children: ReactNode; label: string }) {
-  return (
-    <span className="inline-flex items-center gap-1 text-[11px] text-(--black) sm:text-xs">
-      <span className="font-medium text-(--black)">{label}</span>
-      <span className="text-(--black)">{children}</span>
-      <button
-        type="button"
-        className="rounded p-0.5 text-(--black) hover:bg-(--background) hover:text-(--black)"
-        aria-label={`About ${label}`}
-      >
-        <Info className="h-3 w-3" />
-      </button>
-    </span>
-  )
-}
+const metaRowClass =
+  'inline-flex max-w-full items-center gap-1 text-[11px] text-(--black) sm:text-xs'
+const metaLabelClass = 'shrink-0 font-medium text-(--black)'
+const metaValueCopyClass = 'truncate text-(--black) text-xs'
+const metaValuePlainClass = 'text-(--black)'
+const metaActionBtnClass =
+  'shrink-0 rounded p-0.5 text-(--black) hover:bg-(--background) hover:text-(--black)'
 
 export function AgentWorkspaceHeader({ className }: AgentWorkspaceHeaderProps) {
   return (
@@ -62,14 +64,41 @@ export function AgentWorkspaceHeader({ className }: AgentWorkspaceHeaderProps) {
             <img src={agentImg} alt="" className="h-7 w-6 object-contain brightness-0 invert" />
           </div>
           <div className="min-w-0">
-            <h1 className="md:text-xl text-lg font-bold tracking-tight text-(--black) lg:text-3xl">
+            <h1 className="text-lg font-bold tracking-tight text-(--black) md:text-xl lg:text-3xl">
               Single-Prompt Agent
             </h1>
+             
             <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-2">
-              <MetaCopy label="Agent ID" value={META.agentId} />
-              <MetaCopy label="Retell LLM ID" value={META.retellLlmId} />
-              <MetaInfo label="Pricing">{META.pricing}</MetaInfo>
-              <MetaInfo label="Token range">{META.tokenRange}</MetaInfo>
+              {WORKSPACE_META_ENTRIES.map((entry) => (
+                <span key={entry.id} className={metaRowClass}>
+                  {entry.label != null ? (
+                    <span className={metaLabelClass}>{entry.label}</span>
+                  ) : null}
+                  <span
+                    className={entry.valueCompact ? metaValueCopyClass : metaValuePlainClass}
+                  >
+                    {entry.value}
+                  </span>
+                  {entry.action.type === 'copy' ? (
+                    <button
+                      type="button"
+                      className={metaActionBtnClass}
+                      aria-label={entry.action.ariaLabel}
+                      onClick={() => navigator.clipboard?.writeText(entry.value)}
+                    >
+                      <img src={copyIcon} className="h-3 w-3" alt="" />
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className={metaActionBtnClass}
+                      aria-label={entry.action.ariaLabel}
+                    >
+                      <img src={entry.action.src} className="h-3 w-3" alt="" />
+                    </button>
+                  )}
+                </span>
+              ))}
             </div>
           </div>
         </div>

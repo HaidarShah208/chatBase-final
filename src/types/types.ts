@@ -194,6 +194,18 @@ export type NotificationItem = {
   icon: JSX.Element
 }
 
+/** One chip in the agent workspace header metadata row (copy or custom icon action). */
+export type AgentWorkspaceMetaEntry = {
+  id: string
+  value: string
+  label?: string
+  /** Matches current copy-row value styling (`truncate text-xs`) when true */
+  valueCompact?: boolean
+  action:
+    | { type: 'copy'; ariaLabel: string }
+    | { type: 'icon'; src: string; ariaLabel: string }
+}
+
 export type AgentWorkspaceHeaderProps = {
   agentId: string
   className?: string
