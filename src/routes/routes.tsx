@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { DashboardLayout } from '../layouts/DashboardLayout'
+import { AgentWorkspacePage } from '../pages/agent/AgentWorkspacePage'
 import { AgentsPage } from '../pages/dashboard/dashboard'
 import { ChatHistoryPage } from '../pages/chatHistory/chatHistory'
 import { KnowledgeBasePage } from '../pages/knowledge/knowledgeBase'
@@ -15,6 +16,7 @@ export function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="agents/:agentId" element={<AgentWorkspacePage />} />
         <Route element={<DashboardLayout />}>
           <Route index element={<AgentsPage />} />
           <Route path="knowledge" element={<KnowledgeBasePage />} />

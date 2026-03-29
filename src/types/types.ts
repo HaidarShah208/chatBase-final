@@ -48,6 +48,7 @@ export type AgentCardProps = {
   name: string
   editedAt: string
   className?: string
+  onSelect?: () => void
 }
 
 export type KnowledgeDoc = {
@@ -191,6 +192,11 @@ export type NotificationItem = {
   ago: string
   unread?: boolean
   icon: JSX.Element
+}
+
+export type AgentWorkspaceHeaderProps = {
+  agentId: string
+  className?: string
 }
 
 export type SettingsTabKey = (typeof SETTINGS_TABS)[number]['key']

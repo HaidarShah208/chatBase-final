@@ -3,9 +3,16 @@ import { cn } from '../../lib/cn'
 import type { AgentCardProps } from '../../types/types'
 import { MoreVertical } from 'lucide-react'
 
-export function AgentCard({ name, editedAt, className }: AgentCardProps) {
+export function AgentCard({ name, editedAt, className, onSelect }: AgentCardProps) {
   return (
-    <Card className={cn('h-[244px] w-full   overflow-hidden rounded-[20px] border border-(--border) bg-(--white)', className)}>
+    <Card
+      onClick={onSelect}
+      className={cn(
+        'h-[244px] w-full overflow-hidden rounded-[20px] border border-(--border) bg-(--white)',
+        onSelect && 'cursor-pointer transition hover:border-(--brand)/40 hover:shadow-sm',
+        className,
+      )}
+    >
       <div className="relative h-[144px] m-1 rounded-[14px] bg-linear-to-b from-(--primaryColor) to-(--brand)">
         <div className="absolute  inset-x-3 w-[82%] top-7 bottom-0 rounded-t-[12px]  bg-(--white) mx-auto">
         <div className="mb-1 rounded-t-[12px] bg-(--background)">
@@ -30,8 +37,13 @@ export function AgentCard({ name, editedAt, className }: AgentCardProps) {
           </div>
           <div className="flex justify-center items-center">
 
-          <button type="button" className=" pt-2  leading-none text-(--black)">
-            <MoreVertical className='w-3 h-3'/>
+          <button
+            type="button"
+            className="pt-2 leading-none text-(--black)"
+            onClick={(e) => e.stopPropagation()}
+            aria-label="More options"
+          >
+            <MoreVertical className="h-3 w-3" />
           </button>
           </div>
         </div>
