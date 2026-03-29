@@ -266,6 +266,12 @@ export const billingHistoryHeaders = [
   },
 ]
 
+export const COLUMN_TEXT_ALIGN = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right',
+} as const satisfies Record<'left' | 'center' | 'right', string>
+
 export const billingMethodHeaders = [
   {
     key: 'brand',

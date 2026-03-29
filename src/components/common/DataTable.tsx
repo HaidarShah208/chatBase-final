@@ -2,12 +2,9 @@ import { Fragment } from 'react'
 
 import { cn } from '../../lib/cn'
 import type { DataTableProps } from '../../types/types'
+import { COLUMN_TEXT_ALIGN } from '../../lib/data'
 
-function headerAlignClass(align?: 'left' | 'center' | 'right') {
-  if (align === 'left') return 'text-left'
-  if (align === 'right') return 'text-right'
-  return 'text-center'
-}
+
 
 export function DataTable({
   headers,
@@ -43,7 +40,7 @@ export function DataTable({
                 {headers.map((header) => (
                   <span
                     key={header.key}
-                    className={cn(headerAlignClass(header.align), header.className)}
+                    className={cn(COLUMN_TEXT_ALIGN[header.align ?? 'center'], header.className)}
                   >
                     {header.label}
                   </span>
@@ -74,7 +71,7 @@ export function DataTable({
                           key={header.key}
                           className={cn(
                             'min-w-0 text-(--black)',
-                            headerAlignClass(header.align),
+                            COLUMN_TEXT_ALIGN[header.align ?? 'center'],
                             header.cellClassName,
                           )}
                           title={typeof cell === 'string' ? cell : undefined}
