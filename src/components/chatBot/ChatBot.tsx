@@ -30,7 +30,7 @@ export function ChatBot({
   return (
     <div
       className={cn(
-        'flex w-[40%] h-[80vh] min-h-[600px] max-w-auto flex-col overflow-hidden rounded-2xl border border-(--border) bg-(--white) shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)]',
+        'flex w-[41%] h-[80vh] min-h-[600px] max-w-auto flex-col overflow-hidden rounded-2xl border border-(--border) bg-(--white) shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)]',
         className,
       )}
     >
@@ -43,8 +43,8 @@ export function ChatBot({
           <Braces className="h-4 w-4" />
         </button>
       </header>
-
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--border) bg-(--white) px-2 py-2 sm:px-3">
+      <div className="flex flex-col flex-1 min-h-0 bg-linear-to-b from-[#F8FAFC80] to-(--white)">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--border)  px-2 py-2 sm:px-3">
         <div className="flex min-w-0 flex-wrap items-center gap-1.5">
           <button
             type="button"
@@ -71,7 +71,7 @@ export function ChatBot({
         </div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-y-auto bg-(--white) p-4">
+      <div className="min-h-0 flex-1 overflow-y-auto  p-4">
         <div className="max-w-[70%] rounded-2xl border border-(--border) bg-(--white) px-5 py-4 shadow-sm">
           <div className="flex items-center gap-1">
             <span
@@ -120,6 +120,7 @@ export function ChatBot({
           {poweredByText}
         </p>
       </div>
+    </div>
     </div>
   )
 }

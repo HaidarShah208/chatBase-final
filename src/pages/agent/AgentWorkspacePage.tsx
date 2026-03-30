@@ -26,28 +26,31 @@ export function AgentWorkspacePage() {
           collapsed={!sidebarOpen}
         />
 
-        <div
-          className="relative flex min-h-[calc(100vh-180px)] min-w-0 flex-1 flex-col"
-          style={{
-            background: 'linear-gradient(180deg, var(--secondaryBlue) 0%, var(--white) 42%, var(--white) 100%)',
-          }}
-        >
-          <button
-            type="button"
-            onClick={() => setSidebarOpen((o) => !o)}
-            className="absolute left-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-(--border) bg-(--white) text-(--black) shadow-sm transition hover:bg-(--background)"
-            aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
-            aria-pressed={sidebarOpen}
+        <div className="min-w-0 flex-1 bg-(--white) p-2 sm:p-3">
+          <div
+            className="relative flex min-h-[calc(100vh-188px)] w-full flex-col overflow-hidden rounded-xl border border-[#D7E7F5]"
+            style={{
+              background:
+                'radial-gradient(120% 90% at 50% 100%, #4CB5FF 0%, #89CCF8 34%, #A9DBFA 55%, #CDE9FB 78%, #E9F5FE 100%)',
+            }}
           >
-            <PanelLeft className="h-4 w-4" />
-          </button>
+            <button
+              type="button"
+              onClick={() => setSidebarOpen((o) => !o)}
+              className="absolute left-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-(--border) bg-(--white) text-(--black) shadow-sm transition hover:bg-(--background)"
+              aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+              aria-pressed={sidebarOpen}
+            >
+              <PanelLeft className="h-4 w-4" />
+            </button>
 
-          <div className="flex flex-1 items-center justify-center px-4 py-16 sm:px-8">
-            <ChatBot
-              className=" shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
-              templateName="Unsaved Test Template"
-              poweredByText="Powered by Your AI Agent"
-            />
+            <div className="flex flex-1 items-center justify-center px-4 py-16 sm:px-8">
+              <ChatBot
+                className="shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
+                templateName="Unsaved Test Template"
+                poweredByText="Powered by Your AI Agent"
+              />
+            </div>
           </div>
         </div>
       </div>
