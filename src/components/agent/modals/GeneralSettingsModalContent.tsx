@@ -85,7 +85,7 @@ export function GeneralSettingsModalContent({ agentId }: GeneralSettingsModalCon
             <div className="min-w-0 flex-1">
               <div className="flex flex-row justify-between">
 
-              <div className="flex items-center gap-1.5 text-lg font-bold text-(--primaryRed)">
+              <div className="flex items-center gap-1.5 text-sm md:text-lg font-bold text-(--primaryRed)">
                 <AlertTriangle className="h-5 w-5 shrink-0" aria-hidden />
                 Delete all conversations
               </div>
@@ -111,7 +111,7 @@ export function GeneralSettingsModalContent({ agentId }: GeneralSettingsModalCon
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
             <div className="min-w-0 flex-1">
             <div className="flex flex-row justify-between">
-              <div className="flex items-center gap-1.5 text-lg font-bold text-(--primaryRed)">
+              <div className="flex items-center gap-1.5 ext-sm md:text-lg font-bold text-(--primaryRed)">
                 <AlertTriangle className="h-5 w-5 shrink-0" aria-hidden />
                 Delete agent
               </div>
