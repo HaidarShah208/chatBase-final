@@ -8,6 +8,9 @@ type ActionDropdownItem = {
   label: string
   icon?: ReactNode
   onSelect?: () => void
+  itemClassName?: string
+  labelClassName?: string
+  iconClassName?: string
 }
 
 type ActionDropdownRootProps = {
@@ -66,10 +69,11 @@ function ActionDropdownContent({
                 className={cn(
                   'flex cursor-pointer select-none items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-(--black)',
                   'outline-none hover:bg-(--background) data-highlighted:bg-(--background)',
+                  item.itemClassName,
                 )}
               >
-                {item.icon ? <span className="text-(--black)">{item.icon}</span> : null}
-                <span>{item.label}</span>
+                {item.icon ? <span className={cn('text-(--black)', item.iconClassName)}>{item.icon}</span> : null}
+                <span className={item.labelClassName}>{item.label}</span>
               </DropdownMenu.Item>
             ))}
       </DropdownMenu.Content>

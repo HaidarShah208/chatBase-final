@@ -1,11 +1,25 @@
 import { useState } from 'react'
-import { ArrowUpRight, ChevronDown, Minus, Plus, Puzzle, Save, Settings, SquarePen, Trash2 } from 'lucide-react'
+import {
+  ArrowUpRight,
+  Calendar1,
+  CalendarSearch,
+  MessageCircleX,
+  Minus,
+  Plus,
+  Puzzle,
+  Save,
+  Settings,
+  SquarePen,
+  Trash2,
+} from 'lucide-react'
 import { ActionDropdown } from '../ui/ActionDropdown'
 import { Button } from '../ui/Button'
 import { InputRange } from '../common/InputRange'
 import { Modal } from '../ui/Modal'
 import { McpAddModalContent } from './McpAddModalContent'
 import type { AgentWorkspaceSectionContentProps } from '../../types/types'
+import slider from '../../assets/agentWorkSpace/slidder.svg'
+
 
 export function AgentWorkspaceSectionContent({
   sectionId,
@@ -63,17 +77,51 @@ export function AgentWorkspaceSectionContent({
           </div>
         </div>
 
-        <Button
-          type="button"
-          variant="outline"
-          size="md"
-          fullWidth
-          onClick={() => setMcpModalOpen(true)}
-          className="mt-3 h-9 rounded-md font-medium"
-        >
-          <Plus className="h-4 w-4" aria-hidden />
-          Add 
-        </Button>
+        <ActionDropdown.Root>
+          <ActionDropdown.Trigger>
+            <Button
+              type="button"
+              variant="outline"
+              size="md"
+              fullWidth
+              className="mt-3 h-9 rounded-md font-medium"
+            >
+              <Plus className="h-4 w-4" aria-hidden />
+              Add
+            </Button>
+          </ActionDropdown.Trigger>
+          <ActionDropdown.Content
+            align="start"
+            contentClassName="w-full p-2"
+            items={[
+              {
+                key: 'end-chat',
+                label: 'End Chat',
+                icon: <MessageCircleX className="h-4 w-4" />,
+                labelClassName: 'font-normal',
+              },
+              {
+                key: 'check-calendar',
+                label: 'Check Calendar Availability (Cal.com)',
+                icon: <CalendarSearch className="h-4 w-4" />,
+                labelClassName: 'font-normal',
+              },
+              {
+                key: 'book-calendar',
+                label: 'Book on the Calendar (Cal.com)',
+                icon: <Calendar1 className="h-4 w-4" />,
+                labelClassName: 'font-normal',
+              },
+              {
+                key: 'custom-function',
+                label: 'Custom Function',
+                icon: <img src={slider} alt="" className="h-4 w-4" />,
+                labelClassName: 'font-normal',
+                itemClassName: 'mt-1 rounded-none border-t border-(--border) pt-2',
+              },
+            ]}
+          />
+        </ActionDropdown.Root>
       </div>
     )
   }
@@ -428,23 +476,15 @@ export function AgentWorkspaceSectionContent({
 
   if (sectionId === 'settings') {
     return (
-      <div className="border-t border-(--border) bg-(--white) px-3 py-3">
-        <div className="rounded-xl border border-(--border) bg-(--white) px-5 py-5">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-(--black)">
-                <Settings className="h-5 w-5 text-(--white)" aria-hidden />
-              </span>
-              <h3 className="text-base font-semibold text-(--black)">Settings</h3>
-            </div>
-            <ChevronDown className="h-4 w-4 text-(--muted)" aria-hidden />
-          </div>
+      <div className="bg-(--white) px-3 pb-20">
+        <div className=" bg-(--white) ps-13 ">
+         
 
-          <div className="mt-6 space-y-4">
-            <p className="text-base font-medium text-(--black)">General</p>
-            <p className="text-base font-medium text-(--black)">AI</p>
-            <p className="text-base font-medium text-(--black)">Chat Interface</p>
-            <p className="text-base font-medium text-(--black)">Custom Domains</p>
+          <div className="space-y-2">
+            <div className="text-sm text-(--black)">General</div>
+            <div className="text-sm text-(--black)">AI</div>
+            <div className="text-sm text-(--black)">Chat Interface</div>
+            <div className="text-sm text-(--black)">Custom Domains</div>
           </div>
         </div>
       </div>

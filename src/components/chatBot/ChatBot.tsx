@@ -30,7 +30,7 @@ export function ChatBot({
   return (
     <div
       className={cn(
-        'flex w-[420px] h-full max-h-full flex-col overflow-hidden rounded-2xl border border-(--border) bg-(--white) shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)]',
+        'flex w-[420px]  h-full max-h-full flex-col overflow-hidden rounded-2xl border border-(--border) bg-(--white) shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)]',
         className,
       )}
     >
