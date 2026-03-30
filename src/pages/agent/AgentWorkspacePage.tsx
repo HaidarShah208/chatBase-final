@@ -44,7 +44,7 @@ export function AgentWorkspacePage() {
 
           <div className="flex flex-1 items-center justify-center px-4 py-16 sm:px-8">
             <ChatBot
-              className="max-w-[420px] shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
+              className=" shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
               templateName="Unsaved Test Template"
               poweredByText="Powered by Your AI Agent"
             />

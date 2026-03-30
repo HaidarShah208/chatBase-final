@@ -223,6 +223,16 @@ export type AgentWorkspaceSidebarProps = {
   className?: string
 }
 
+export type AgentBotProps = {
+  className?: string
+  chatTitle?: string
+  templateName?: string
+  welcomeMessage?: string
+  welcomeTime?: string
+  poweredByText?: string
+  inputPlaceholder?: string
+}
+
 
 export type SettingsTabKey = (typeof SETTINGS_TABS)[number]['key']
 
