@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import {
   ArrowUpRight,
   Calendar1,
@@ -16,7 +17,9 @@ import { ActionDropdown } from '../ui/ActionDropdown'
 import { Button } from '../ui/Button'
 import { InputRange } from '../common/InputRange'
 import { Modal } from '../ui/Modal'
-import { McpAddModalContent } from './McpAddModalContent'
+import { GeneralSettingsModalContent } from './modals/GeneralSettingsModalContent'
+import { McpAddModalContent } from './modals/McpAddModalContent'
+import { cn } from '../../lib/cn'
 import type { AgentWorkspaceSectionContentProps } from '../../types/types'
 import slider from '../../assets/agentWorkSpace/slidder.svg'
 
@@ -38,6 +41,9 @@ export function AgentWorkspaceSectionContent({
     chatAnalyzed: false,
   })
   const [mcpModalOpen, setMcpModalOpen] = useState(false)
+  const [generalModalOpen, setGeneralModalOpen] = useState(false)
+  const [activeSettingsKey, setActiveSettingsKey] = useState<string | null>(null)
+  const { agentId = '' } = useParams<{ agentId: string }>()
   const timeoutMin = 1
   const timeoutMax = 120
   const kbChunkMin = 1
@@ -450,7 +456,7 @@ export function AgentWorkspaceSectionContent({
           open={mcpModalOpen}
           onOpenChange={setMcpModalOpen}
           title="Add MCP"
-          className="max-w-[860px]"
+          className="max-w-[800px]"
           footer={
             <>
               <Button
@@ -477,16 +483,42 @@ export function AgentWorkspaceSectionContent({
   if (sectionId === 'settings') {
     return (
       <div className="bg-(--white) px-3 pb-20">
-        <div className=" bg-(--white) ps-13 ">
-         
-
-          <div className="space-y-2">
-            <div className="text-sm text-(--black)">General</div>
-            <div className="text-sm text-(--black)">AI</div>
-            <div className="text-sm text-(--black)">Chat Interface</div>
-            <div className="text-sm text-(--black)">Custom Domains</div>
+        <div className="bg-(--white) ps-13">
+          <div className="space-y-3">
+            <button
+              type="button"
+              onClick={() => {
+                setActiveSettingsKey('general')
+                setGeneralModalOpen(true)
+              }}
+              className={cn(
+                'flex w-full cursor-pointer items-center justify-between gap-2 text-left text-sm transition focus:outline-none focus-visible:ring-0',
+                activeSettingsKey === 'general' ? 'font-medium text-(--brand)' : 'text-(--black)',
+              )}
+              aria-pressed={activeSettingsKey === 'general'}
+            >
+              <span className=''>General</span>
+              {activeSettingsKey === 'general' ? (
+                <span className="h-2 w-2 rounded-full bg-(--brand)" aria-hidden />
+              ) : null}
+            </button>
+            <div className="rounded-lg  text-sm text-(--black)">AI</div>
+            <div className="rounded-lg  text-sm text-(--black)">Chat Interface</div>
+            <div className="rounded-lg  text-sm text-(--black)">Custom Domains</div>
           </div>
         </div>
+
+        <Modal
+          open={generalModalOpen}
+          onOpenChange={(open) => {
+            setGeneralModalOpen(open)
+            if (!open) setActiveSettingsKey(null)
+          }}
+          title="General"
+          className="max-w-[800px] max-h-[90vh] "
+        >
+          <GeneralSettingsModalContent agentId={agentId} />
+        </Modal>
       </div>
     )
   }

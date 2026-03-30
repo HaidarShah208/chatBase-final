@@ -216,6 +216,10 @@ export type Section = {
   icon: LucideIcon
 }
 
+export type GeneralSettingsModalContentProps = {
+  agentId: string
+}
+
 export type AgentWorkspaceSidebarProps = {
   openSectionId: string | null
   onToggleSection: (id: string) => void
