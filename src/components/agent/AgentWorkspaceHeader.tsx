@@ -59,7 +59,7 @@ export function AgentWorkspaceHeader({ className }: AgentWorkspaceHeaderProps) {
       )}
     >
       <div className="min-w-0 flex-1 ">
-        <div className="flex flex-wrap items-start gap-3">
+        <div className="flex md:flex-row items-start gap-3">
           <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl bg-(--black)">
             <img src={agentImg} alt="" className="h-7 w-6 object-contain brightness-0 invert" />
           </div>

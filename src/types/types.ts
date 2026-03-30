@@ -1,5 +1,6 @@
 import type { JSX, ReactNode } from "react"
 import type { SETTINGS_TABS } from "../lib/data"
+import type { LucideIcon } from "lucide-react"
 
 export type Agent = {
     id: string
@@ -194,12 +195,10 @@ export type NotificationItem = {
   icon: JSX.Element
 }
 
-/** One chip in the agent workspace header metadata row (copy or custom icon action). */
 export type AgentWorkspaceMetaEntry = {
   id: string
   value: string
   label?: string
-  /** Matches current copy-row value styling (`truncate text-xs`) when true */
   valueCompact?: boolean
   action:
     | { type: 'copy'; ariaLabel: string }
@@ -210,6 +209,20 @@ export type AgentWorkspaceHeaderProps = {
   agentId: string
   className?: string
 }
+
+export type Section = {
+  id: string
+  label: string
+  icon: LucideIcon
+}
+
+export type AgentWorkspaceSidebarProps = {
+  openSectionId: string | null
+  onToggleSection: (id: string) => void
+  collapsed?: boolean
+  className?: string
+}
+
 
 export type SettingsTabKey = (typeof SETTINGS_TABS)[number]['key']
 

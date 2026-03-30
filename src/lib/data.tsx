@@ -1,5 +1,5 @@
-import { Mail, Plug, Shield, TriangleAlert, Zap } from "lucide-react"
-import type { AnalyticsGraphsData, KnowledgeDoc, NotificationItem, NotificationPreference } from "../types/types"
+import { Database, Mail, MessageSquare, Plug, Puzzle, Settings, Shield, TriangleAlert, Webhook, Zap } from "lucide-react"
+import type { AnalyticsGraphsData, KnowledgeDoc, NotificationItem, NotificationPreference, Section } from "../types/types"
 import { SIDEBAR_NAV_LINKS } from "./static"
 import bot from '../assets/bot.svg'
 import message from '../assets/message.svg'
@@ -264,6 +264,15 @@ export const billingHistoryHeaders = [
     align: 'right' as const,
     className: 'text-(--grayish) font-medium normal-case !tracking-normal',
   },
+]
+
+export const SECTIONS: Section[] = [
+  { id: 'actions', label: 'Actions/ Functions', icon: Puzzle },
+  { id: 'chat', label: 'Chat Settings', icon: MessageSquare },
+  { id: 'knowledge', label: 'Knowledge Base', icon: Database },
+  { id: 'webhook', label: 'Webhook Settings', icon: Webhook },
+  { id: 'mcps', label: 'MCPs', icon: Puzzle },
+  { id: 'settings', label: 'Settings', icon: Settings },
 ]
 
 export const COLUMN_TEXT_ALIGN = {

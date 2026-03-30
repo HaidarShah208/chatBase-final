@@ -1,38 +1,17 @@
-import type { LucideIcon } from 'lucide-react'
 import {
   ChevronDown,
-  Database,
   Home,
-  MessageSquare,
-  Puzzle,
-  Settings,
-  Webhook,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { cn } from '../../lib/cn'
+import { SECTIONS } from '../../lib/data'
+import type { AgentWorkspaceSidebarProps } from '../../types/types'
 
-type Section = {
-  id: string
-  label: string
-  icon: LucideIcon
-}
+const itemShell =
+  'overflow-hidden rounded-2xl border border-(--border) bg-(--white) shadow-none'
 
-const SECTIONS: Section[] = [
-  { id: 'actions', label: 'Actions/ Functions', icon: Puzzle },
-  { id: 'chat', label: 'Chat Settings', icon: MessageSquare },
-  { id: 'knowledge', label: 'Knowledge Base', icon: Database },
-  { id: 'webhook', label: 'Webhook Settings', icon: Webhook },
-  { id: 'mcps', label: 'MCPs', icon: Puzzle },
-  { id: 'settings', label: 'Settings', icon: Settings },
-]
 
-type AgentWorkspaceSidebarProps = {
-  openSectionId: string | null
-  onToggleSection: (id: string) => void
-  collapsed?: boolean
-  className?: string
-}
 
 export function AgentWorkspaceSidebar({
   openSectionId,
@@ -47,42 +26,44 @@ export function AgentWorkspaceSidebar({
   return (
     <aside
       className={cn(
-        'flex w-[min(100%,280px)] shrink-0 flex-col border-r border-(--border) bg-(--white) px-3 py-4 lg:w-72',
+        'flex w-[min(100%,280px)] shrink-0 flex-col border-r border-(--border) bg-(--white) px-3 py-4 lg:w-80',
         className,
       )}
     >
       <Link
         to="/"
-        className="mb-3 flex items-center gap-2 px-3 py-2.5 text-sm font-medium text-(--black) transition hover:bg-(--background)"
+        className={cn(
+          'mb-3 flex items-center gap-3 px-2 pt-4 text-sm font-medium text-(--black) transition',
+        )}
       >
-        <Home className="h-4 w-4 shrink-0 text-(--grayish)" />
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-(--lightGray)">
+          <Home className="h-5 w-5 text-(--black)" aria-hidden />
+        </span>
         Back to home
       </Link>
 
-      <nav className="flex flex-col gap-2" aria-label="Agent configuration">
+      <nav className="flex flex-col gap-3" aria-label="Agent configuration">
         {SECTIONS.map((section) => {
           const Icon = section.icon
           const open = openSectionId === section.id
           return (
-            <div
-              key={section.id}
-              className="overflow-hidden rounded-xl border border-(--border) bg-(--white)"
-            >
+            <div key={section.id} className={itemShell}>
               <button
                 type="button"
                 onClick={() => onToggleSection(section.id)}
-                className="flex w-full items-center justify-between gap-2 px-3 py-2.5 text-left text-sm font-medium text-(--black) transition hover:bg-(--background)"
+                className="flex w-full items-center gap-3 px-2 py-2 text-left text-sm font-medium text-(--black) transition hover:bg-(--background)"
                 aria-expanded={open}
               >
-                <span className="flex min-w-0 items-center gap-2">
-                  <Icon className="h-4 w-4 shrink-0 text-(--grayish)" aria-hidden />
-                  <span className="truncate">{section.label}</span>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-(--black)">
+                  <Icon className="h-5 w-5 text-(--white)" strokeWidth={1.75} aria-hidden />
                 </span>
+                <span className="min-w-0 flex-1 truncate">{section.label}</span>
                 <ChevronDown
                   className={cn(
-                    'h-4 w-4 shrink-0 text-(--grayish) transition-transform',
+                    'h-4 w-4 shrink-0 text-(--muted) opacity-80 transition-transform',
                     open && 'rotate-180',
                   )}
+                  aria-hidden
                 />
               </button>
               {open && (
