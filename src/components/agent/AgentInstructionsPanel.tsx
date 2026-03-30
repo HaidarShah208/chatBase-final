@@ -2,7 +2,7 @@ import { ChevronDown, Globe, Sparkles } from 'lucide-react'
 
 export function AgentInstructionsPanel() {
   return (
-    <div className="flex h- flex-col overflow-hidden  bg-(--white)">
+    <div className="flex h-full flex-col overflow-hidden  bg-(--white)">
       <div className="flex items-center gap-2 border-b border-(--border) px-4 py-3">
         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-(--black)">
           <Sparkles className="h-4 w-4 text-(--white)" aria-hidden />

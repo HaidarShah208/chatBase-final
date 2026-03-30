@@ -30,7 +30,7 @@ export function AgentWorkspacePage() {
 
         <div className="min-w-0 flex-1 bg-(--background) px-2 sm:px-3">
           <div
-            className="relative flex min-h-[calc(100vh-188px)] w-full overflow-hidden rounded-xl border border-[#D7E7F5]"
+            className="relative flex h-[calc(100vh)] w-full overflow-hidden rounded-xl border border-[#D7E7F5]"
             style={{
               background:
                 'radial-gradient(120% 90% at 50% 100%, #4CB5FF 0%, #89CCF8 34%, #A9DBFA 55%, #CDE9FB 78%, #E9F5FE 100%)',
@@ -47,19 +47,19 @@ export function AgentWorkspacePage() {
             </button>
 
             <div
-              className="h-full shrink-0 overflow-hidden bg-(--white) transition-all duration-300 ease-in-out"
+              className="h-full flex shrink-0 overflow-hidden bg-(--white) transition-all duration-300 ease-in-out"
               style={{
                 width: instructionsOpen ? '50%' : '0%',
                 opacity: instructionsOpen ? 1 : 0,
               }}
             >
-              <div className="h-full w-full">
+              <div className="h-full w-full flex">
                 <AgentInstructionsPanel />
               </div>
             </div>
 
             <div
-              className="flex flex-1 items-center justify-center py-16 transition-all duration-300 ease-in-out"
+              className="flex flex-1 items-stretch justify-center py-10"
               style={{
                 paddingLeft: instructionsOpen ? '2rem' : '0',
                 paddingRight: '2rem',
