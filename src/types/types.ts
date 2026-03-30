@@ -223,6 +223,11 @@ export type AgentWorkspaceSidebarProps = {
   className?: string
 }
 
+export type AgentWorkspaceSectionContentProps = {
+  sectionId: string
+  sectionLabel: string
+}
+
 export type AgentBotProps = {
   className?: string
   chatTitle?: string

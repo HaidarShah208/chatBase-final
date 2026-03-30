@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 import { cn } from '../../lib/cn'
 import { SECTIONS } from '../../lib/data'
+import { AgentWorkspaceSectionContent } from './AgentWorkspaceSidebarContent'
 import type { AgentWorkspaceSidebarProps } from '../../types/types'
 
 const itemShell =
@@ -26,7 +27,7 @@ export function AgentWorkspaceSidebar({
   return (
     <aside
       className={cn(
-        'flex w-[min(100%,280px)] shrink-0 flex-col border-r  border-t rounded-r-xl border-(--border) bg-(--white) px-3 py-4 lg:w-80',
+        'flex w-[min(100%,280px)] shrink-0 flex-col border-r  border-t rounded-r-xl border-(--border) bg-(--white) px-3 py-4 lg:w-96',
         className,
       )}
     >
@@ -51,7 +52,7 @@ export function AgentWorkspaceSidebar({
               <button
                 type="button"
                 onClick={() => onToggleSection(section.id)}
-                className="flex w-full items-center gap-3 px-2 py-2 text-left text-sm font-medium text-(--black) transition hover:bg-(--background)"
+                className="flex w-full items-center gap-3 px-2 py-2 text-left text-sm font-medium text-(--black) transition cursor-pointer"
                 aria-expanded={open}
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-(--black)">
@@ -66,12 +67,12 @@ export function AgentWorkspaceSidebar({
                   aria-hidden
                 />
               </button>
-              {open && (
-                <div className="border-t border-(--border) bg-(--lightGray) px-3 py-3 text-xs leading-relaxed text-(--grayish)">
-                  Configure {section.label.toLowerCase()} for this agent. Connect your tools and
-                  preferences here.
-                </div>
-              )}
+              {open ? (
+                <AgentWorkspaceSectionContent
+                  sectionId={section.id}
+                  sectionLabel={section.label}
+                />
+              ) : null}
             </div>
           )
         })}
