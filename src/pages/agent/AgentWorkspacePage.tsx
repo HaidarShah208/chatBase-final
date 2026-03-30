@@ -16,17 +16,17 @@ export function AgentWorkspacePage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-(--white)">
+    <div className="flex min-h-screen flex-col ">
       <AgentWorkspaceHeader agentId={agentId} />
 
-      <div className="flex min-h-0 flex-1">
+      <div className="flex min-h-0 bg-(--background) flex-1">
         <AgentWorkspaceSidebar
           openSectionId={openSectionId}
           onToggleSection={toggleSection}
           collapsed={!sidebarOpen}
         />
 
-        <div className="min-w-0 flex-1 bg-(--white) p-2 sm:p-3">
+        <div className="min-w-0 flex-1 bg-(--background)  px-2 sm:px-3">
           <div
             className="relative flex min-h-[calc(100vh-188px)] w-full flex-col overflow-hidden rounded-xl border border-[#D7E7F5]"
             style={{

@@ -26,7 +26,7 @@ export function AgentWorkspaceSidebar({
   return (
     <aside
       className={cn(
-        'flex w-[min(100%,280px)] shrink-0 flex-col border-r border-(--border) bg-(--white) px-3 py-4 lg:w-80',
+        'flex w-[min(100%,280px)] shrink-0 flex-col border-r  border-t rounded-r-xl border-(--border) bg-(--white) px-3 py-4 lg:w-80',
         className,
       )}
     >

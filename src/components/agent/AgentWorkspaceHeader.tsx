@@ -54,7 +54,7 @@ export function AgentWorkspaceHeader({ className }: AgentWorkspaceHeaderProps) {
   return (
     <header
       className={cn(
-        'flex flex-col gap-4 border-b border-(--border) bg-(--background) px-4 py-4 sm:flex-row sm:items-start sm:justify-between sm:px-6 sm:py-5',
+        'flex flex-col gap-4 bg-(--background) px-4 py-4 sm:flex-row sm:items-start sm:justify-between sm:px-6 sm:py-5',
         className,
       )}
     >
