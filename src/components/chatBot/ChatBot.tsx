@@ -30,7 +30,7 @@ export function ChatBot({
   return (
     <div
       className={cn(
-        'flex w-[45%] max-w-auto flex-col overflow-hidden rounded-2xl border border-(--border) bg-(--white) shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)]',
+        'flex w-[40%] h-[80vh] min-h-[600px] max-w-auto flex-col overflow-hidden rounded-2xl border border-(--border) bg-(--white) shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)]',
         className,
       )}
     >
@@ -93,7 +93,7 @@ export function ChatBot({
             type="button"
             className={cn(
               iconBtn,
-              'h-12 w-12 rounded-md border border-(--border) bg-(--lightGray) hover:bg-(--background)',
+              'h-12 w-12 rounded-md cursor-pointer border border-(--border) bg-(--lightGray) hover:bg-(--background)',
             )}
             aria-label="Reset chat"
           >
@@ -103,7 +103,7 @@ export function ChatBot({
             <input
               type="text"
               placeholder={inputPlaceholder}
-              className="h-12 w-full rounded-md border border-(--border) bg-(--lightGray) py-2 pl-3 pr-10 text-sm text-(--black) placeholder:text-(--grayish) focus:border-(--brand) focus:outline-none focus:ring-1 focus:ring-(--brand)"
+              className="h-12 w-full rounded-md border border-(--border) bg-(--lightGray) py-2 pl-3 pr-10 text-sm text-(--black) placeholder:text-(--grayish)   focus:outline-none focus:ring-0"
               aria-label="Message input"
             />
             <button
