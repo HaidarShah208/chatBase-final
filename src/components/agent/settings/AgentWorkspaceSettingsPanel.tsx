@@ -6,18 +6,19 @@ import { GeneralSettingsModalContent } from '../modals/GeneralSettingsModalConte
 import { AgentSettingsNavList } from './AgentSettingsNavList'
 import type { AgentSettingsNavItem } from './agentSettingsNav'
 import { AiSettingsModal } from '../modals/AiSettingsModal'
+import { ChatInterfaceModal } from '../modals/ChatInterfaceModal'
 
 export function AgentWorkspaceSettingsPanel() {
   const { agentId = '' } = useParams<{ agentId: string }>()
   const [activeKey, setActiveKey] = useState<string | null>(null)
-  const [openModal, setOpenModal] = useState<'general' | 'ai' | null>(null)
+  const [openModal, setOpenModal] = useState<'general' | 'ai' | 'chat' | null>(null)
 
   function handleSelect(item: AgentSettingsNavItem) {
     setActiveKey(item.key)
     if (item.modal) setOpenModal(item.modal)
   }
 
-  function handleModalClose(which: 'general' | 'ai', open: boolean) {
+  function handleModalClose(which: 'general' | 'ai' | 'chat', open: boolean) {
     if (!open) {
       setOpenModal((prev) => (prev === which ? null : prev))
       setActiveKey(null)
@@ -46,6 +47,15 @@ export function AgentWorkspaceSettingsPanel() {
         className="max-h-[90vh] w-[95vw] max-w-[800px]"
       >
         <AiSettingsModal />
+      </Modal>
+
+      <Modal
+        open={openModal === 'chat'}
+        onOpenChange={(open) => handleModalClose('chat', open)}
+        title="Chat interface"
+        className="max-h-[90vh] w-[95vw] max-w-[1200px]"
+      >
+        <ChatInterfaceModal />
       </Modal>
     </div>
   )

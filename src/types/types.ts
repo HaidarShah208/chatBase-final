@@ -38,7 +38,6 @@ export type SidebarNavItem = {
 }
 
 export type SidebarState = {
-  // Can be either a parent nav key (e.g. "agents") or a child key (e.g. "activity-child")
   activeKey: string
   activityOpen: boolean
   isCollapsed: boolean
@@ -106,11 +105,8 @@ export type PaginationProps = {
 type DataTableHeader = {
   key: string
   label: string
-  /** Classes for header label cells only (`variant="cards"` strip + table `<th>`) */
   className?: string
-  /** Classes for body cells only (`variant="cards"`); use for e.g. `truncate` */
   cellClassName?: string
-  /** Column alignment for `variant="cards"` desktop row and header strip */
   align?: 'left' | 'center' | 'right'
 }
 
@@ -122,13 +118,11 @@ export type DataTableProps = {
   rowKey?: (row: DataTableRow, index: number) => string
   emptyState?: ReactNode
   emptyColSpan?: number
-  /** `cards`: rounded row cards + responsive header strip (default: classic `<table>`) */
   variant?: 'table' | 'cards'
   className?: string
   tableClassName?: string
   headerClassName?: string
   bodyClassName?: string
-  /** Extra classes on the scrollable list wrapper when `variant="cards"` */
   cardsListClassName?: string
 }
 
@@ -136,9 +130,9 @@ export type AnalyticsGraphsData = {
   usageHistory: Array<{ label: string; value: number }>
   circularTopRight: Array<{
     icon: ReactNode
-    percent: number // 0..100
-    fraction: string // e.g. "1 / 2"
-    label: string // e.g. "Credits used"
+    percent: number 
+    fraction: string 
+    label: string 
   }>
   creditsUsedPerAgent: Array<{ name: string; value: number }>
 }
@@ -242,6 +236,20 @@ export type AgentBotProps = {
   inputPlaceholder?: string
 }
 
+type Align = 'left' | 'center' | 'right'
+
+export type FooterToolbarProps = {
+  onBold: () => void
+  onItalic: () => void
+  onUnderline: () => void
+  onLink: () => void
+  onAlignChange: (align: Align) => void
+  align: Align
+  onUndo: () => void
+  onRedo: () => void
+  canUndo: boolean
+  canRedo: boolean
+}
 
 export type SettingsTabKey = (typeof SETTINGS_TABS)[number]['key']
 
