@@ -388,7 +388,7 @@ export function ChatInterfaceModal() {
             }}
           >
             <ChatBot
-              className="h-full lg:w-[80%] shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
+              className="h-full min-h-[500px] lg:w-[80%] shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
               welcomeMessage={initialMessages.split('\n')[0] ?? ''}
               inputPlaceholder={messagePlaceholder}
             />

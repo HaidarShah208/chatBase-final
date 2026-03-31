@@ -7,18 +7,19 @@ import { AgentSettingsNavList } from './AgentSettingsNavList'
 import type { AgentSettingsNavItem } from './agentSettingsNav'
 import { AiSettingsModal } from '../modals/AiSettingsModal'
 import { ChatInterfaceModal } from '../modals/ChatInterfaceModal'
+import { CustomDomainsModal } from '../modals/CustomDomainsModal'
 
 export function AgentWorkspaceSettingsPanel() {
   const { agentId = '' } = useParams<{ agentId: string }>()
   const [activeKey, setActiveKey] = useState<string | null>(null)
-  const [openModal, setOpenModal] = useState<'general' | 'ai' | 'chat' | null>(null)
+  const [openModal, setOpenModal] = useState<'general' | 'ai' | 'chat' | 'domains' | null>(null)
 
   function handleSelect(item: AgentSettingsNavItem) {
     setActiveKey(item.key)
     if (item.modal) setOpenModal(item.modal)
   }
 
-  function handleModalClose(which: 'general' | 'ai' | 'chat', open: boolean) {
+  function handleModalClose(which: 'general' | 'ai' | 'chat' | 'domains', open: boolean) {
     if (!open) {
       setOpenModal((prev) => (prev === which ? null : prev))
       setActiveKey(null)
@@ -56,6 +57,15 @@ export function AgentWorkspaceSettingsPanel() {
         className="max-h-[90vh] w-[95vw] max-w-[1200px]"
       >
         <ChatInterfaceModal />
+      </Modal>
+
+      <Modal
+        open={openModal === 'domains'}
+        onOpenChange={(open) => handleModalClose('domains', open)}
+        title="Custom Domains"
+        className="max-h-[90vh] w-[95vw] max-w-[900px]"
+      >
+        <CustomDomainsModal />
       </Modal>
     </div>
   )
