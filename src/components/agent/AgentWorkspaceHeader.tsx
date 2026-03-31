@@ -1,10 +1,12 @@
 import { History, Rocket } from 'lucide-react'
+import { useState } from 'react'
 
 import agentImg from '../../assets/dashboard/agent.png'
 import copyIcon from '../../assets/agentWorkSpace/copy.svg'
 import infoIcon from '../../assets/agentWorkSpace/info.svg'
 import analysis from '../../assets/agentWorkSpace/analysis.svg'
 import { Button } from '../ui/Button'
+import { PublishModal } from './modals/PublishModal'
 import { cn } from '../../lib/cn'
 import type { AgentWorkspaceHeaderProps, AgentWorkspaceMetaEntry } from '../../types/types'
 
@@ -51,6 +53,8 @@ const metaActionBtnClass =
   'shrink-0 rounded p-0.5 text-(--black) hover:bg-(--background) hover:text-(--black)'
 
 export function AgentWorkspaceHeader({ className }: AgentWorkspaceHeaderProps) {
+  const [publishOpen, setPublishOpen] = useState(false)
+
   return (
     <header
       className={cn(
@@ -116,11 +120,13 @@ export function AgentWorkspaceHeader({ className }: AgentWorkspaceHeaderProps) {
           type="button"
           variant="primary"
           className="h-10 w-auto min-w-[120px] gap-2 px-4 text-sm font-semibold"
+          onClick={() => setPublishOpen(true)}
         >
           <Rocket className="h-4 w-4" />
           Publish
         </Button>
       </div>
+      <PublishModal open={publishOpen} onOpenChange={setPublishOpen} />
     </header>
   )
 }
