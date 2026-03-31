@@ -49,7 +49,7 @@ export function AgentWorkspacePage() {
             <div
               className="h-full flex shrink-0 overflow-hidden bg-(--white) transition-all duration-300 ease-in-out"
               style={{
-                width: instructionsOpen ? '50%' : '0%',
+                width: instructionsOpen ? '52%' : '0%',
                 opacity: instructionsOpen ? 1 : 0,
               }}
             >
@@ -61,8 +61,8 @@ export function AgentWorkspacePage() {
             <div
               className="flex flex-1 items-stretch justify-center py-10"
               style={{
-                paddingLeft: instructionsOpen ? '2rem' : '0',
-                paddingRight: '2rem',
+                paddingLeft: instructionsOpen ? '1rem' : '0',
+                paddingRight: 'rem',
               }}
             >
               <ChatBot
