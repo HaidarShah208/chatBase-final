@@ -160,7 +160,7 @@ export function ChatInterfaceModal() {
           </p>
         </section>
 
-        <section className="grid gap-4 sm:grid-cols-2">
+        <section className="grid gap-6 grid-cols-1">
           <div>
             <label className="text-xs font-semibold text-(--black) sm:text-sm">Theme</label>
             <select className="mt-1 h-10 w-full rounded-lg border border-(--border) bg-(--background) px-3 text-sm text-(--black) outline-none focus:ring-2 focus:ring-(--brand) focus:ring-offset-2 focus:ring-offset-(--white)">
@@ -170,7 +170,7 @@ export function ChatInterfaceModal() {
           </div>
           <div>
             <div className="flex items-center justify-between">
-              <label className="text-xs font-medium text-(--slate) sm:text-sm">Header color</label>
+              <label className="text-xs font-semibold text-(--black) sm:text-sm">Header color</label>
               <button
                 type="button"
                 className="text-xs font-medium text-(--brand) hover:underline"
@@ -180,27 +180,26 @@ export function ChatInterfaceModal() {
             </div>
             <div className="mt-2 flex items-center gap-3">
               <div className="h-8 w-8 rounded-full border border-(--border) bg-(--black)" />
-              <span className="text-xs text-(--black)">#000000</span>
             </div>
           </div>
         </section>
 
-        <section className="space-y-3">
+        <section className="space-y-7">
           <div>
-            <label className="text-xs font-medium text-(--slate) sm:text-sm">
+            <label className="text-xs font-semibold text-(--black) sm:text-sm">
               Display name
             </label>
             <input
-              className="mt-1 h-10 w-full rounded-lg border border-(--border) bg-(--background) px-3 text-sm text-(--black) outline-none focus:ring-2 focus:ring-(--brand) focus:ring-offset-2 focus:ring-offset-(--white)"
+              className="mt-1 h-10 w-full rounded-lg border border-(--border) bg-(--white) px-3 text-sm text-(--black) outline-none focus:ring-0 "
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
             />
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-1">
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-medium text-(--slate) sm:text-sm">
+                <label className="text-xs font-semibold text-(--black) sm:text-sm">
                   Profile picture
                 </label>
               </div>
@@ -208,18 +207,18 @@ export function ChatInterfaceModal() {
                 type="button"
                 variant="outline"
                 size="sm"
-                className="h-9 rounded-md text-xs font-medium"
+                className="h-9 rounded-md text-xs font-semibold"
               >
                 Upload image
               </Button>
-              <p className="text-[10px] text-(--muted)">
+              <p className="text-[11px] text-(--grayish)">
                 Supports PNG, JPG, and SVG files up to 1MB.
               </p>
             </div>
 
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-medium text-(--slate) sm:text-sm">
+                <label className="text-xs font-semibold text-(--black) sm:text-sm">
                   Chat icon
                 </label>
               </div>
@@ -231,7 +230,7 @@ export function ChatInterfaceModal() {
               >
                 Upload image
               </Button>
-              <p className="text-[10px] text-(--muted)">
+              <p className="text-[11px] text-(--grayish)">
                 Shown in your website chat launcher.
               </p>
             </div>
@@ -259,7 +258,7 @@ export function ChatInterfaceModal() {
                 'radial-gradient(120% 90% at 50% 100%, #4CB5FF 0%, #89CCF8 34%, #A9DBFA 55%, #CDE9FB 78%, #E9F5FE 100%)',
             }}
           >
-            <ChatBot className="h-[90vh] lg:w-[80%] shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]" />
+            <ChatBot className="h-screen lg:w-[80%] shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]" />
           </div>
         </div>
       </div>
