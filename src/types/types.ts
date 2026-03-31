@@ -261,3 +261,16 @@ export type NotificationPreference = {
   iconBg: string
   enabled: boolean
 }
+
+export type SelectOption = {
+  value: string
+  label: string
+}
+
+export type SelectProps = {
+  value: string
+  onValueChange: (value: string) => void
+  options: SelectOption[]
+  placeholder?: string
+  className?: string
+}

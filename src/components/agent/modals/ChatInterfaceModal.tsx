@@ -3,13 +3,22 @@ import { useRef, useState } from 'react'
 import { ChatBot } from '../../chatBot/ChatBot'
 import { cn } from '../../../lib/cn'
 import { Button } from '../../ui/Button'
+import { Select } from '../../ui/Select'
 import { FooterToolbar } from '../../footerToolbar/FooterToolbar'
+import { MessageSquare, Upload } from 'lucide-react'
+import agent from '../../../assets/agent.svg'
 
 export function ChatInterfaceModal() {
   const [initialMessages, setInitialMessages] = useState('Hi! What can I help you with?')
   const [messagePlaceholder, setMessagePlaceholder] = useState('Type your message here...')
   const [footerText, setFooterText] = useState('© 2025 Chatbase. All rights reserved.')
   const [displayName, setDisplayName] = useState('Testing agent')
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [userMessageColor, setUserMessageColor] = useState('#0094ff')
+  const [syncUserMsgWithHeader, setSyncUserMsgWithHeader] = useState(true)
+  const [chatBubbleColor, setChatBubbleColor] = useState('#0094ff')
+  const [bubbleAlign, setBubbleAlign] = useState<'left' | 'center' | 'right'>('left')
+  const [autoShowDelay, setAutoShowDelay] = useState(0)
 
   const [footerHistory, setFooterHistory] = useState<string[]>([footerText])
   const [footerHistoryIndex, setFooterHistoryIndex] = useState(0)
@@ -160,13 +169,19 @@ export function ChatInterfaceModal() {
           </p>
         </section>
 
-        <section className="grid gap-6 grid-cols-1">
+        <section className="grid grid-cols-1 gap-6">
           <div>
             <label className="text-xs font-semibold text-(--black) sm:text-sm">Theme</label>
-            <select className="mt-1 h-10 w-full rounded-lg border border-(--border) bg-(--background) px-3 text-sm text-(--black) outline-none focus:ring-2 focus:ring-(--brand) focus:ring-offset-2 focus:ring-offset-(--white)">
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-            </select>
+            <div className="mt-1">
+              <Select
+                value={theme}
+                onValueChange={(value) => setTheme(value as 'light' | 'dark')}
+                options={[
+                  { value: 'light', label: 'Light' },
+                  { value: 'dark', label: 'Dark' },
+                ]}
+              />
+            </div>
           </div>
           <div>
             <div className="flex items-center justify-between">
@@ -196,53 +211,167 @@ export function ChatInterfaceModal() {
             />
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-1">
+          <div className="space-y-5">
             <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-(--black) sm:text-sm">
-                  Profile picture
-                </label>
+              <label className="text-xs font-semibold text-(--black) sm:text-sm">
+                Profile picture
+              </label>
+              <div className="mt-1 flex items-center gap-3">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full  bg-(--bg-primary)">
+                 <img src={agent} className='w-7 h-7' />
+                </span>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="h-9 rounded-md px-4 text-xs font-semibold"
+                >
+                  <Upload className='w-4 h-4'/>
+                  Upload Image
+                </Button>
               </div>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                className="h-9 rounded-md text-xs font-semibold"
-              >
-                Upload image
-              </Button>
-              <p className="text-[11px] text-(--grayish)">
-                Supports PNG, JPG, and SVG files up to 1MB.
+              <p className="text-xs text-(--grayish)">
+                Supports JPG, PNG, and SVG files up to 1MB.
               </p>
             </div>
 
             <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-(--black) sm:text-sm">
-                  Chat icon
-                </label>
+              <label className="text-xs font-semibold text-(--black) sm:text-sm">
+                Chat icon
+              </label>
+              <div className="mt-1 flex items-center gap-3">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-(--border) bg-(--brand)">
+               <MessageSquare className='w-7 h-7' />
+                </span>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="h-9 rounded-md px-4 text-xs font-semibold"
+                >
+                  <Upload className='w-4 h-4'/>
+                  Upload Image
+                </Button>
               </div>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                className="h-9 rounded-md text-xs font-medium"
-              >
-                Upload image
-              </Button>
-              <p className="text-[11px] text-(--grayish)">
-                Shown in your website chat launcher.
+              <p className="text-xs text-(--grayish)">
+                Supports JPG, PNG, and SVG files up to 1MB.
               </p>
             </div>
           </div>
         </section>
 
-        <div className="pt-2">
+        <section className="mt-6 space-y-6">
+          <div>
+            <div className="flex items-center">
+              <p className="text-xs font-semibold text-(--black) sm:text-sm">User message color</p>
+              
+            </div>
+            <div className="mt-2 flex items-center justify-between gap-3">
+            <label className="relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-(--border)">
+                <span
+                  className="h-10 w-10 rounded-full"
+                  style={{ backgroundColor: userMessageColor }}
+                />
+                <input
+                  type="color"
+                  value={userMessageColor}
+                  onChange={(e) => setUserMessageColor(e.target.value)}
+                  className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                  aria-label="Pick user message color"
+                />
+                </label>
+                <button
+                type="button"
+                onClick={() => {
+                  setUserMessageColor('#0094ff')
+                  setSyncUserMsgWithHeader(true)
+                }}
+                className="text-xs font-medium text-(--brand)"
+              >
+                Reset
+              </button>
+            </div>
+            <label className="mt-2 flex items-center gap-2 text-xs text-(--black)">
+              <input
+                type="checkbox"
+                checked={syncUserMsgWithHeader}
+                onChange={(e) => setSyncUserMsgWithHeader(e.target.checked)}
+                className="h-3.5 w-3.5 rounded border-(--border) accent-(--brand)"
+              />
+              Sync user message color with agent header
+            </label>
+          </div>
+
+          <div>
+            <div className="flex items-center">
+              <p className="text-xs font-semibold text-(--black) sm:text-sm">
+                Chat bubble button color
+              </p>
+             
+            </div>
+            <div className="mt-2 flex items-center justify-between gap-3">
+              <label className="relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-(--border)">
+                <span
+                  className="h-10 w-10 rounded-full"
+                  style={{ backgroundColor: chatBubbleColor }}
+                />
+                <input
+                  type="color"
+                  value={chatBubbleColor}
+                  onChange={(e) => setChatBubbleColor(e.target.value)}
+                  className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                  aria-label="Pick chat bubble button color"
+                />
+              </label>
+              <button
+                type="button"
+                onClick={() => setChatBubbleColor('#0094ff')}
+                className="text-xs font-medium text-(--brand)"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div className="grid gap-7 sm:grid-cols-1">
+            <div>
+              <p className="text-xs font-semibold text-(--black) sm:text-sm">Align Chat bubble button</p>
+              <div className="mt-1">
+                <Select
+                  value={bubbleAlign}
+                  onValueChange={(value) => setBubbleAlign(value as 'left' | 'center' | 'right')}
+                  options={[
+                    { value: 'left', label: 'Left' },
+                    { value: 'center', label: 'Center' },
+                    { value: 'right', label: 'Right' },
+                  ]}
+                />
+              </div>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold text-(--black) sm:text-sm">
+                Auto shown initial messages pop-ups after
+              </p>
+              <div className="mt-1 flex items-center gap-2">
+                <input
+                  type="number"
+                  className="h-8.5 w-24 rounded-lg border border-(--border) bg-(--white) px-2 text-sm text-(--black) outline-none focus:ring-0"
+                  value={autoShowDelay}
+                  onChange={(e) => setAutoShowDelay(Number(e.target.value || 0))}
+                />
+                <span className="text-xs text-(--black)">seconds <span className='text-(--grayish)'> (negative to disable)</span> </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="pt-4 flex justify-end">
           <Button
             type="button"
             variant="primary"
             size="md"
-            className="min-w-[140px] rounded-md"
+            className="min-w-[120px] h-9.5 rounded-md"
           >
             Save
           </Button>
@@ -258,7 +387,7 @@ export function ChatInterfaceModal() {
                 'radial-gradient(120% 90% at 50% 100%, #4CB5FF 0%, #89CCF8 34%, #A9DBFA 55%, #CDE9FB 78%, #E9F5FE 100%)',
             }}
           >
-            <ChatBot className="h-screen lg:w-[80%] shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]" />
+            <ChatBot className="h-full lg:w-[80%] shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]" />
           </div>
         </div>
       </div>
