@@ -26,6 +26,7 @@ export function ChatBot({
   welcomeTime = '12:20 PM',
   poweredByText = 'Powered by Your AI Agent',
   inputPlaceholder = 'Type your message here...',
+  onNewChatClick,
 }: AgentBotProps) {
   return (
     <div
@@ -48,6 +49,7 @@ export function ChatBot({
         <div className="flex min-w-0 flex-wrap items-center gap-1.5">
           <button
             type="button"
+            onClick={onNewChatClick}
             className="inline-flex h-8 items-center gap-1 rounded-md px-2 text-xs font-medium text-(--black) hover:bg-(--background)"
           >
             <Plus className="h-3.5 w-3.5" />

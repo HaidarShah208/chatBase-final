@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { AgentWorkspaceHeader } from '../../components/agent/AgentWorkspaceHeader'
 import { AgentWorkspaceSidebar } from '../../components/agent/AgentWorkspaceSidebar'
 import { AgentInstructionsPanel } from '../../components/agent/AgentInstructionsPanel'
+import { ManualChatPanel } from '../../components/agent/ManualChatPanel'
 import { ChatBot } from '../../components/chatBot/ChatBot'
 import { cn } from '../../lib/cn'
 
@@ -12,6 +13,7 @@ export function AgentWorkspacePage() {
   const { agentId = '' } = useParams<{ agentId: string }>()
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [instructionsOpen, setInstructionsOpen] = useState(false)
+  const [showManualChat, setShowManualChat] = useState(false)
   const [openSectionId, setOpenSectionId] = useState<string | null>(null)
 
   const toggleSection = (id: string) => {
@@ -90,17 +92,25 @@ export function AgentWorkspacePage() {
 
             <div
               className={cn(
-                'flex flex-1 items-stretch justify-center py-10 transition-all',
+                'flex flex-1 items-stretch justify-center py-0 transition-all',
                 instructionsOpen ? 'hidden lg:flex' : 'flex',
               )}
             >
-              <div className="mx-auto flex items-center py-10 lg:mx-0">
-                <ChatBot
-                  className="shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
-                  templateName="Unsaved Test Template"
-                  poweredByText="Powered by Your AI Agent"
-                />
-              </div>
+              {showManualChat ? (
+                <ManualChatPanel />
+              ) : (
+                <div className="mx-auto flex items-center py-10 lg:mx-0">
+                  <ChatBot
+                    className="shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
+                    templateName="Unsaved Test Template"
+                    poweredByText="Powered by Your AI Agent"
+                    onNewChatClick={() => {
+                      setInstructionsOpen(true)
+                      setShowManualChat(true)
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

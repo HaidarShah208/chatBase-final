@@ -5,7 +5,7 @@ export function AgentInstructionsPanel() {
     <div className="flex h-full px-4 flex-col overflow-hidden bg-(--white) pt-18">
       <div className="flex flex-col h-full rounded-xl border border-(--border)">
 
-      <div className="mx-4 mb-3 flex md:flex-row flex-col items-start md:items-center justify-between gap-3  bg-(--white) px-3 py-2.5">
+      <div className="mx-1 mb-3 flex md:flex-row flex-col items-start md:items-center justify-between gap-3  bg-(--white) px-3 py-2.5">
         <div className="flex items-center gap-2">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-(--black)">
             <FileText className="h-4 w-4 text-(--white)" aria-hidden />

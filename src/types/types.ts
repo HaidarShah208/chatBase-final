@@ -234,6 +234,7 @@ export type AgentBotProps = {
   welcomeTime?: string
   poweredByText?: string
   inputPlaceholder?: string
+  onNewChatClick?: () => void
 }
 
 type Align = 'left' | 'center' | 'right'
