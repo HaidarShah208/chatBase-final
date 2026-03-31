@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { PanelLeft } from 'lucide-react'
+import { Menu, PanelLeft } from 'lucide-react'
 import { useParams } from 'react-router-dom'
 
 import { AgentWorkspaceHeader } from '../../components/agent/AgentWorkspaceHeader'
 import { AgentWorkspaceSidebar } from '../../components/agent/AgentWorkspaceSidebar'
 import { AgentInstructionsPanel } from '../../components/agent/AgentInstructionsPanel'
 import { ChatBot } from '../../components/chatBot/ChatBot'
+import { cn } from '../../lib/cn'
 
 export function AgentWorkspacePage() {
   const { agentId = '' } = useParams<{ agentId: string }>()
@@ -22,11 +23,32 @@ export function AgentWorkspacePage() {
       <AgentWorkspaceHeader agentId={agentId} />
 
       <div className="flex min-h-0 flex-1 bg-(--background)">
-        <AgentWorkspaceSidebar
-          openSectionId={openSectionId}
-          onToggleSection={toggleSection}
-          collapsed={!sidebarOpen}
-        />
+        <div className="hidden md:flex">
+          <AgentWorkspaceSidebar
+            openSectionId={openSectionId}
+            onToggleSection={toggleSection}
+            collapsed={false}
+          />
+        </div>
+
+        {sidebarOpen ? (
+          <div
+            className="fixed inset-0 z-40 flex md:hidden"
+            onClick={() => setSidebarOpen(false)}
+          >
+            <div
+              className="h-full w-[280px] max-w-[80%] bg-(--white) shadow-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <AgentWorkspaceSidebar
+                openSectionId={openSectionId}
+                onToggleSection={toggleSection}
+                collapsed={false}
+              />
+            </div>
+            <div className="flex-1 bg-black/40" />
+          </div>
+        ) : null}
 
         <div className="min-w-0 flex-1 bg-(--background) px-2 sm:px-3">
           <div
@@ -38,8 +60,17 @@ export function AgentWorkspacePage() {
           >
             <button
               type="button"
+              onClick={() => setSidebarOpen(true)}
+              className="absolute left-3 top-3 z-30 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-(--border) bg-(--white) text-(--black) shadow-sm transition hover:bg-(--background) md:hidden"
+              aria-label="Open sidebar"
+            >
+              <Menu className="h-4 w-4" />
+            </button>
+
+            <button
+              type="button"
               onClick={() => setInstructionsOpen((o) => !o)}
-              className="absolute left-3 top-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-(--border) bg-(--white) text-(--black) shadow-sm transition hover:bg-(--background)"
+              className="absolute md:left-3 right-3 top-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-(--border) bg-(--white) text-(--black) shadow-sm transition hover:bg-(--background)"
               aria-label={instructionsOpen ? 'Hide instructions' : 'Show instructions'}
               aria-pressed={instructionsOpen}
             >
@@ -47,29 +78,29 @@ export function AgentWorkspacePage() {
             </button>
 
             <div
-              className="h-full flex shrink-0 overflow-hidden bg-(--white) transition-all duration-300 ease-in-out"
-              style={{
-                width: instructionsOpen ? '52%' : '0%',
-                opacity: instructionsOpen ? 1 : 0,
-              }}
+              className={cn(
+                'h-full flex shrink-0 overflow-hidden bg-(--white) transition-all duration-300 ease-in-out',
+                instructionsOpen ? 'w-full lg:w-[52%] opacity-100' : 'w-0 opacity-0',
+              )}
             >
-              <div className="h-full w-full flex">
+              <div className="flex h-full w-full">
                 <AgentInstructionsPanel />
               </div>
             </div>
 
             <div
-              className="flex flex-1 items-stretch justify-center py-10"
-              style={{
-                paddingLeft: instructionsOpen ? '1rem' : '0',
-                paddingRight: 'rem',
-              }}
+              className={cn(
+                'flex flex-1 items-stretch justify-center py-10 transition-all',
+                instructionsOpen ? 'hidden lg:flex' : 'flex',
+              )}
             >
-              <ChatBot
-                className="shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
-                templateName="Unsaved Test Template"
-                poweredByText="Powered by Your AI Agent"
-              />
+              <div className="mx-auto flex items-center py-10 lg:mx-0">
+                <ChatBot
+                  className="shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
+                  templateName="Unsaved Test Template"
+                  poweredByText="Powered by Your AI Agent"
+                />
+              </div>
             </div>
           </div>
         </div>

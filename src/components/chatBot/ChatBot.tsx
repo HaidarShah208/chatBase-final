@@ -30,7 +30,7 @@ export function ChatBot({
   return (
     <div
       className={cn(
-        'flex w-[420px]  h-full max-h-full flex-col overflow-hidden rounded-2xl border border-(--border) bg-(--white) shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)]',
+        'flex md:w-[420px] w-full  h-full max-h-full flex-col overflow-hidden rounded-2xl border border-(--border) bg-(--white) shadow-[0_12px_40px_-12px_rgba(15,23,42,0.18)]',
         className,
       )}
     >
@@ -72,18 +72,18 @@ export function ChatBot({
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto  p-4">
-        <div className="max-w-[70%] rounded-2xl border border-(--border) bg-(--white) px-5 py-4 shadow-sm">
+        <div className="max-w-[70%] rounded-2xl border border-(--border) bg-(--white) md:px-5 px-2.5 md:py-4 py-2 shadow-sm">
           <div className="flex items-center gap-1">
             <span
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--black)"
+              className="flex md:h-7 h-5 w-5 md:w-7 shrink-0 items-center justify-center rounded-full bg-(--black)"
               aria-hidden
             >
-              <img src={sparkles} alt="" className="h-4.5 w-4.5" />
+              <img src={sparkles} alt="" className="md:h-4.5 h-2.5 w-2.4 md:w-4.5" />
             </span>
-            <p className="text-sm font-semibold leading-none text-(--black)">Agent</p>
+            <p className="md:text-sm text-xs font-semibold leading-none text-(--black)">Agent</p>
           </div>
-          <p className="pt-3 pb-1 text-sm  text-(--black)">{welcomeMessage}</p>
-          <p className="text-[10px] leading-none text-(--muted)">{welcomeTime}</p>
+          <p className="pt-3 pb-1 md:text-sm text-xs  text-(--black)">{welcomeMessage}</p>
+          <p className="md:text-[10px] leading-none text-xs text-(--muted)">{welcomeTime}</p>
         </div>
       </div>
 
