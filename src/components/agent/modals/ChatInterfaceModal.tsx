@@ -387,7 +387,11 @@ export function ChatInterfaceModal() {
                 'radial-gradient(120% 90% at 50% 100%, #4CB5FF 0%, #89CCF8 34%, #A9DBFA 55%, #CDE9FB 78%, #E9F5FE 100%)',
             }}
           >
-            <ChatBot className="h-full lg:w-[80%] shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]" />
+            <ChatBot
+              className="h-full lg:w-[80%] shadow-[0_16px_48px_-12px_rgba(15,23,42,0.2)]"
+              welcomeMessage={initialMessages.split('\n')[0] ?? ''}
+              inputPlaceholder={messagePlaceholder}
+            />
           </div>
         </div>
       </div>
